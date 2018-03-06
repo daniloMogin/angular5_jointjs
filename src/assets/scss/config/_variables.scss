@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/*---------- variables
+-----------------------------------------------------------*/
+// Font
+$font-main: 'Roboto' sans-serif !default;
+$font-sec: 'Noto Sans', serif !default;
+
+// Colors
+$black: #000 !default;
+$white: #fff !default;
+
+$primary: #757575 !default;
+$p_light: #a4a4a4 !default;
+$p_dark: #494949 !default;
+
+$secondary: #ffd600 !default;
+$s_light: #ffff52 !default;
+$s_dark: #c7a500 !default;
+
+// Durations
+$fastDuration: .1s !default;
+$mediumDuration: .3s !default;
+$slowDuration: .6s !default;

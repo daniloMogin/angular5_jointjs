@@ -1,0 +1,4 @@
+.footer {
+    @include breakpoint(tablet) {}
+    @include breakpoint(phone) {}
+}

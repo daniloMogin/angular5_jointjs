@@ -1,11 +1,28 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-<div class="diagram_wrap">
-    <div style="text-align:center">
-        <h1>
-            Welcome to {{ title }}!
-        </h1>
+<div class="component_wrap">
+    <div id="app" class="diagram_wrap">
+        <div class="app-header">
+            <div class="app-title">
+                <h1>Geutebruck Rappid</h1>
+                <a href="javascript:;" (click)="saveToJSON()">Save to JSON</a>
+            </div>
+            <div class="toolbar-container"></div>
+        </div>
+        <div class="app-body">
+            <div class="stencil-container"></div>
+            <div class="paper-container"></div>
+            <div class="inspector-container"></div>
+            <div class="navigator-container"></div>
+        </div>
     </div>
-    <div id="stencil"></div>
-    <div id="paper"></div>
+
+    <!--[if IE 9]>
+<script>
+    // `-ms-user-select: none` doesn't work in IE9
+    document.onselectstart = function() {
+        return false;
+    };
+</script>
+<![endif]-->
 </div>

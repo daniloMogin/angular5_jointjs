@@ -76,7 +76,7 @@ export class AppComponent implements OnInit {
         $('.paper-container').append(paperScroller.el);
 
         paperScroller.render().center();
-        graph.fromJSON(jsonString)
+        // graph.fromJSON(jsonString)
     }
 
     // Create and populate stencil.

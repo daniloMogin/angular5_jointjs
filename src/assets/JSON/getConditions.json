@@ -1,0 +1,14 @@
+{
+    "Conditions": [
+        {
+            "ConditionId": "1",
+            "ConditionName": "Condition1",
+            "ConditionPars": [
+                {
+                    "Parameter1": 1,
+                    "Parameter2": "xyz"
+                }
+            ]
+        }
+    ]
+}

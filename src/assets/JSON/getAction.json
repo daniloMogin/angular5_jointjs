@@ -1,0 +1,54 @@
+{
+    "Operations": [
+        {
+            "OperationId": "1",
+            "OperationName": "Verify",
+            "Messages": [
+                {
+                    "MessageId": "VerifyMessage",
+                    "ContentExample": {
+                        "Path": "c:/test/test.mp4"
+                    }
+                }
+            ],
+            "OperationDependency": "None",
+            "Description": "Verifies existence of file on given location"
+        },
+        {
+            "OperationId": "2",
+            "OperationName": "PlayVideo",
+            "Messages": [
+                {
+                    "MessageId": "PlayMessage",
+                    "ContentExample": {}
+                }
+            ],
+            "OperationDependency": "Verify",
+            "Description": "Plays video file on verified location stored in [path] variable"
+        },
+        {
+            "OperationId": "3",
+            "OperationName": "PauseVideo",
+            "Messages": [
+                {
+                    "MessageId": "PauseMessage",
+                    "ContentExample": {}
+                }
+            ],
+            "OperationDependency": "PlayVideo",
+            "Description": "Pause the currently playing video"
+        },
+        {
+            "OperationId": "4",
+            "OperationName": "StopVideo",
+            "Messages": [
+                {
+                    "MessageId": "StopMessage",
+                    "ContentExample": {}
+                }
+            ],
+            "OperationDependency": "PlayVideo",
+            "Description": "Stops the currently playing video"
+        }
+    ]
+}

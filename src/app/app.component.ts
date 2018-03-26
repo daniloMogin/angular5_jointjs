@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import * as $ from 'jquery';
 import * as config from './config/configuration';
 import * as _ from 'lodash';
@@ -29,6 +29,8 @@ export class AppComponent implements OnInit {
     selection: joint.ui.Selection;
     toolbar: joint.ui.Toolbar;
     navigator: joint.ui.Navigator;
+
+    @Output() test = new EventEmitter();
 
     ngOnInit() {
         this.initializePaper();

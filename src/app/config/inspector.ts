@@ -10,6 +10,76 @@ This Source Code Form is subject to the terms of the Rappid Trial License
 file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
  or from the Rappid archive as was distributed by client IO. See the LICENSE file.*/
 
+const $secondary = '#ffd600';
+const $s_light = '#ffff52';
+
+
+function getActions() {
+    const request = new XMLHttpRequest();
+    request.open("GET", "/assets/JSON/getAction.json", false);
+    request.send(null)
+    const my_JSON_object = JSON.parse(request.responseText);
+
+    return my_JSON_object;
+}
+
+const action_JSON = getActions();
+
+// console.log(`action_JSON`);
+// console.log(action_JSON);
+
+interface ioptions {
+    value: string,
+    content: string,
+    inPorts: string[],
+    outPorts: string[]
+}
+
+let action_obj: ioptions[] = [];
+let action_obj1: any[] = [];
+const operations_len: number = action_JSON.Operations.length;
+
+for (let i: number = 0; i < operations_len; i++) {
+    if (i == 2) {
+        action_obj.push(
+            {
+                "value": action_JSON.Operations[i].OperationId,
+                "content": action_JSON.Operations[i].OperationName,
+                "inPorts": ['in1', 'in2', 'in3'],
+                "outPorts": ['out'],
+            }
+        );
+    } else {
+        action_obj.push(
+            {
+                "value": action_JSON.Operations[i].OperationId,
+                "content": action_JSON.Operations[i].OperationName,
+                "inPorts": [],
+                "outPorts": [],
+            }
+        );
+    }
+}
+for (let i: number = 0; i < operations_len; i++) {
+    if (i == 2) {
+        action_obj1.push(
+            {
+                "value": action_JSON.Operations[i].OperationId,
+                "content": action_JSON.Operations[i].OperationName
+            }
+        );
+    } else {
+        action_obj1.push(
+            {
+                "value": action_JSON.Operations[i].OperationId,
+                "content": action_JSON.Operations[i].OperationName
+            }
+        );
+    }
+}
+
+console.log(`action_obj`);
+console.log(action_obj);
 
 const options = {
 
@@ -19,8 +89,8 @@ const options = {
         { content: '#dcd7d7' },
         { content: '#8f8f8f' },
         { content: '#c6c7e2' },
-        { content: '#feb663' },
-        { content: '#fe854f' },
+        { content: $s_light }, // nova boja
+        { content: $secondary }, // 
         { content: '#b75d32' },
         { content: '#31d0c6' },
         { content: '#7c68fc' },
@@ -50,14 +120,9 @@ const options = {
         { value: '10,5', content: 'Dashed' }
     ],
 
-    select: [
-        { value: 'value1', content: 'option1' }, 
-        { value: 'value2', content: 'option2' }, 
-        { value: 'value3', content: 'option3' }, 
-        { value: 'asd', content: 'asd' }, 
-        { value: 'qwe', content: 'qwe' }, 
-        { value: 'value6', content: 'option6' }
-    ],
+    select: action_obj,
+
+    select1: action_obj,
 
     side: [
         { value: 'top', content: 'Top Side' },
@@ -598,8 +663,9 @@ export const inspector = <{ [index: string]: any }>{
             attrs: {
                 '.label': {
                     text: {
-                        type: 'content-editable',
+                        type: 'select',
                         label: 'Text',
+                        options: options.select,
                         group: 'text',
                         index: 1
                     },
@@ -1761,8 +1827,9 @@ export const inspector = <{ [index: string]: any }>{
             attrs: {
                 text: {
                     text: {
-                        type: 'content-editable',
+                        type: 'select',
                         label: 'Text',
+                        options: options.select1,
                         group: 'text',
                         index: 1
                     },

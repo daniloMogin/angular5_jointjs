@@ -1,0 +1,12 @@
+{
+    "Workflows": [
+        {
+            "WorkflowName": "PlayCamera",
+            "Description": "Worklfow for playing videos"
+        },
+        {
+            "WorkflowName": "Backup files",
+            "Description": "Backup files"
+        }
+    ]
+}

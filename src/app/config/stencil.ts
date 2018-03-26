@@ -13,14 +13,17 @@ file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
 
 import {ui} from '../../assets/build/rappid.min';
 
+const asd: string = 'in1';
+const asd1: string = 'in3';
+
 export const stencil = {
     groups: <{ [key: string]: ui.Stencil.Group }>{
         basic: { index: 1, label: 'Basic shapes' },
-        fsa: { index: 2, label: 'State machine' },
-        pn: { index: 3, label: 'Petri nets' },
-        erd: { index: 4, label: 'Entity-relationship' },
-        uml: { index: 5, label: 'UML' },
-        org: { index: 6, label: 'ORG' }
+        // fsa: { index: 2, label: 'State machine' },
+        // pn: { index: 3, label: 'Petri nets' },
+        // erd: { index: 4, label: 'Entity-relationship' },
+        // uml: { index: 5, label: 'UML' },
+        // org: { index: 6, label: 'ORG' }
     },
     shapes: {
         basic: [
@@ -43,7 +46,7 @@ export const stencil = {
                         'stroke-width': 2,
                         'stroke-dasharray': '0'
                     },
-                    text: {
+                    textarea: {
                         text: 'rect',
                         fill: '#c6c7e2',
                         'font-family': 'Roboto Condensed',
@@ -80,93 +83,199 @@ export const stencil = {
                     }
                 }
             },
+            // {
+            //     type: 'app.RectangularModel',
+            //     size: { width: 40, height: 30 },
+            //     inPorts: [asd, 'in2', asd1],
+            //     outPorts: ['out'],
+            //     allowOrthogonalResize: false,
+            //     attrs: {
+            //         '.': {
+            //             'data-tooltip': 'Rectangle with ports',
+            //             'data-tooltip-position': 'left',
+            //             'data-tooltip-position-selector': '.joint-stencil'
+            //         },
+            //         '.body': {
+            //             fill: 'transparent',
+            //             rx: 2,
+            //             ry: 2,
+            //             stroke: '#31d0c6',
+            //             'stroke-width': 2,
+            //             'stroke-dasharray': '0'
+            //         },
+            //         '.label': {
+            //             text: 'rect',
+            //             fill: '#c6c7e2',
+            //             'font-family': 'Roboto Condensed',
+            //             'font-weight': 'Normal',
+            //             'font-size': 11,
+            //             'stroke-width': 0,
+            //             'ref-y': 0.5,
+            //             'y-alignment': 'middle'
+            //         }
+            //     }
+            // },
+            // {
+            //     type: 'app.CircularModel',
+            //     size: { width: 5, height: 3 },
+            //     inPorts: ['in1', 'in2'],
+            //     outPorts: ['out'],
+            //     allowOrthogonalResize: false,
+            //     attrs: {
+            //         '.': {
+            //             'data-tooltip': 'Ellipse with ports',
+            //             'data-tooltip-position': 'left',
+            //             'data-tooltip-position-selector': '.joint-stencil'
+            //         },
+            //         '.body': {
+            //             fill: 'transparent',
+            //             stroke: '#31d0c6',
+            //             'stroke-width': 2,
+            //             'stroke-dasharray': '0',
+            //             'rx': '50%',
+            //             'ry': '50%'
+            //         },
+            //         '.label': {
+            //             text: 'ellipse',
+            //             fill: '#c6c7e2',
+            //             'font-family': 'Roboto Condensed',
+            //             'font-weight': 'Normal',
+            //             'font-size': 11,
+            //             'stroke-width': 0,
+            //             'ref-y': 0.5,
+            //             'y-alignment': 'middle'
+            //         }
+            //     }
+            // },
+            // {
+            //     type: 'basic.Image',
+            //     size: { width: 53, height: 42 },
+            //     attrs: {
+            //         '.': {
+            //             'data-tooltip': 'Image',
+            //             'data-tooltip-position': 'left',
+            //             'data-tooltip-position-selector': '.joint-stencil'
+            //         },
+            //         image: {
+            //             width: 53,
+            //             height: 42,
+            //             'xlink:href': './assets/image-icon1.svg'
+            //         },
+            //         text: {
+            //             text: 'image',
+            //             'font-family': 'Roboto Condensed',
+            //             'font-weight': 'Normal',
+            //             'font-size': 9,
+            //             display: '',
+            //             stroke: '#000',
+            //             'stroke-width': 0,
+            //             'fill': '#222138'
+            //         }
+            //     }
+            // },
             {
-                type: 'app.RectangularModel',
-                size: { width: 40, height: 30 },
-                inPorts: ['in1', 'in2'],
-                outPorts: ['out'],
-                allowOrthogonalResize: false,
+                type: 'fsa.StartState',
+                preserveAspectRatio: true,
                 attrs: {
                     '.': {
-                        'data-tooltip': 'Rectangle with ports',
+                        'data-tooltip': 'Start State',
                         'data-tooltip-position': 'left',
                         'data-tooltip-position-selector': '.joint-stencil'
                     },
-                    '.body': {
+                    circle: {
+                        width: 50,
+                        height: 30,
+                        fill: '#61549C',
+                        'stroke-width': 0
+                    },
+                    text: {
+                        text: 'startState',
+                        fill: '#c6c7e2',
+                        'font-family': 'Roboto Condensed',
+                        'font-weight': 'Normal',
+                        'font-size': 11,
+                        'stroke-width': 0
+                    }
+                }
+            },
+            {
+                type: 'fsa.EndState',
+                preserveAspectRatio: true,
+                attrs: {
+                    '.': {
+                        'data-tooltip': 'End State',
+                        'data-tooltip-position': 'left',
+                        'data-tooltip-position-selector': '.joint-stencil'
+                    },
+                    '.inner': {
+                        fill: '#6a6c8a',
+                        stroke: 'transparent'
+                    },
+                    '.outer': {
                         fill: 'transparent',
-                        rx: 2,
-                        ry: 2,
-                        stroke: '#31d0c6',
+                        stroke: '#61549C',
                         'stroke-width': 2,
                         'stroke-dasharray': '0'
                     },
-                    '.label': {
-                        text: 'rect',
-                        fill: '#c6c7e2',
-                        'font-family': 'Roboto Condensed',
-                        'font-weight': 'Normal',
-                        'font-size': 11,
-                        'stroke-width': 0,
-                        'ref-y': 0.5,
-                        'y-alignment': 'middle'
-                    }
-                }
-            },
-            {
-                type: 'app.CircularModel',
-                size: { width: 5, height: 3 },
-                inPorts: ['in1', 'in2'],
-                outPorts: ['out'],
-                allowOrthogonalResize: false,
-                attrs: {
-                    '.': {
-                        'data-tooltip': 'Ellipse with ports',
-                        'data-tooltip-position': 'left',
-                        'data-tooltip-position-selector': '.joint-stencil'
-                    },
-                    '.body': {
-                        fill: 'transparent',
-                        stroke: '#31d0c6',
-                        'stroke-width': 2,
-                        'stroke-dasharray': '0',
-                        'rx': '50%',
-                        'ry': '50%'
-                    },
-                    '.label': {
-                        text: 'ellipse',
-                        fill: '#c6c7e2',
-                        'font-family': 'Roboto Condensed',
-                        'font-weight': 'Normal',
-                        'font-size': 11,
-                        'stroke-width': 0,
-                        'ref-y': 0.5,
-                        'y-alignment': 'middle'
-                    }
-                }
-            },
-            {
-                type: 'basic.Image',
-                size: { width: 53, height: 42 },
-                attrs: {
-                    '.': {
-                        'data-tooltip': 'Image',
-                        'data-tooltip-position': 'left',
-                        'data-tooltip-position-selector': '.joint-stencil'
-                    },
-                    image: {
-                        width: 53,
-                        height: 42,
-                        'xlink:href': './assets/image-icon1.svg'
-                    },
                     text: {
-                        text: 'image',
+                        text: 'endState',
+                        fill: '#c6c7e2',
                         'font-family': 'Roboto Condensed',
                         'font-weight': 'Normal',
-                        'font-size': 9,
-                        display: '',
-                        stroke: '#000',
+                        'font-size': 11,
+                        'stroke-width': 0
+                    }
+                }
+            },
+            {
+                type: 'pn.Transition',
+                preserveAspectRatio: true,
+                attrs: {
+                    '.': {
+                        'data-tooltip': 'Transition',
+                        'data-tooltip-position': 'left',
+                        'data-tooltip-position-selector': '.joint-stencil'
+                    },
+                    rect: {
+                        rx: 3,
+                        ry: 3,
+                        width: 12,
+                        height: 50,
+                        fill: '#61549C',
+                        stroke: '#7c68fc',
+                        'stroke-width': 0,
+                        'stroke-dasharray': '0'
+                    },
+                    '.label': {
+                        text: 'transition',
+                        'font-family': 'Roboto Condensed',
+                        'font-weight': 'Normal',
                         'stroke-width': 0,
                         'fill': '#222138'
+                    }
+                }
+            },
+            {
+                type: 'erd.Relationship',
+                attrs: {
+                    '.': {
+                        'data-tooltip': 'Relationship',
+                        'data-tooltip-position': 'left',
+                        'data-tooltip-position-selector': '.joint-stencil'
+                    },
+                    '.outer': {
+                        fill: '#61549C',
+                        stroke: 'transparent',
+                        'stroke-width': 2,
+                        'stroke-dasharray': '0'
+                    },
+                    text: {
+                        text: 'Relation',
+                        'font-size': 11,
+                        'font-family': 'Roboto Condensed',
+                        'font-weight': 'Normal',
+                        fill: '#f6f6f6',
+                        'stroke-width': 0
                     }
                 }
             }

@@ -44,7 +44,41 @@
                 overflow: hidden;
                 box-sizing: border-box;
                 left: 240px;
-                right: 240px;
+                right: 290px;
+            }
+            .controls-container {
+                background-color: red;
+                bottom: 120px;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                height: 36%;
+                position: absolute;
+                right: 0;
+                width: 290px;
+                .controls_row,
+                .crud_row,
+                .valid_row {
+                    flex-grow: 1;
+                    height: 33.33%;
+                    padding: 15px 0;
+                    background-color: $p_dark;
+                }
+                .controls_row,
+                .valid_row {
+                    mat-icon {
+                        color: $primary;
+                    }
+                }
+                // .controls_row {
+                //     background-color: $s_light;
+                // }
+                // .crud_row {
+                //     background-color: $secondary;
+                // }
+                // .valid_row {
+                //     background-color: $s_dark;
+                // }
             }
         }
     }

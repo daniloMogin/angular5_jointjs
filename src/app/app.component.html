@@ -4,8 +4,7 @@
     <div id="app" class="diagram_wrap">
         <div class="app-header">
             <div class="app-title">
-                <h1>Geutebruck Rappid</h1>
-                <a href="javascript:;" (click)="saveToJSON()">Save to JSON</a>
+                <h1>{{ title }}!</h1>
             </div>
             <div class="toolbar-container"></div>
         </div>
@@ -13,6 +12,28 @@
             <div class="stencil-container"></div>
             <div class="paper-container"></div>
             <div class="inspector-container"></div>
+            <div class="controls-container">
+                <div class="controls_row">
+                    <a mat-raised-button matTooltip="Play" matTooltipPosition="left" (click)="startDiagram()">
+                        <mat-icon>play_arrow</mat-icon>
+                    </a>
+                    <a mat-raised-button matTooltip="Pause" matTooltipPosition="left" (click)="pauseDiagram()">
+                        <mat-icon>pause</mat-icon>
+                    </a>
+                    <a mat-raised-button matTooltip="Stop" matTooltipPosition="left" (click)="stopDiagram()">
+                        <mat-icon>stop</mat-icon>
+                    </a>
+                </div>
+                <div class="crud_row">
+                    <a mat-raised-button matTooltip="Save diagram to JSON object" matTooltipPosition="left" (click)="saveToJSON()">Save to JSON</a>
+                    <a mat-raised-button matTooltip="Load diagram from JSON object" matTooltipPosition="left" (click)="loadFromJSON()">Load from JSON</a>
+                </div>
+                <div class="valid_row">
+                    <a mat-raised-button matTooltip="Validate diagram" matTooltipPosition="left" (click)="validateDiagram()">
+                        <mat-icon>info_outline</mat-icon>
+                    </a>
+                </div>
+            </div>
             <div class="navigator-container"></div>
         </div>
     </div>

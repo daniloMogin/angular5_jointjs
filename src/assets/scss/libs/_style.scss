@@ -115,9 +115,9 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    bottom: 120px;
     /* navigator height */
-    width: 240px;
+    height: 51%;
+    width: 290px;
     box-sizing: border-box;
 }
 
@@ -144,7 +144,7 @@ body {
     position: absolute;
     right: 0;
     bottom: 0;
-    width: 240px;
+    width: 290px;
     height: 120px;
 }
 
@@ -180,7 +180,7 @@ body {
         }
     }
     .elements {
-        // background-color: $p_dark;
+        background-color: $p_dark;
         color: $white;
     }
 }

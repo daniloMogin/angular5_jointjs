@@ -1,7 +1,7 @@
 /*----------  config
 ------------------------------------------------------------------------------*/
 
-// @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 // @import '~dragula/dist/dragula.min.css';
 @import "~compass-mixins/lib/compass";
 @import "config/reset";
@@ -28,7 +28,7 @@
 @import "libs/style.dark";
 @import "libs/style.material";
 @import "libs/style.modern";
-@import "libs/theme-picker";
+// @import "libs/theme-picker";
 
 /*----------  partials
 ------------------------------------------------------------------------------*/

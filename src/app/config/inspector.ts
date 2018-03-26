@@ -50,6 +50,15 @@ const options = {
         { value: '10,5', content: 'Dashed' }
     ],
 
+    select: [
+        { value: 'value1', content: 'option1' }, 
+        { value: 'value2', content: 'option2' }, 
+        { value: 'value3', content: 'option3' }, 
+        { value: 'asd', content: 'asd' }, 
+        { value: 'qwe', content: 'qwe' }, 
+        { value: 'value6', content: 'option6' }
+    ],
+
     side: [
         { value: 'top', content: 'Top Side' },
         { value: 'right', content: 'Right Side' },
@@ -323,8 +332,9 @@ export const inspector = <{ [index: string]: any }>{
             attrs: {
                 text: {
                     text: {
-                        type: 'content-editable',
+                        type: 'select',
                         label: 'Text',
+                        options: options.select,
                         group: 'text',
                         index: 1
                     },

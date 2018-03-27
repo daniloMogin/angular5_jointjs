@@ -13,8 +13,12 @@ file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
 
 import { ui } from '../../assets/build/rappid.min';
 
-const asd: string = 'in1';
-const asd1: string = 'in3';
+const $font_color: string = '#000';
+const $font_size: number = 20;
+const $font_family_p: string = 'Roboto Condensed';
+const $font_family_s: string = 'Averia Libre';
+const $font_family_o: string = 'Alegreya Sans';
+const $font_weight: string = 'Normal';
 
 export const stencil = {
     groups: <{ [key: string]: ui.Stencil.Group }>{
@@ -30,7 +34,7 @@ export const stencil = {
                 allowOrthogonalResize: false,
                 attrs: {
                     '.': {
-                        'data-tooltip': 'Rectangle with ports',
+                        'data-tooltip': 'Actor',
                         'data-tooltip-position': 'left',
                         'data-tooltip-position-selector': '.joint-stencil'
                     },
@@ -44,10 +48,10 @@ export const stencil = {
                     },
                     '.label': {
                         text: '',
-                        fill: '#c6c7e2',
-                        'font-family': 'Roboto Condensed',
-                        'font-weight': 'Normal',
-                        'font-size': 11,
+                        fill: $font_color,
+                        'font-family': $font_family_p,
+                        'font-weight': $font_weight,
+                        'font-size': $font_size,
                         'stroke-width': 0,
                         'ref-y': 0.5,
                         'y-alignment': 'middle'
@@ -74,10 +78,10 @@ export const stencil = {
                     },
                     text: {
                         text: '',
-                        'font-size': 11,
-                        'font-family': 'Roboto Condensed',
-                        'font-weight': 'Normal',
-                        fill: '#f6f6f6',
+                        'font-size': $font_size,
+                        'font-family': $font_family_p,
+                        'font-weight': $font_weight,
+                        fill: $font_color,
                         'stroke-width': 0
                     }
                 }
@@ -87,7 +91,7 @@ export const stencil = {
                 size: { width: 2, height: 8 },
                 attrs: {
                     '.': {
-                        'data-tooltip': 'Rectangle',
+                        'data-tooltip': 'Transition',
                         'data-tooltip-position': 'left',
                         'data-tooltip-position-selector': '.joint-stencil'
                     },
@@ -103,10 +107,10 @@ export const stencil = {
                     },
                     text: {
                         // text: 'rect',
-                        fill: '#c6c7e2',
-                        'font-family': 'Roboto Condensed',
-                        'font-weight': 'Normal',
-                        'font-size': 11,
+                        fill: $font_color,
+                        'font-family': $font_family_p,
+                        'font-weight': $font_weight,
+                        'font-size': $font_size,
                         'stroke-width': 0
                     }
                 }
@@ -128,10 +132,10 @@ export const stencil = {
                     },
                     text: {
                         text: 'startState',
-                        fill: '#c6c7e2',
-                        'font-family': 'Roboto Condensed',
-                        'font-weight': 'Normal',
-                        'font-size': 11,
+                        fill: $font_color,
+                        'font-family': $font_family_p,
+                        'font-weight': $font_weight,
+                        'font-size': $font_size,
                         'stroke-width': 0
                     }
                 }
@@ -157,10 +161,10 @@ export const stencil = {
                     },
                     text: {
                         text: 'endState',
-                        fill: '#c6c7e2',
-                        'font-family': 'Roboto Condensed',
-                        'font-weight': 'Normal',
-                        'font-size': 11,
+                        fill: $font_color,
+                        'font-family': $font_family_p,
+                        'font-weight': $font_weight,
+                        'font-size': $font_size,
                         'stroke-width': 0
                     }
                 }

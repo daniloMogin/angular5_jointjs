@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer } from '@angular/core';
 import * as $ from 'jquery';
 import * as config from './config/configuration';
 import * as _ from 'lodash';
@@ -29,8 +29,9 @@ export class AppComponent implements OnInit {
     selection: joint.ui.Selection;
     toolbar: joint.ui.Toolbar;
     navigator: joint.ui.Navigator;
+    element: joint.dia.Element;
 
-    @Output() test = new EventEmitter();
+    constructor(private elRef: ElementRef, private renderer: Renderer) { }
 
     ngOnInit() {
         this.initializePaper();
@@ -42,6 +43,14 @@ export class AppComponent implements OnInit {
         this.initializeKeyboardShortcuts();
         this.initializeTooltips();
     }
+
+    // ngAfterViewInit() {
+    //     // assume dynamic HTML was added before
+    //     this.renderer.listen(this.elRef.nativeElement, 'click', (event) => { console.log(event);});
+    //     console.log(`this.elRef.nativeElement`);
+    //     console.log(this.elRef.nativeElement.querySelector('.select'));
+
+    // }
 
     // Create a graph, paper and wrap the paper in a PaperScroller.
     initializePaper() {
@@ -190,7 +199,6 @@ export class AppComponent implements OnInit {
         // Initiate selecting when the user grabs the blank area of the paper while the Shift key is pressed.
         // Otherwise, initiate paper pan.
         this.paper.on('blank:pointerdown', (evt: JQuery.Event, x: number, y: number) => {
-
             if (this.keyboard.isActive('shift', evt)) {
                 this.selection.startSelecting(evt);
             } else {
@@ -221,13 +229,40 @@ export class AppComponent implements OnInit {
 
     createInspector(cell: joint.dia.Cell) {
 
+        cell.on('change:attrs', function (cell) {
+            console.log(`cell`);
+            console.log(cell);
+            // console.log(`cell.attributes.attrs`);
+            // console.log(cell.attributes.attrs);
+            // console.log(cell.attributes.attrs['.label'].text);
+            const actions = getActions();
+            // TODO POPRAVITI DODAVANJE PORTOVA NA ELEMENTE
+            let port = []
+
+            for (let i: number = 0; i < actions.Operations.length; i++) {
+                if (actions.Operations[i].OperationId === cell.attributes.attrs['.label'].text) {
+                    console.log(actions.Operations[i].inPorts);
+                    port.push(actions.Operations[i].inPorts);
+                    cell.addPorts(port);
+                }
+            }
+
+
+        })
+
         return joint.ui.Inspector.create('.inspector-container', _.extend({ cell }, config.inspector[cell.get('type')]));
     }
 
     // Click on element create frame with functions for manipulating size, link...
     initializeHaloAndInspector() {
-
         this.paper.on('element:pointerup link:options', (cellView: joint.dia.CellView) => {
+
+
+
+            // this.renderer.listen(this.elRef.nativeElement.querySelector('option'), 'click', (event) => { console.log(event); });
+            // console.log(`this.elRef.nativeElement`);
+            // console.log(this.elRef.nativeElement.querySelector('option'));
+
 
             const cell = cellView.model;
 
@@ -547,3 +582,12 @@ function removeColorElement(node: any, name: string) {
         });
     }
 };
+
+function getActions() {
+    const request = new XMLHttpRequest();
+    request.open("GET", "/assets/JSON/getAction.json", false);
+    request.send(null)
+    const my_JSON_object = JSON.parse(request.responseText);
+
+    return my_JSON_object;
+}

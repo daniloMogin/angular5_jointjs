@@ -115,8 +115,7 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    /* navigator height */
-    height: 51%;
+    height: 83%;
     width: 290px;
     box-sizing: border-box;
 }
@@ -142,9 +141,9 @@ body {
 
 .navigator-container {
     position: absolute;
-    right: 0;
+    left: 0;
     bottom: 0;
-    width: 290px;
+    width: 100%;
     height: 120px;
 }
 
@@ -179,9 +178,14 @@ body {
             float: left;
         }
     }
-    .elements {
+    .content {
         background-color: $p_dark;
-        color: $white;
+        .elements {
+            background-color: $p_dark;
+            color: $white;
+            width: 100%;
+            height: 100%;
+        }
     }
 }
 

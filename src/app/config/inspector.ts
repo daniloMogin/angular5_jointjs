@@ -10,6 +10,18 @@ This Source Code Form is subject to the terms of the Rappid Trial License
 file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
  or from the Rappid archive as was distributed by client IO. See the LICENSE file.*/
 
+interface IAction {
+    class: string,
+    value: string,
+    content: string,
+    inPorts: string[],
+    outPorts: string[]
+}
+interface ICondition {
+    value: string,
+    content: string
+}
+
 const $secondary = '#ffd600';
 const $s_light = '#ffff52';
 
@@ -22,36 +34,53 @@ function getActions() {
 
     return my_JSON_object;
 }
+function getConditions() {
+    const request = new XMLHttpRequest();
+    request.open("GET", "/assets/JSON/getConditions.json", false);
+    request.send(null)
+    const my_JSON_object = JSON.parse(request.responseText);
+
+    return my_JSON_object;
+}
 
 const action_JSON = getActions();
+const actions_len: number = action_JSON.Operations.length;
+let action_obj: IAction[] = [
+    {
+        "class": "",
+        "value": "",
+        "content": "",
+        "inPorts": [],
+        "outPorts": [],
+    }
+];
 
+const conditions_JSON = getConditions();
+const condition_len: number = conditions_JSON.Conditions.length;
+let condition_obj: ICondition[] = [
+    {
+        "value": "",
+        "content": ""
+    }
+];
 // console.log(`action_JSON`);
 // console.log(action_JSON);
 
-interface ioptions {
-    value: string,
-    content: string,
-    inPorts: string[],
-    outPorts: string[]
-}
-
-let action_obj: ioptions[] = [];
-let action_obj1: any[] = [];
-const operations_len: number = action_JSON.Operations.length;
-
-for (let i: number = 0; i < operations_len; i++) {
-    if (i == 2) {
+for (let i: number = 0; i < actions_len; i++) {
+    if (action_JSON.Operations[i].inPorts) {
         action_obj.push(
             {
+                "class": "test",
                 "value": action_JSON.Operations[i].OperationId,
                 "content": action_JSON.Operations[i].OperationName,
-                "inPorts": ['in1', 'in2', 'in3'],
-                "outPorts": ['out'],
+                "inPorts": action_JSON.Operations[i].inPorts,
+                "outPorts": action_JSON.Operations[i].outPorts,
             }
         );
     } else {
         action_obj.push(
             {
+                "class": "test",
                 "value": action_JSON.Operations[i].OperationId,
                 "content": action_JSON.Operations[i].OperationName,
                 "inPorts": [],
@@ -60,26 +89,19 @@ for (let i: number = 0; i < operations_len; i++) {
         );
     }
 }
-for (let i: number = 0; i < operations_len; i++) {
-    if (i == 2) {
-        action_obj1.push(
-            {
-                "value": action_JSON.Operations[i].OperationId,
-                "content": action_JSON.Operations[i].OperationName
-            }
-        );
-    } else {
-        action_obj1.push(
-            {
-                "value": action_JSON.Operations[i].OperationId,
-                "content": action_JSON.Operations[i].OperationName
-            }
-        );
-    }
+for (let i: number = 0; i < condition_len; i++) {
+    condition_obj.push(
+        {
+            "value": conditions_JSON.Conditions[i].ConditionId,
+            "content": conditions_JSON.Conditions[i].ConditionName
+        }
+    );
 }
 
-console.log(`action_obj`);
-console.log(action_obj);
+// console.log(`action_obj`);
+// console.log(action_obj);
+// console.log(`condition_obj`);
+// console.log(condition_obj);
 
 const options = {
 
@@ -122,7 +144,7 @@ const options = {
 
     select: action_obj,
 
-    select1: action_obj,
+    select1: condition_obj,
 
     side: [
         { value: 'top', content: 'Top Side' },
@@ -663,6 +685,7 @@ export const inspector = <{ [index: string]: any }>{
             attrs: {
                 '.label': {
                     text: {
+                        class: 'testKlasa',
                         type: 'select',
                         label: 'Text',
                         options: options.select,
@@ -746,120 +769,120 @@ export const inspector = <{ [index: string]: any }>{
                     }
                 }
             },
-            ports: {
-                groups: {
-                    'in': {
-                        attrs: {
-                            '.port-body': {
-                                fill: {
-                                    type: 'color-palette',
-                                    options: options.colorPalette,
-                                    label: 'Fill',
-                                    when: { not: { equal: { inPorts: [] } } },
-                                    group: 'inPorts',
-                                    index: 1
-                                }
-                            }
-                        },
-                        position: {
-                            name: {
-                                type: 'select-box',
-                                options: options.side,
-                                label: 'Position',
-                                when: { not: { equal: { inPorts: [] } } },
-                                group: 'inPorts',
-                                index: 3
-                            }
-                        },
-                        label: {
-                            position: {
-                                type: 'select-box',
-                                options: options.portLabelPositionRectangle,
-                                label: 'Text Position',
-                                when: { not: { equal: { inPorts: [] } } },
-                                group: 'inPorts',
-                                index: 4
-                            }
-                        },
-                        markup: {
-                            type: 'select-box',
-                            options: options.portMarkup,
-                            label: 'Port Shape',
-                            group: 'inPorts',
-                            index: 5
-                        }
-                    },
-                    'out': {
-                        attrs: {
-                            '.port-body': {
-                                fill: {
-                                    type: 'color-palette',
-                                    options: options.colorPalette,
-                                    label: 'Fill',
-                                    when: { not: { equal: { outPorts: [] } } },
-                                    group: 'outPorts',
-                                    index: 2
-                                }
-                            }
-                        },
-                        position: {
-                            name: {
-                                type: 'select-box',
-                                options: options.side,
-                                label: 'Position',
-                                when: { not: { equal: { outPorts: [] } } },
-                                group: 'outPorts',
-                                index: 4
-                            }
-                        },
-                        label: {
-                            position: {
-                                type: 'select-box',
-                                options: options.portLabelPositionRectangle,
-                                label: 'Text Position',
-                                when: { not: { equal: { outPorts: [] } } },
-                                group: 'outPorts',
-                                index: 5
-                            }
-                        },
-                        markup: {
-                            type: 'select-box',
-                            options: options.portMarkup,
-                            label: 'Port Shape',
-                            group: 'outPorts',
-                            index: 6
-                        }
-                    }
-                }
-            },
-            inPorts: {
-                type: 'list',
-                label: 'Ports',
-                item: {
-                    type: 'text'
-                },
-                group: 'inPorts',
-                index: 0
-            },
-            outPorts: {
-                type: 'list',
-                label: 'Ports',
-                item: {
-                    type: 'text'
-                },
-                group: 'outPorts',
-                index: 0
-            }
+            // ports: {
+            //     groups: {
+            //         'in': {
+            //             attrs: {
+            //                 '.port-body': {
+            //                     fill: {
+            //                         type: 'color-palette',
+            //                         options: options.colorPalette,
+            //                         label: 'Fill',
+            //                         when: { not: { equal: { inPorts: [] } } },
+            //                         group: 'inPorts',
+            //                         index: 1
+            //                     }
+            //                 }
+            //             },
+            //             position: {
+            //                 name: {
+            //                     type: 'select-box',
+            //                     options: options.side,
+            //                     label: 'Position',
+            //                     when: { not: { equal: { inPorts: [] } } },
+            //                     group: 'inPorts',
+            //                     index: 3
+            //                 }
+            //             },
+            //             label: {
+            //                 position: {
+            //                     type: 'select-box',
+            //                     options: options.portLabelPositionRectangle,
+            //                     label: 'Text Position',
+            //                     when: { not: { equal: { inPorts: [] } } },
+            //                     group: 'inPorts',
+            //                     index: 4
+            //                 }
+            //             },
+            //             markup: {
+            //                 type: 'select-box',
+            //                 options: options.portMarkup,
+            //                 label: 'Port Shape',
+            //                 group: 'inPorts',
+            //                 index: 5
+            //             }
+            //         },
+            //         'out': {
+            //             attrs: {
+            //                 '.port-body': {
+            //                     fill: {
+            //                         type: 'color-palette',
+            //                         options: options.colorPalette,
+            //                         label: 'Fill',
+            //                         when: { not: { equal: { outPorts: [] } } },
+            //                         group: 'outPorts',
+            //                         index: 2
+            //                     }
+            //                 }
+            //             },
+            //             position: {
+            //                 name: {
+            //                     type: 'select-box',
+            //                     options: options.side,
+            //                     label: 'Position',
+            //                     when: { not: { equal: { outPorts: [] } } },
+            //                     group: 'outPorts',
+            //                     index: 4
+            //                 }
+            //             },
+            //             label: {
+            //                 position: {
+            //                     type: 'select-box',
+            //                     options: options.portLabelPositionRectangle,
+            //                     label: 'Text Position',
+            //                     when: { not: { equal: { outPorts: [] } } },
+            //                     group: 'outPorts',
+            //                     index: 5
+            //                 }
+            //             },
+            //             markup: {
+            //                 type: 'select-box',
+            //                 options: options.portMarkup,
+            //                 label: 'Port Shape',
+            //                 group: 'outPorts',
+            //                 index: 6
+            //             }
+            //         }
+            //     }
+            // },
+            // inPorts: {
+            //     type: 'list',
+            //     label: 'Ports',
+            //     item: {
+            //         type: 'text'
+            //     },
+            //     group: 'inPorts',
+            //     index: 0
+            // },
+            // outPorts: {
+            //     type: 'list',
+            //     label: 'Ports',
+            //     item: {
+            //         type: 'text'
+            //     },
+            //     group: 'outPorts',
+            //     index: 0
+            // }
         },
         groups: {
-            inPorts: {
-                label: 'Input Ports',
-                index: 1
-            },
-            outPorts: {
-                label: 'Output Ports',
-                index: 2
-            },
+            // inPorts: {
+            //     label: 'Input Ports',
+            //     index: 1
+            // },
+            // outPorts: {
+            //     label: 'Output Ports',
+            //     index: 2
+            // },
             presentation: {
                 label: 'Presentation',
                 index: 3

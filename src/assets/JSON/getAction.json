@@ -12,7 +12,16 @@
                 }
             ],
             "OperationDependency": "None",
-            "Description": "Verifies existence of file on given location"
+            "Description": "Verifies existence of file on given location",
+            "inPorts": [
+                "in1",
+                "in2",
+                "in3"
+            ],
+            "outPorts": [
+                "out1",
+                "out2"
+            ]
         },
         {
             "OperationId": "2",
@@ -36,7 +45,14 @@
                 }
             ],
             "OperationDependency": "PlayVideo",
-            "Description": "Pause the currently playing video"
+            "Description": "Pause the currently playing video",
+            "inPorts": [
+                "in1",
+                "in2"
+            ],
+            "outPorts": [
+                "out1"
+            ]
         },
         {
             "OperationId": "4",

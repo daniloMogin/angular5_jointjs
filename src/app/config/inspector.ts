@@ -11,7 +11,6 @@ file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
  or from the Rappid archive as was distributed by client IO. See the LICENSE file.*/
 
 interface IAction {
-    class: string,
     value: string,
     content: string,
     inPorts: string[],
@@ -47,7 +46,6 @@ const action_JSON = getActions();
 const actions_len: number = action_JSON.Operations.length;
 let action_obj: IAction[] = [
     {
-        "class": "",
         "value": "",
         "content": "",
         "inPorts": [],
@@ -70,7 +68,6 @@ for (let i: number = 0; i < actions_len; i++) {
     if (action_JSON.Operations[i].inPorts) {
         action_obj.push(
             {
-                "class": "test",
                 "value": action_JSON.Operations[i].OperationId,
                 "content": action_JSON.Operations[i].OperationName,
                 "inPorts": action_JSON.Operations[i].inPorts,
@@ -80,7 +77,6 @@ for (let i: number = 0; i < actions_len; i++) {
     } else {
         action_obj.push(
             {
-                "class": "test",
                 "value": action_JSON.Operations[i].OperationId,
                 "content": action_JSON.Operations[i].OperationName,
                 "inPorts": [],
@@ -685,8 +681,7 @@ export const inspector = <{ [index: string]: any }>{
             attrs: {
                 '.label': {
                     text: {
-                        class: 'testKlasa',
-                        type: 'select',
+                        type: 'select-box',
                         label: 'Text',
                         options: options.select,
                         group: 'text',

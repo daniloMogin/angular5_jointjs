@@ -47,11 +47,11 @@
             "OperationDependency": "PlayVideo",
             "Description": "Pause the currently playing video",
             "inPorts": [
-                "in1",
-                "in2"
+                "in4",
+                "in5"
             ],
             "outPorts": [
-                "out1"
+                "out3"
             ]
         },
         {

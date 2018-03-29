@@ -265,7 +265,7 @@ export class AppComponent implements OnInit {
         //     const actions = getActions();
         //     // TODO POPRAVITI DODAVANJE PORTOVA NA ELEMENTE
         //     let port: any[] = [];
-        //     let port_temp: any[] = [];
+        //     let in_port_temp: any[] = [];
 
         //     const in_port = {
         //         id: 'temp',
@@ -299,14 +299,14 @@ export class AppComponent implements OnInit {
 
         // for (let i: number = 0; i < actions.Operations.length; i++) {
         //     if (actions.Operations[i].OperationId === input.attributes.attrs['.label'].text) {
-        //         port_temp = actions.Operations[i].inPorts;
+        //         in_port_temp = actions.Operations[i].inPorts;
         //     }
         // }
 
         // let new_id: any = [];
-        // for (let i: number = 0; i < port_temp.length; i++) {
+        // for (let i: number = 0; i < in_port_temp.length; i++) {
         //     new_id = {
-        //         'id': port_temp[i] + '_' + Date.now()
+        //         'id': in_port_temp[i] + '_' + Date.now()
         //     }
         // }
 
@@ -656,8 +656,8 @@ function getActions() {
 }
 
 function addPortsToElement(actions, input): void {
-    let port: any[] = [];
-    let port_temp: any = [];
+    let in_port_temp: string[] = [];
+    let out_port_temp: string[] = [];
 
     const in_port = {
         id: 'temp',
@@ -671,6 +671,7 @@ function addPortsToElement(actions, input): void {
                 "magnet": true
             },
             ".port-label": {
+                "text": "in",
                 "fontSize": 11,
                 "fill": "#61549C",
                 "fontWeight": 800
@@ -689,18 +690,51 @@ function addPortsToElement(actions, input): void {
         }
     };
 
+    const out_port = {
+        id: 'temp',
+        "markup": "<circle class=\"port-body\" r=\"10\"/>",
+        "attrs": {
+            ".port-body": {
+                "fill": "#61549C",
+                "strokeWidth": 0,
+                "stroke": "#000",
+                "r": 10,
+                "magnet": true
+            },
+            ".port-label": {
+                "text": "out",
+                "fontSize": 11,
+                "fill": "#61549C",
+                "fontWeight": 800
+            }
+        },
+        "label": {
+            "position": {
+                "name": "right",
+                "args": {
+                    "y": 0
+                }
+            }
+        },
+        "position": {
+            "name": "right"
+        }
+    };
+
     for (let i: number = 0; i < actions.Operations.length; i++) {
         if (actions.Operations[i].OperationId === input.attributes.attrs['.label'].text) {
-            port_temp = actions.Operations[i].inPorts;
+            in_port_temp = actions.Operations[i].inPorts;
+            out_port_temp = actions.Operations[i].outPorts;
         }
     }
-    // console.log(`port_temp`);
-    // console.log(port_temp);
-    if (port_temp !== undefined) {
+    // console.log(`in_port_temp`);
+    // console.log(in_port_temp);
+    if (in_port_temp !== undefined) {
+        let port: any[] = [];
         let new_id: any = [];
-        for (let i: number = 0; i < port_temp.length; i++) {
+        for (let i: number = 0; i < in_port_temp.length; i++) {
             new_id.push({
-                'id': port_temp[i] + '_' + Date.now()
+                'id': in_port_temp[i] + '_' + Date.now()
             })
         }
         // console.log(`new_id`);
@@ -721,18 +755,58 @@ function addPortsToElement(actions, input): void {
         // console.log(test);
 
         port.push(test);
-        // console.log(`port`);
-        // console.log(port);
+        console.log(`port GORE`);
+        console.log(port);
 
-        input.addPorts(_.flattenDeep(port));
-
+        input.addInPort(_.flattenDeep(port));
     }
+    if (out_port_temp !== undefined) {
+        let port: any[] = [];
+        let new_id: any = [];
+        for (let i: number = 0; i < out_port_temp.length; i++) {
+            new_id.push({
+                'id': out_port_temp[i] + '_' + Date.now()
+            })
+        }
+        // console.log(`new_id`);
+        // console.log(new_id);
+
+        let nesto = [];
+        for (let i: number = 0; i < new_id.length; i++) {
+            nesto.push(out_port)
+        }
+        // console.log(`nesto`);
+        // console.log(nesto);
+        let test = [];
+        for (let i = 0; i < nesto.length; i++) {
+            test.push({ ...nesto[i], ...new_id[i] });
+        }
+        // let test = { ...nesto, ...new_id };
+        // console.log(`test`);
+        // console.log(test);
+
+        port.push(test);
+        console.log(`port DOLE`);
+        console.log(port);
+
+        input.addOutPort(_.flattenDeep(port));
+    }
+    // if (out_port_temp !== undefined || in_port_temp !== undefined) {
+    //     input.addPorts(_.flattenDeep(port));
+    // }
 }
 
-function removePortsFromElement(input) {
+function removePortsFromElement(input): void {
     const inPorts: any = input.getPorts();
+    const inPorts_len: number = inPorts.length;
 
-    for (let i: number = 0; i < inPorts.length; i++) {
-        input.removePort(inPorts[i])
+    // TODO napraviti brisanje input i output portova kada se menjaju actor-i
+
+    console.log(`inPorts`);
+    console.log(inPorts);
+    
+
+    for (let i: number = 0; i < inPorts_len; i++) {
+        input.removeInPort(inPorts[i])
     }
 }

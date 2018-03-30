@@ -1,0 +1,128 @@
+{
+    "cells": [
+        {
+            "type": "app.RectangularModel",
+            "ports": {
+                "groups": {
+                    "in": {
+                        "markup": "<circle class=\"port-body\" r=\"10\"/>",
+                        "attrs": {
+                            ".port-body": {
+                                "fill": "#61549C",
+                                "strokeWidth": 0,
+                                "stroke": "#000",
+                                "r": 10,
+                                "magnet": true
+                            },
+                            ".port-label": {
+                                "fontSize": 11,
+                                "fill": "#61549C",
+                                "fontWeight": 800
+                            }
+                        },
+                        "label": {
+                            "position": {
+                                "name": "left",
+                                "args": {
+                                    "y": 0
+                                }
+                            }
+                        },
+                        "position": {
+                            "name": "left"
+                        }
+                    },
+                    "out": {
+                        "markup": "<circle class=\"port-body\" r=\"10\"/>",
+                        "attrs": {
+                            ".port-body": {
+                                "fill": "#61549C",
+                                "strokeWidth": 0,
+                                "stroke": "#000",
+                                "r": 10,
+                                "magnet": true
+                            },
+                            ".port-label": {
+                                "fontSize": 11,
+                                "fill": "#61549C",
+                                "fontWeight": 800
+                            }
+                        },
+                        "label": {
+                            "position": {
+                                "name": "right",
+                                "args": {
+                                    "y": 0
+                                }
+                            }
+                        },
+                        "position": {
+                            "name": "right"
+                        }
+                    }
+                },
+                "items": [
+                    {
+                        "id": "in1",
+                        "group": "in",
+                        "attrs": {
+                            ".port-label": {
+                                "text": "in1"
+                            }
+                        }
+                    },
+                    {
+                        "id": "out1",
+                        "group": "out",
+                        "attrs": {
+                            ".port-label": {
+                                "text": "out1"
+                            }
+                        }
+                    }
+                ]
+            },
+            "inPorts": [
+                "in1"
+            ],
+            "outPorts": [
+                "out1"
+            ],
+            "size": {
+                "width": 90,
+                "height": 60
+            },
+            "position": {
+                "x": 480,
+                "y": 260
+            },
+            "angle": 0,
+            "allowOrthogonalResize": false,
+            "id": "1adbb8bf-a9ed-4d90-8a1d-dfb5945d6d2b",
+            "z": 1,
+            "attrs": {
+                ".": {
+                    "data-tooltip-position": "left",
+                    "data-tooltip-position-selector": ".joint-stencil"
+                },
+                ".label": {
+                    "text": "",
+                    "ref-y": 0.5,
+                    "font-size": 20,
+                    "font-family": "Roboto Condensed",
+                    "font-weight": "Normal",
+                    "stroke-width": 0,
+                    "y-alignment": "middle"
+                },
+                ".body": {
+                    "stroke": "#ffd600",
+                    "fill": "transparent",
+                    "rx": 2,
+                    "ry": 2,
+                    "stroke-width": 2,
+                    "stroke-dasharray": "0"
+                }
+            }
+        }
+    ]
+}

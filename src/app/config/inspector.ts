@@ -13,8 +13,8 @@ file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
 interface IAction {
     value: string,
     content: string,
-    inPorts: string[],
-    outPorts: string[]
+    // inPorts: string[],
+    // outPorts: string[]
 }
 interface ICondition {
     value: string,
@@ -48,8 +48,8 @@ let action_obj: IAction[] = [
     {
         "value": "",
         "content": "",
-        "inPorts": [],
-        "outPorts": [],
+        // "inPorts": [],
+        // "outPorts": [],
     }
 ];
 
@@ -69,18 +69,14 @@ for (let i: number = 0; i < actions_len; i++) {
         action_obj.push(
             {
                 "value": action_JSON.Operations[i].OperationId,
-                "content": action_JSON.Operations[i].OperationName,
-                "inPorts": action_JSON.Operations[i].inPorts,
-                "outPorts": action_JSON.Operations[i].outPorts,
+                "content": action_JSON.Operations[i].OperationName
             }
         );
     } else {
         action_obj.push(
             {
                 "value": action_JSON.Operations[i].OperationId,
-                "content": action_JSON.Operations[i].OperationName,
-                "inPorts": [],
-                "outPorts": [],
+                "content": action_JSON.Operations[i].OperationName
             }
         );
     }

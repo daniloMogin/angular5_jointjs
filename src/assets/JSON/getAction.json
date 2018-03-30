@@ -14,13 +14,13 @@
             "OperationDependency": "None",
             "Description": "Verifies existence of file on given location",
             "inPorts": [
-                "in1",
-                "in2",
-                "in3"
+                "in",
+                "in",
+                "in"
             ],
             "outPorts": [
-                "out1",
-                "out2"
+                "out",
+                "out"
             ]
         },
         {
@@ -33,7 +33,13 @@
                 }
             ],
             "OperationDependency": "Verify",
-            "Description": "Plays video file on verified location stored in [path] variable"
+            "Description": "Plays video file on verified location stored in [path] variable",
+            "inPorts": [
+                "in"
+            ],
+            "outPorts": [
+                "out"
+            ]
         },
         {
             "OperationId": "3",
@@ -47,11 +53,11 @@
             "OperationDependency": "PlayVideo",
             "Description": "Pause the currently playing video",
             "inPorts": [
-                "in4",
-                "in5"
+                "in",
+                "in"
             ],
             "outPorts": [
-                "out3"
+                "out"
             ]
         },
         {
@@ -64,7 +70,13 @@
                 }
             ],
             "OperationDependency": "PlayVideo",
-            "Description": "Stops the currently playing video"
+            "Description": "Stops the currently playing video",
+            "inPorts": [
+                "in"
+            ],
+            "outPorts": [
+                "out"
+            ]
         }
     ]
 }

@@ -65,21 +65,12 @@ let condition_obj: ICondition[] = [
 // console.log(action_JSON);
 
 for (let i: number = 0; i < actions_len; i++) {
-    if (action_JSON.Operations[i].inPorts) {
-        action_obj.push(
-            {
-                "value": action_JSON.Operations[i].OperationId,
-                "content": action_JSON.Operations[i].OperationName
-            }
-        );
-    } else {
-        action_obj.push(
-            {
-                "value": action_JSON.Operations[i].OperationId,
-                "content": action_JSON.Operations[i].OperationName
-            }
-        );
-    }
+    action_obj.push(
+        {
+            "value": action_JSON.Operations[i].OperationId,
+            "content": action_JSON.Operations[i].OperationName
+        }
+    );
 }
 for (let i: number = 0; i < condition_len; i++) {
     condition_obj.push(

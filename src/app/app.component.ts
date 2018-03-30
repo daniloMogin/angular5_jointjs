@@ -239,6 +239,10 @@ export class AppComponent implements OnInit {
         this.paper.on('element:pointerup link:options', (cellView: joint.dia.CellView) => {
             const cell = cellView.model;
 
+            console.log(`cell`);
+            console.log(cell);
+            
+
             if (!this.selection.collection.contains(cell)) {
 
                 if (cell.isElement()) {

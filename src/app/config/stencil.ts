@@ -13,7 +13,7 @@ file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
 
 import { ui } from '../../assets/build/rappid.min';
 
-const $font_color: string = '#000';
+const $font_color: string = '#222138';
 const $font_size: number = 20;
 const $font_family_p: string = 'Roboto Condensed';
 const $font_family_s: string = 'Averia Libre';

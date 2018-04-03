@@ -12,11 +12,13 @@ file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
 
 interface IAction {
     value: string,
-    content: string,
-    // inPorts: string[],
-    // outPorts: string[]
+    content: string
 }
 interface ICondition {
+    value: string,
+    content: string
+}
+interface IWorkflow {
     value: string,
     content: string
 }
@@ -33,7 +35,17 @@ function getActions() {
 
     return my_JSON_object;
 }
+
 function getConditions() {
+    const request = new XMLHttpRequest();
+    request.open("GET", "/assets/JSON/getConditions.json", false);
+    request.send(null)
+    const my_JSON_object = JSON.parse(request.responseText);
+
+    return my_JSON_object;
+}
+
+function getWorkflow() {
     const request = new XMLHttpRequest();
     request.open("GET", "/assets/JSON/getConditions.json", false);
     request.send(null)
@@ -47,9 +59,7 @@ const actions_len: number = action_JSON.Operations.length;
 let action_obj: IAction[] = [
     {
         "value": "",
-        "content": "",
-        // "inPorts": [],
-        // "outPorts": [],
+        "content": ""
     }
 ];
 
@@ -61,8 +71,15 @@ let condition_obj: ICondition[] = [
         "content": ""
     }
 ];
-// console.log(`action_JSON`);
-// console.log(action_JSON);
+
+const workflow_JSON = getConditions();
+const workflow_len: number = workflow_JSON.Conditions.length;
+let workflow_obj: IWorkflow[] = [
+    {
+        "value": "",
+        "content": ""
+    }
+];
 
 for (let i: number = 0; i < actions_len; i++) {
     action_obj.push(
@@ -74,6 +91,14 @@ for (let i: number = 0; i < actions_len; i++) {
 }
 for (let i: number = 0; i < condition_len; i++) {
     condition_obj.push(
+        {
+            "value": conditions_JSON.Conditions[i].ConditionId,
+            "content": conditions_JSON.Conditions[i].ConditionName
+        }
+    );
+}
+for (let i: number = 0; i < condition_len; i++) {
+    workflow_obj.push(
         {
             "value": conditions_JSON.Conditions[i].ConditionId,
             "content": conditions_JSON.Conditions[i].ConditionName
@@ -128,6 +153,8 @@ const options = {
     select: action_obj,
 
     select1: condition_obj,
+
+    selectW: workflow_obj,
 
     side: [
         { value: 'top', content: 'Top Side' },
@@ -1589,8 +1616,9 @@ export const inspector = <{ [index: string]: any }>{
             attrs: {
                 text: {
                     text: {
-                        type: 'content-editable',
+                        type: 'select-box',
                         label: 'Text',
+                        options: options.selectW,
                         group: 'text',
                         index: 1
                     },

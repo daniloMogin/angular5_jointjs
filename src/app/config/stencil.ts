@@ -19,10 +19,14 @@ const $font_family_p: string = 'Roboto Condensed';
 const $font_family_s: string = 'Averia Libre';
 const $font_family_o: string = 'Alegreya Sans';
 const $font_weight: string = 'Normal';
+const $stroke_color: string = '#ffd600';
+const $stroke_width_body: number = 2;
+const $stroke_width_label: number = 1;
 
 export const stencil = {
     groups: <{ [key: string]: ui.Stencil.Group }>{
         basic: { index: 1, label: 'Shapes' },
+        comp: { index: 2, label: 'Comlpex' }
     },
     shapes: {
         basic: [
@@ -40,8 +44,8 @@ export const stencil = {
                         fill: 'transparent',
                         rx: 2,
                         ry: 2,
-                        stroke: '#ffd600',
-                        'stroke-width': 2,
+                        stroke: $stroke_color,
+                        'stroke-width': $stroke_width_body,
                         'stroke-dasharray': '0'
                     },
                     '.label': {
@@ -50,7 +54,7 @@ export const stencil = {
                         'font-family': $font_family_p,
                         'font-weight': $font_weight,
                         'font-size': $font_size,
-                        'stroke-width': 1,
+                        'stroke-width': $stroke_width_label,
                         'ref-y': 0.5,
                         'y-alignment': 'middle'
                     }
@@ -66,7 +70,7 @@ export const stencil = {
                     },
                     '.outer': {
                         fill: 'transparent',
-                        stroke: '#ffd600',
+                        stroke: $stroke_color,
                         'stroke-dasharray': '0'
                     },
                     '.inner': {
@@ -99,8 +103,8 @@ export const stencil = {
                         width: 50,
                         height: 30,
                         fill: 'transparent',
-                        stroke: '#ffd600',
-                        'stroke-width': 2,
+                        stroke: $stroke_color,
+                        'stroke-width': $stroke_width_body,
                         'stroke-dasharray': '0'
                     },
                     text: {
@@ -153,8 +157,8 @@ export const stencil = {
                     },
                     '.outer': {
                         fill: 'transparent',
-                        stroke: '#ffd600',
-                        'stroke-width': 2,
+                        stroke: $stroke_color,
+                        'stroke-width': $stroke_width_body,
                         'stroke-dasharray': '0'
                     },
                     text: {
@@ -164,6 +168,35 @@ export const stencil = {
                         'font-weight': $font_weight,
                         'font-size': $font_size,
                         'stroke-width': 0
+                    }
+                }
+            }
+        ],
+        comp: [
+            {
+                type: 'erd.WeakEntity',
+                size: { width: 30, height: 20 },
+                allowOrthogonalResize: false,
+                attrs: {
+                    text: {
+                        text: '',
+                        fill: $font_color,
+                        'font-family': $font_family_p,
+                        'font-weight': $font_weight,
+                        'font-size': $font_size,
+                        'stroke-width': $stroke_width_label,
+                        'ref-y': 0.5,
+                        'y-alignment': 'middle'
+                    },
+                    '.inner': {
+                        fill: 'transparent',
+                        stroke: $stroke_color,
+                        points: '140,0 140,60 20,60 20,0'
+                    },
+                    '.outer': {
+                        fill: 'none',
+                        stroke: $stroke_color,
+                        points: '160,0 160,60 0,60 0,0'
                     }
                 }
             }

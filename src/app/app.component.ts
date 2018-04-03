@@ -222,12 +222,13 @@ export class AppComponent implements OnInit {
     createInspector(cell: joint.dia.Cell) {
         cell.on('change:attrs', input => {
             const actions = getActions();
-
-            if (!input.hasPorts()) {
-                addPortsToElement(actions, input);
-            } else {
-                removePortsFromElement(input);
-                addPortsToElement(actions, input);
+            if (input.attributes.type === 'app.RectangularModel') {
+                if (!input.hasPorts()) {
+                    addPortsToElement(actions, input);
+                } else {
+                    removePortsFromElement(input);
+                    addPortsToElement(actions, input);
+                }
             }
         });
 
@@ -238,11 +239,6 @@ export class AppComponent implements OnInit {
     initializeHaloAndInspector() {
         this.paper.on('element:pointerup link:options', (cellView: joint.dia.CellView) => {
             const cell = cellView.model;
-
-            console.log(`cell`);
-            console.log(cell);
-            
-
             if (!this.selection.collection.contains(cell)) {
 
                 if (cell.isElement()) {

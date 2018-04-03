@@ -11,7 +11,7 @@ file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
  or from the Rappid archive as was distributed by client IO. See the LICENSE file.*/
 
 
-import {ui} from '../../assets/build/rappid.min'
+import {ui} from '../../assets/build/rappid.min';
 import Position = ui.Halo.HandlePosition;
 
 export const halo = {

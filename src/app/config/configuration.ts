@@ -11,11 +11,11 @@ file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
  or from the Rappid archive as was distributed by client IO. See the LICENSE file.*/
 
 
-export * from "./toolbar";
-export * from "./stencil";
-export * from "./halo";
-export * from "./inspector";
-export * from "./selection";
+export * from './toolbar';
+export * from './stencil';
+export * from './halo';
+export * from './inspector';
+export * from './selection';
 
 
 

@@ -11,16 +11,16 @@ file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
  or from the Rappid archive as was distributed by client IO. See the LICENSE file.*/
 
 interface IAction {
-    value: string,
-    content: string
+    value: string;
+    content: string;
 }
 interface ICondition {
-    value: string,
-    content: string
+    value: string;
+    content: string;
 }
 interface IWorkflow {
-    value: string,
-    content: string
+    value: string;
+    content: string;
 }
 
 const $secondary = '#ffd600';

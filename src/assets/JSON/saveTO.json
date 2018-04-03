@@ -1,5 +1,158 @@
 {
-    "cells": [
+    "cells": [{
+            "type": "app.RectangularModel",
+            "ports": {
+                "groups": {
+                    "in": {
+                        "markup": "<circle class=\"port-body\" r=\"10\"/>",
+                        "attrs": {
+                            ".port-body": {
+                                "fill": "#61549C",
+                                "strokeWidth": 0,
+                                "stroke": "#000",
+                                "r": 10,
+                                "magnet": true
+                            },
+                            ".port-label": {
+                                "fontSize": 11,
+                                "fill": "#61549C",
+                                "fontWeight": 800
+                            }
+                        },
+                        "label": {
+                            "position": {
+                                "name": "left",
+                                "args": {
+                                    "y": 0
+                                }
+                            }
+                        },
+                        "position": {
+                            "name": "left"
+                        }
+                    },
+                    "out": {
+                        "markup": "<circle class=\"port-body\" r=\"10\"/>",
+                        "attrs": {
+                            ".port-body": {
+                                "fill": "#61549C",
+                                "strokeWidth": 0,
+                                "stroke": "#000",
+                                "r": 10,
+                                "magnet": true
+                            },
+                            ".port-label": {
+                                "fontSize": 11,
+                                "fill": "#61549C",
+                                "fontWeight": 800
+                            }
+                        },
+                        "label": {
+                            "position": {
+                                "name": "right",
+                                "args": {
+                                    "y": 0
+                                }
+                            }
+                        },
+                        "position": {
+                            "name": "right"
+                        }
+                    }
+                },
+                "items": [{
+                        "id": "in1",
+                        "group": "in",
+                        "attrs": {
+                            ".port-label": {
+                                "text": "in1"
+                            }
+                        }
+                    },
+                    {
+                        "id": "in2",
+                        "group": "in",
+                        "attrs": {
+                            ".port-label": {
+                                "text": "in2"
+                            }
+                        }
+                    },
+                    {
+                        "id": "in3",
+                        "group": "in",
+                        "attrs": {
+                            ".port-label": {
+                                "text": "in3"
+                            }
+                        }
+                    },
+                    {
+                        "id": "out1",
+                        "group": "out",
+                        "attrs": {
+                            ".port-label": {
+                                "text": "out1"
+                            }
+                        }
+                    },
+                    {
+                        "id": "out2",
+                        "group": "out",
+                        "attrs": {
+                            ".port-label": {
+                                "text": "out2"
+                            }
+                        }
+                    }
+                ]
+            },
+            "inPorts": [
+                "in1",
+                "in2",
+                "in3"
+            ],
+            "outPorts": [
+                "out1",
+                "out2"
+            ],
+            "size": {
+                "width": 90,
+                "height": 60
+            },
+            "position": {
+                "x": 330,
+                "y": 190
+            },
+            "angle": 0,
+            "allowOrthogonalResize": false,
+            "id": "7cbd5a17-59f4-4837-8b9a-d74b484f1ec4",
+            "z": 1,
+            "attrs": {
+                ".": {
+                    "data-tooltip-position": "left",
+                    "data-tooltip-position-selector": ".joint-stencil"
+                },
+                ".label": {
+                    "text": "1",
+                    "ref-y": 0.5,
+                    "font-size": 20,
+                    "fill": "#222138",
+                    "font-family": "Roboto Condensed",
+                    "font-weight": "Normal",
+                    "stroke-width": 1,
+                    "y-alignment": "middle"
+                },
+                ".body": {
+                    "stroke": "#ffd600",
+                    "fill": "transparent",
+                    "rx": 2,
+                    "ry": 2,
+                    "stroke-width": 2,
+                    "stroke-dasharray": "0"
+                }
+            }
+        },
         {
             "type": "app.RectangularModel",
             "ports": {
@@ -61,8 +214,7 @@
                         }
                     }
                 },
-                "items": [
-                    {
+                "items": [{
                         "id": "in1",
                         "group": "in",
                         "attrs": {
@@ -93,25 +245,26 @@
                 "height": 60
             },
             "position": {
-                "x": 480,
-                "y": 260
+                "x": 620,
+                "y": 360
             },
             "angle": 0,
             "allowOrthogonalResize": false,
-            "id": "1adbb8bf-a9ed-4d90-8a1d-dfb5945d6d2b",
-            "z": 1,
+            "id": "34e83a78-54ad-4d09-8da5-187b94f3b5e6",
+            "z": 2,
             "attrs": {
                 ".": {
                     "data-tooltip-position": "left",
                     "data-tooltip-position-selector": ".joint-stencil"
                 },
                 ".label": {
-                    "text": "",
+                    "text": "2",
                     "ref-y": 0.5,
                     "font-size": 20,
+                    "fill": "#222138",
                     "font-family": "Roboto Condensed",
                     "font-weight": "Normal",
-                    "stroke-width": 0,
+                    "stroke-width": 1,
                     "y-alignment": "middle"
                 },
                 ".body": {
@@ -120,6 +273,43 @@
                     "rx": 2,
                     "ry": 2,
                     "stroke-width": 2,
+                    "stroke-dasharray": "0"
+                }
+            }
+        },
+        {
+            "type": "erd.WeakEntity",
+            "size": {
+                "width": 90,
+                "height": 60
+            },
+            "position": {
+                "x": 230,
+                "y": 450
+            },
+            "angle": 0,
+            "allowOrthogonalResize": false,
+            "id": "caf30133-33b5-4164-9b90-f74915e536f8",
+            "z": 3,
+            "attrs": {
+                ".inner": {
+                    "fill": "transparent",
+                    "stroke": "#ffd600",
+                    "points": "140,0 140,60 20,60 20,0",
+                    "stroke-dasharray": "0"
+                },
+                "text": {
+                    "text": "",
+                    "font-family": "Roboto Condensed",
+                    "font-size": 20,
+                    "fill": "#222138",
+                    "font-weight": "Normal",
+                    "stroke-width": 1
+                },
+                ".outer": {
+                    "fill": "none",
+                    "stroke": "#ffd600",
+                    "points": "160,0 160,60 0,60 0,0",
                     "stroke-dasharray": "0"
                 }
             }

@@ -385,8 +385,30 @@ export class AppComponent implements OnInit {
 
     public saveToJSON() {
         console.log(`saveToJSON`);
+
+        const actions = getActions();
+        console.log(`actions`);
+        console.log(actions.Operations);
+        // console.log(actions.length);
+
         const jsonString = JSON.stringify(this.graph);
-        console.log(jsonString);
+        const jsonObj = this.graph;
+        // console.log(`jsonString`);
+        // console.log(jsonString);
+        console.log(`jsonObj`);
+        console.log(jsonObj.attributes.cells.models);
+
+        const test = combineJson(jsonObj, actions);
+
+        // for (let i: number = 0; i < jsonObj_length; i++) {
+        //     for (let j: number = 0; j < actions_len; j++) {
+        //         if (jsonObj.attributes.cells.models[i].attributes.attrs['.label'].text == actions.Operations[j].OperationId) {
+        //             test.push({...jsonObj.attributes.cells.models[i], ...actions.Operations[j]})
+        //         }
+        //     }
+        // }
+        console.log(`test`);
+        console.log(test);
     }
 
     public loadFromJSON() {
@@ -1751,4 +1773,19 @@ function removePortsFromElement(input): void {
             input.removeOutPort(allPorts[i].attrs['.port-label'].text);
         }
     }
+}
+
+function combineJson(jsonObj, actions) {
+    const result = [];
+    const actions_len: number = actions.Operations.length;
+    const jsonObj_length: number = jsonObj.attributes.cells.models.length;
+
+    for (let i: number = 0; i < jsonObj_length; i++) {
+        for (let j: number = 0; j < actions_len; j++) {
+            if (jsonObj.attributes.cells.models[i].attributes.attrs['.label'].text == actions.Operations[j].OperationId) {
+                result.push({...jsonObj.attributes.cells.models[i], ...actions.Operations[j]})
+            }
+        }
+    }
+    return result;
 }

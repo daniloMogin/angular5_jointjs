@@ -1470,7 +1470,7 @@ export class AppComponent implements OnInit {
         }
 
         this.graph.fromJSON(jsonString2);
-    };
+    }
 
     public validateDiagram() {
         console.log(`validateDiagram`);
@@ -1480,7 +1480,7 @@ export class AppComponent implements OnInit {
         console.log(jsonString);
 
         // TODO - logic for validating diagram
-    };
+    }
 
     public startDiagram() {
         console.log(`startDiagram`);
@@ -1535,12 +1535,12 @@ export class AppComponent implements OnInit {
                 clearInterval(time1);
             };
         }, 1000);
-    };
+    }
 
     public pauseDiagram() {
         // console.log(`pauseDiagram`);
         clearInterval(time1);
-    };
+    }
 
     public stopDiagram() {
         // console.log(`stopDiagram`);
@@ -1549,7 +1549,7 @@ export class AppComponent implements OnInit {
         _.each(this.graph.getElements(), (node, index) => {
             removeColorElement(node, (node.attributes.type.substring(6, node.attributes.type.length)).toLowerCase());
         })
-    };
+    }
 }
 
 function isBorderClicked(bbox: any, x: number, y: number, strokeWidth: number): boolean {
@@ -1613,7 +1613,7 @@ function colorElement(node: any, name: string) {
             ]
         });
     }
-};
+}
 
 function removeColorElement(node: any, name: string) {
     // console.log(`removeColorElement`);
@@ -1633,7 +1633,7 @@ function removeColorElement(node: any, name: string) {
             ]
         });
     }
-};
+}
 
 function getActions() {
     const request = new XMLHttpRequest();

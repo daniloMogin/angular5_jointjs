@@ -47,7 +47,7 @@ function getConditions() {
 
 function getWorkflow() {
     const request = new XMLHttpRequest();
-    request.open("GET", "/assets/JSON/getConditions.json", false);
+    request.open("GET", "/assets/JSON/getWorkflowAlter.json", false);
     request.send(null)
     const my_JSON_object = JSON.parse(request.responseText);
 
@@ -72,8 +72,11 @@ let condition_obj: ICondition[] = [
     }
 ];
 
-const workflow_JSON = getConditions();
-const workflow_len: number = workflow_JSON.Conditions.length;
+const workflow_JSON = getWorkflow();
+console.log(`workflow_JSON`);
+console.log(workflow_JSON);
+
+const workflow_len: number = workflow_JSON.length;
 let workflow_obj: IWorkflow[] = [
     {
         "value": "",

@@ -194,7 +194,7 @@ export const stencil = {
                         points: '140,0 140,60 20,60 20,0'
                     },
                     '.outer': {
-                        fill: 'none',
+                        fill: 'transparent',
                         stroke: $stroke_color,
                         points: '160,0 160,60 0,60 0,0'
                     }

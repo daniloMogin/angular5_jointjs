@@ -26,11 +26,10 @@ interface IWorkflow {
 const $secondary = '#ffd600';
 const $s_light = '#ffff52';
 
-
 function getActions() {
     const request = new XMLHttpRequest();
-    request.open("GET", "/assets/JSON/getAction.json", false);
-    request.send(null)
+    request.open('GET', '/assets/JSON/getAction.json', false);
+    request.send(null);
     const my_JSON_object = JSON.parse(request.responseText);
 
     return my_JSON_object;
@@ -38,8 +37,8 @@ function getActions() {
 
 function getConditions() {
     const request = new XMLHttpRequest();
-    request.open("GET", "/assets/JSON/getConditions.json", false);
-    request.send(null)
+    request.open('GET', '/assets/JSON/getConditions.json', false);
+    request.send(null);
     const my_JSON_object = JSON.parse(request.responseText);
 
     return my_JSON_object;
@@ -47,8 +46,8 @@ function getConditions() {
 
 function getWorkflow() {
     const request = new XMLHttpRequest();
-    request.open("GET", "/assets/JSON/getWorkflowAlter.json", false);
-    request.send(null)
+    request.open('GET', '/assets/JSON/getWorkflowAlter.json', false);
+    request.send(null);
     const my_JSON_object = JSON.parse(request.responseText);
 
     return my_JSON_object;
@@ -58,8 +57,8 @@ const action_JSON = getActions();
 const actions_len: number = action_JSON.Operations.length;
 let action_obj: IAction[] = [
     {
-        "value": "",
-        "content": ""
+        value: '',
+        content: ''
     }
 ];
 
@@ -67,55 +66,40 @@ const conditions_JSON = getConditions();
 const condition_len: number = conditions_JSON.Conditions.length;
 let condition_obj: ICondition[] = [
     {
-        "value": "",
-        "content": ""
+        value: '',
+        content: ''
     }
 ];
 
 const workflow_JSON = getWorkflow();
-console.log(`workflow_JSON`);
-console.log(workflow_JSON);
-
 const workflow_len: number = workflow_JSON.length;
 let workflow_obj: IWorkflow[] = [
     {
-        "value": "",
-        "content": ""
+        value: '',
+        content: ''
     }
 ];
 
 for (let i: number = 0; i < actions_len; i++) {
-    action_obj.push(
-        {
-            "value": action_JSON.Operations[i].OperationId,
-            "content": action_JSON.Operations[i].OperationName
-        }
-    );
+    action_obj.push({
+        value: action_JSON.Operations[i].OperationId,
+        content: action_JSON.Operations[i].OperationName
+    });
 }
 for (let i: number = 0; i < condition_len; i++) {
-    condition_obj.push(
-        {
-            "value": conditions_JSON.Conditions[i].ConditionId,
-            "content": conditions_JSON.Conditions[i].ConditionName
-        }
-    );
+    condition_obj.push({
+        value: conditions_JSON.Conditions[i].ConditionId,
+        content: conditions_JSON.Conditions[i].ConditionName
+    });
 }
 for (let i: number = 0; i < condition_len; i++) {
-    workflow_obj.push(
-        {
-            "value": conditions_JSON.Conditions[i].ConditionId,
-            "content": conditions_JSON.Conditions[i].ConditionName
-        }
-    );
+    workflow_obj.push({
+        value: workflow_JSON[i].uuid,
+        content: workflow_JSON[i].Name
+    });
 }
-
-// console.log(`action_obj`);
-// console.log(action_obj);
-// console.log(`condition_obj`);
-// console.log(condition_obj);
 
 const options = {
-
     colorPalette: [
         { content: 'transparent', icon: './assets/transparent-icon.png' },
         { content: '#f6f6f6' },
@@ -123,7 +107,7 @@ const options = {
         { content: '#8f8f8f' },
         { content: '#c6c7e2' },
         { content: $s_light }, // nova boja
-        { content: $secondary }, // 
+        { content: $secondary }, //
         { content: '#b75d32' },
         { content: '#31d0c6' },
         { content: '#7c68fc' },
@@ -136,15 +120,36 @@ const options = {
     ],
 
     fontWeight: [
-        { value: '300', content: '<span style="font-weight: 300">Light</span>' },
-        { value: 'Normal', content: '<span style="font-weight: Normal">Normal</span>' },
-        { value: 'Bold', content: '<span style="font-weight: Bolder">Bold</span>' }
+        {
+            value: '300',
+            content: '<span style="font-weight: 300">Light</span>'
+        },
+        {
+            value: 'Normal',
+            content: '<span style="font-weight: Normal">Normal</span>'
+        },
+        {
+            value: 'Bold',
+            content: '<span style="font-weight: Bolder">Bold</span>'
+        }
     ],
 
     fontFamily: [
-        { value: 'Alegreya Sans', content: '<span style="font-family: Alegreya Sans">Alegreya Sans</span>' },
-        { value: 'Averia Libre', content: '<span style="font-family: Averia Libre">Averia Libre</span>' },
-        { value: 'Roboto Condensed', content: '<span style="font-family: Roboto Condensed">Roboto Condensed</span>' }
+        {
+            value: 'Alegreya Sans',
+            content:
+                '<span style="font-family: Alegreya Sans">Alegreya Sans</span>'
+        },
+        {
+            value: 'Averia Libre',
+            content:
+                '<span style="font-family: Averia Libre">Averia Libre</span>'
+        },
+        {
+            value: 'Roboto Condensed',
+            content:
+                '<span style="font-family: Roboto Condensed">Roboto Condensed</span>'
+        }
     ],
 
     strokeStyle: [
@@ -200,11 +205,13 @@ const options = {
     imageGender: [
         {
             value: './assets/member-male.png',
-            content: '<img height="50px" src="./assets/member-male.png" style="margin: 5px 0 0 2px;"/>'
+            content:
+                '<img height="50px" src="./assets/member-male.png" style="margin: 5px 0 0 2px;"/>'
         },
         {
             value: './assets/member-female.png',
-            content: '<img height="50px" src="./assets/member-female.png" style="margin: 5px 0 0 2px;"/>'
+            content:
+                '<img height="50px" src="./assets/member-female.png" style="margin: 5px 0 0 2px;"/>'
         }
     ],
 
@@ -216,57 +223,85 @@ const options = {
     ],
 
     strokeWidth: [
-        { value: 1, content: '<div style="background:#fff;width:2px;height:30px;margin:0 14px;border-radius: 2px;"/>' },
-        { value: 2, content: '<div style="background:#fff;width:4px;height:30px;margin:0 13px;border-radius: 2px;"/>' },
-        { value: 4, content: '<div style="background:#fff;width:8px;height:30px;margin:0 11px;border-radius: 2px;"/>' },
-        { value: 8, content: '<div style="background:#fff;width:16px;height:30px;margin:0 8px;border-radius: 2px;"/>' }
+        {
+            value: 1,
+            content:
+                '<div style="background:#fff;width:2px;height:30px;margin:0 14px;border-radius: 2px;"/>'
+        },
+        {
+            value: 2,
+            content:
+                '<div style="background:#fff;width:4px;height:30px;margin:0 13px;border-radius: 2px;"/>'
+        },
+        {
+            value: 4,
+            content:
+                '<div style="background:#fff;width:8px;height:30px;margin:0 11px;border-radius: 2px;"/>'
+        },
+        {
+            value: 8,
+            content:
+                '<div style="background:#fff;width:16px;height:30px;margin:0 8px;border-radius: 2px;"/>'
+        }
     ],
 
     router: [
         {
             value: 'normal',
-            content: '<p style="background:#fff;width:2px;height:30px;margin:0 14px;border-radius: 2px;"/>'
+            content:
+                '<p style="background:#fff;width:2px;height:30px;margin:0 14px;border-radius: 2px;"/>'
         },
         {
             value: 'orthogonal',
-            content: '<p style="width:20px;height:30px;margin:0 5px;border-bottom: 2px solid #fff;border-left: 2px solid #fff;"/>'
+            content:
+                '<p style="width:20px;height:30px;margin:0 5px;border-bottom: 2px solid #fff;border-left: 2px solid #fff;"/>'
         },
         {
             value: 'oneSide',
-            content: '<p style="width:20px;height:30px;margin:0 5px;border: 2px solid #fff;border-top: none;"/>'
+            content:
+                '<p style="width:20px;height:30px;margin:0 5px;border: 2px solid #fff;border-top: none;"/>'
         }
     ],
 
     connector: [
         {
             value: 'normal',
-            content: '<p style="width:20px;height:20px;margin:5px;border-top:2px solid #fff;border-left:2px solid #fff;"/>'
+            content:
+                '<p style="width:20px;height:20px;margin:5px;border-top:2px solid #fff;border-left:2px solid #fff;"/>'
         },
         {
             value: 'rounded',
-            content: '<p style="width:20px;height:20px;margin:5px;border-top-left-radius:30%;border-top:2px solid #fff;border-left:2px solid #fff;"/>'
+            content:
+                '<p style="width:20px;height:20px;margin:5px;border-top-left-radius:30%;border-top:2px solid #fff;border-left:2px solid #fff;"/>'
         },
         {
             value: 'smooth',
-            content: '<p style="width:20px;height:20px;margin:5px;border-top-left-radius:100%;border-top:2px solid #fff;border-left:2px solid #fff;"/>'
+            content:
+                '<p style="width:20px;height:20px;margin:5px;border-top-left-radius:100%;border-top:2px solid #fff;border-left:2px solid #fff;"/>'
         }
     ],
 
     labelPosition: [
         { value: 30, content: 'Close to source' },
         { value: 0.5, content: 'In the middle' },
-        { value: -30, content: 'Close to target' },
+        { value: -30, content: 'Close to target' }
     ],
 
     portMarkup: [
-        { value: '<rect class="port-body" width="20" height="20" x="-10" y="-10"/>', content: 'Rectangle' },
+        {
+            value:
+                '<rect class="port-body" width="20" height="20" x="-10" y="-10"/>',
+            content: 'Rectangle'
+        },
         { value: '<circle class="port-body" r="10"/>', content: 'Circle' },
-        { value: '<path class="port-body" d="M -10 -10 10 -10 0 10 z"/>', content: 'Triangle' }
+        {
+            value: '<path class="port-body" d="M -10 -10 10 -10 0 10 z"/>',
+            content: 'Triangle'
+        }
     ]
 };
 
 export const inspector = <{ [index: string]: any }>{
-
     'app.Link': {
         inputs: {
             attrs: {
@@ -276,7 +311,9 @@ export const inspector = <{ [index: string]: any }>{
                         options: options.strokeWidth,
                         group: 'connection',
                         label: 'Link thickness',
-                        when: { ne: { 'attrs/.connection/stroke': 'transparent' } },
+                        when: {
+                            ne: { 'attrs/.connection/stroke': 'transparent' }
+                        },
                         index: 4
                     },
                     strokeDasharray: {
@@ -284,7 +321,9 @@ export const inspector = <{ [index: string]: any }>{
                         options: options.strokeStyle,
                         group: 'connection',
                         label: 'Link style',
-                        when: { ne: { 'attrs/.connection/stroke': 'transparent' } },
+                        when: {
+                            ne: { 'attrs/.connection/stroke': 'transparent' }
+                        },
                         index: 5
                     },
                     stroke: {
@@ -308,7 +347,11 @@ export const inspector = <{ [index: string]: any }>{
                         options: options.colorPalette,
                         group: 'marker-source',
                         label: 'Color',
-                        when: { ne: { 'attrs/.marker-source/transform': 'scale(0.001)' } },
+                        when: {
+                            ne: {
+                                'attrs/.marker-source/transform': 'scale(0.001)'
+                            }
+                        },
                         index: 2
                     }
                 },
@@ -325,7 +368,11 @@ export const inspector = <{ [index: string]: any }>{
                         options: options.colorPalette,
                         group: 'marker-target',
                         label: 'Color',
-                        when: { ne: { 'attrs/.marker-target/transform': 'scale(0.001)' } },
+                        when: {
+                            ne: {
+                                'attrs/.marker-target/transform': 'scale(0.001)'
+                            }
+                        },
                         index: 2
                     }
                 }
@@ -345,7 +392,10 @@ export const inspector = <{ [index: string]: any }>{
                         placeholder: 'Pick a side',
                         group: 'connection',
                         label: 'Anchors side',
-                        when: { eq: { 'router/name': 'oneSide' }, otherwise: { unset: true } },
+                        when: {
+                            eq: { 'router/name': 'oneSide' },
+                            otherwise: { unset: true }
+                        },
                         index: 2
                     }
                 }
@@ -365,7 +415,8 @@ export const inspector = <{ [index: string]: any }>{
                 label: 'Labels',
                 attrs: {
                     label: {
-                        'data-tooltip': 'Set (possibly multiple) labels for the link',
+                        'data-tooltip':
+                            'Set (possibly multiple) labels for the link',
                         'data-tooltip-position': 'right',
                         'data-tooltip-position-selector': '.joint-inspector'
                     }
@@ -382,9 +433,11 @@ export const inspector = <{ [index: string]: any }>{
                                     index: 1,
                                     attrs: {
                                         label: {
-                                            'data-tooltip': 'Set text of the label',
+                                            'data-tooltip':
+                                                'Set text of the label',
                                             'data-tooltip-position': 'right',
-                                            'data-tooltip-position-selector': '.joint-inspector'
+                                            'data-tooltip-position-selector':
+                                                '.joint-inspector'
                                         }
                                     }
                                 }
@@ -398,9 +451,11 @@ export const inspector = <{ [index: string]: any }>{
                             index: 2,
                             attrs: {
                                 label: {
-                                    'data-tooltip': 'Position the label relative to the source of the link',
+                                    'data-tooltip':
+                                        'Position the label relative to the source of the link',
                                     'data-tooltip-position': 'right',
-                                    'data-tooltip-position-selector': '.joint-inspector'
+                                    'data-tooltip-position-selector':
+                                        '.joint-inspector'
                                 }
                             }
                         }
@@ -606,7 +661,9 @@ export const inspector = <{ [index: string]: any }>{
                         group: 'presentation',
                         when: {
                             and: [
-                                { ne: { 'attrs/circle/stroke': 'transparent' } },
+                                {
+                                    ne: { 'attrs/circle/stroke': 'transparent' }
+                                },
                                 { ne: { 'attrs/circle/stroke-width': 0 } }
                             ]
                         },
@@ -780,7 +837,7 @@ export const inspector = <{ [index: string]: any }>{
                         index: 4
                     }
                 }
-            },
+            }
             // ports: {
             //     groups: {
             //         'in': {
@@ -994,7 +1051,7 @@ export const inspector = <{ [index: string]: any }>{
             },
             ports: {
                 groups: {
-                    'in': {
+                    in: {
                         attrs: {
                             '.port-body': {
                                 fill: {
@@ -1043,7 +1100,7 @@ export const inspector = <{ [index: string]: any }>{
                             index: 5
                         }
                     },
-                    'out': {
+                    out: {
                         attrs: {
                             '.port-body': {
                                 fill: {
@@ -1178,7 +1235,9 @@ export const inspector = <{ [index: string]: any }>{
                         group: 'presentation',
                         when: {
                             and: [
-                                { ne: { 'attrs/.outer/stroke': 'transparent' } },
+                                {
+                                    ne: { 'attrs/.outer/stroke': 'transparent' }
+                                },
                                 { ne: { 'attrs/.outer/stroke-width': 0 } }
                             ]
                         },
@@ -1286,7 +1345,9 @@ export const inspector = <{ [index: string]: any }>{
                         group: 'presentation',
                         when: {
                             and: [
-                                { ne: { 'attrs/circle/stroke': 'transparent' } },
+                                {
+                                    ne: { 'attrs/circle/stroke': 'transparent' }
+                                },
                                 { ne: { 'attrs/circle/stroke-width': 0 } }
                             ]
                         },
@@ -1594,7 +1655,9 @@ export const inspector = <{ [index: string]: any }>{
                         group: 'presentation',
                         when: {
                             and: [
-                                { ne: { 'attrs/.outer/stroke': 'transparent' } },
+                                {
+                                    ne: { 'attrs/.outer/stroke': 'transparent' }
+                                },
                                 { ne: { 'attrs/.outer/stroke-width': 0 } }
                             ]
                         },
@@ -1694,7 +1757,9 @@ export const inspector = <{ [index: string]: any }>{
                         group: 'outer',
                         when: {
                             and: [
-                                { ne: { 'attrs/.outer/stroke': 'transparent' } },
+                                {
+                                    ne: { 'attrs/.outer/stroke': 'transparent' }
+                                },
                                 { ne: { 'attrs/.outer/stroke-width': 0 } }
                             ]
                         },
@@ -1735,7 +1800,9 @@ export const inspector = <{ [index: string]: any }>{
                         group: 'inner',
                         when: {
                             and: [
-                                { ne: { 'attrs/.inner/stroke': 'transparent' } },
+                                {
+                                    ne: { 'attrs/.inner/stroke': 'transparent' }
+                                },
                                 { ne: { 'attrs/.inner/stroke-width': 0 } }
                             ]
                         },
@@ -1838,7 +1905,9 @@ export const inspector = <{ [index: string]: any }>{
                         group: 'presentation',
                         when: {
                             and: [
-                                { ne: { 'attrs/.outer/stroke': 'transparent' } },
+                                {
+                                    ne: { 'attrs/.outer/stroke': 'transparent' }
+                                },
                                 { ne: { 'attrs/.outer/stroke-width': 0 } }
                             ]
                         },
@@ -1938,7 +2007,9 @@ export const inspector = <{ [index: string]: any }>{
                         group: 'outer',
                         when: {
                             and: [
-                                { ne: { 'attrs/.outer/stroke': 'transparent' } },
+                                {
+                                    ne: { 'attrs/.outer/stroke': 'transparent' }
+                                },
                                 { ne: { 'attrs/.outer/stroke-width': 0 } }
                             ]
                         },
@@ -1979,7 +2050,9 @@ export const inspector = <{ [index: string]: any }>{
                         group: 'inner',
                         when: {
                             and: [
-                                { ne: { 'attrs/.inner/stroke': 'transparent' } },
+                                {
+                                    ne: { 'attrs/.inner/stroke': 'transparent' }
+                                },
                                 { ne: { 'attrs/.inner/stroke-width': 0 } }
                             ]
                         },
@@ -2082,7 +2155,9 @@ export const inspector = <{ [index: string]: any }>{
                         group: 'outer',
                         when: {
                             and: [
-                                { ne: { 'attrs/.outer/stroke': 'transparent' } },
+                                {
+                                    ne: { 'attrs/.outer/stroke': 'transparent' }
+                                },
                                 { ne: { 'attrs/.outer/stroke-width': 0 } }
                             ]
                         },
@@ -2123,7 +2198,9 @@ export const inspector = <{ [index: string]: any }>{
                         group: 'inner',
                         when: {
                             and: [
-                                { ne: { 'attrs/.inner/stroke': 'transparent' } },
+                                {
+                                    ne: { 'attrs/.inner/stroke': 'transparent' }
+                                },
                                 { ne: { 'attrs/.inner/stroke-width': 0 } }
                             ]
                         },
@@ -2225,7 +2302,9 @@ export const inspector = <{ [index: string]: any }>{
                         group: 'presentation',
                         when: {
                             and: [
-                                { ne: { 'attrs/.outer/stroke': 'transparent' } },
+                                {
+                                    ne: { 'attrs/.outer/stroke': 'transparent' }
+                                },
                                 { ne: { 'attrs/.outer/stroke-width': 0 } }
                             ]
                         },
@@ -2324,7 +2403,9 @@ export const inspector = <{ [index: string]: any }>{
                         group: 'outer',
                         when: {
                             and: [
-                                { ne: { 'attrs/.outer/stroke': 'transparent' } },
+                                {
+                                    ne: { 'attrs/.outer/stroke': 'transparent' }
+                                },
                                 { ne: { 'attrs/.outer/stroke-width': 0 } }
                             ]
                         },
@@ -2365,7 +2446,9 @@ export const inspector = <{ [index: string]: any }>{
                         group: 'inner',
                         when: {
                             and: [
-                                { ne: { 'attrs/.inner/stroke': 'transparent' } },
+                                {
+                                    ne: { 'attrs/.inner/stroke': 'transparent' }
+                                },
                                 { ne: { 'attrs/.inner/stroke-width': 0 } }
                             ]
                         },
@@ -2468,7 +2551,9 @@ export const inspector = <{ [index: string]: any }>{
                         group: 'outer',
                         when: {
                             and: [
-                                { ne: { 'attrs/.outer/stroke': 'transparent' } },
+                                {
+                                    ne: { 'attrs/.outer/stroke': 'transparent' }
+                                },
                                 { ne: { 'attrs/.outer/stroke-width': 0 } }
                             ]
                         },
@@ -2509,7 +2594,9 @@ export const inspector = <{ [index: string]: any }>{
                         group: 'inner',
                         when: {
                             and: [
-                                { ne: { 'attrs/.inner/stroke': 'transparent' } },
+                                {
+                                    ne: { 'attrs/.inner/stroke': 'transparent' }
+                                },
                                 { ne: { 'attrs/.inner/stroke-width': 0 } }
                             ]
                         },
@@ -2612,7 +2699,11 @@ export const inspector = <{ [index: string]: any }>{
                         group: 'presentation',
                         when: {
                             and: [
-                                { ne: { 'attrs/polygon/stroke': 'transparent' } },
+                                {
+                                    ne: {
+                                        'attrs/polygon/stroke': 'transparent'
+                                    }
+                                },
                                 { ne: { 'attrs/polygon/stroke-width': 0 } }
                             ]
                         },
@@ -2930,7 +3021,7 @@ export const inspector = <{ [index: string]: any }>{
                         options: options.colorPalette,
                         label: 'Fill',
                         group: 'text',
-                        when: { ne: { 'name': '' } },
+                        when: { ne: { name: '' } },
                         index: 5
                     }
                 },
@@ -2958,7 +3049,11 @@ export const inspector = <{ [index: string]: any }>{
                         unit: 'px',
                         label: 'Outline thickness',
                         group: 'presentation',
-                        when: { ne: { 'attrs/.uml-state-body/stroke': 'transparent' } },
+                        when: {
+                            ne: {
+                                'attrs/.uml-state-body/stroke': 'transparent'
+                            }
+                        },
                         index: 4
                     },
                     'stroke-dasharray': {
@@ -2968,8 +3063,17 @@ export const inspector = <{ [index: string]: any }>{
                         group: 'presentation',
                         when: {
                             and: [
-                                { ne: { 'attrs/.uml-state-body/stroke': 'transparent' } },
-                                { ne: { 'attrs/.uml-state-body/stroke-width': 0 } }
+                                {
+                                    ne: {
+                                        'attrs/.uml-state-body/stroke':
+                                            'transparent'
+                                    }
+                                },
+                                {
+                                    ne: {
+                                        'attrs/.uml-state-body/stroke-width': 0
+                                    }
+                                }
                             ]
                         },
                         index: 5
@@ -2990,7 +3094,7 @@ export const inspector = <{ [index: string]: any }>{
                         options: options.colorPalette,
                         label: 'Fill',
                         group: 'events',
-                        when: { ne: { 'events': 0 } },
+                        when: { ne: { events: 0 } },
                         index: 5
                     }
                 }
@@ -3170,4 +3274,3 @@ export const inspector = <{ [index: string]: any }>{
         }
     }
 };
-

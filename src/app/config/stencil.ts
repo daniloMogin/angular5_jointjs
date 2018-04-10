@@ -10,7 +10,6 @@ This Source Code Form is subject to the terms of the Rappid Trial License
 file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
  or from the Rappid archive as was distributed by client IO. See the LICENSE file.*/
 
-
 import { ui } from '../../assets/build/rappid.min';
 
 const $font_color: string = '#222138';
@@ -20,8 +19,11 @@ const $font_family_s: string = 'Averia Libre';
 const $font_family_o: string = 'Alegreya Sans';
 const $font_weight: string = 'Normal';
 const $stroke_color: string = '#ffd600';
+const $stroke_color1: string = '#FF0000';
 const $stroke_width_body: number = 2;
 const $stroke_width_label: number = 1;
+
+// TODO KREIRATI KOMPLEKSAN OBLIK OD MODELA DA BI MOGAO DA DODAJEM IN I OUT PORTOVE
 
 export const stencil = {
     groups: <{ [key: string]: ui.Stencil.Group }>{
@@ -178,6 +180,11 @@ export const stencil = {
                 size: { width: 30, height: 20 },
                 allowOrthogonalResize: false,
                 attrs: {
+                    '.': {
+                        'data-tooltip': 'Workflow',
+                        'data-tooltip-position': 'left',
+                        'data-tooltip-position-selector': '.joint-stencil'
+                    },
                     text: {
                         text: '',
                         fill: $font_color,
@@ -199,9 +206,39 @@ export const stencil = {
                         points: '160,0 160,60 0,60 0,0'
                     }
                 }
+            },
+            {
+                type: 'devs.Model',
+                size: { width: 30, height: 20 },
+                inPorts: ['in1', 'in2'],
+                outPorts: ['out'],
+                allowOrthogonalResize: false,
+                attrs: {
+                    '.': {
+                        'data-tooltip': 'Actor',
+                        'data-tooltip-position': 'left',
+                        'data-tooltip-position-selector': '.joint-stencil'
+                    },
+                    '.body': {
+                        fill: 'transparent',
+                        rx: 2,
+                        ry: 2,
+                        stroke: $stroke_color,
+                        'stroke-width': $stroke_width_body,
+                        'stroke-dasharray': '0'
+                    },
+                    '.label': {
+                        text: '',
+                        fill: $font_color,
+                        'font-family': $font_family_p,
+                        'font-weight': $font_weight,
+                        'font-size': $font_size,
+                        'stroke-width': $stroke_width_label,
+                        'ref-y': 0.5,
+                        'y-alignment': 'middle'
+                    }
+                }
             }
         ]
     }
-}
-
-
+};

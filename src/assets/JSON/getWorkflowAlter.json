@@ -21,16 +21,9 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "left",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "left", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "left"
-                        }
+                        "position": { "name": "left" }
                     },
                     "out": {
                         "markup": "<circle class=\"port-body\" r=\"10\"/>",
@@ -49,49 +42,28 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "right",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "right", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "right"
-                        }
+                        "position": { "name": "right" }
                     }
                 },
                 "items": [
                     {
                         "id": "in1",
                         "group": "in",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "in1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "in1" } }
                     },
                     {
                         "id": "out1",
                         "group": "out",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "out1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "out1" } }
                     }
                 ]
             },
             "inPorts": ["in1"],
             "outPorts": ["out1"],
-            "size": {
-                "width": 90,
-                "height": 60
-            },
-            "position": {
-                "x": 380,
-                "y": 270
-            },
+            "size": { "width": 90, "height": 60 },
+            "position": { "x": 380, "y": 270 },
             "angle": 0,
             "allowOrthogonalResize": false,
             "id": "df79d595-360a-40f0-b86c-4d12c656747e",
@@ -105,11 +77,11 @@
                     "text": "2",
                     "ref-y": 0.5,
                     "font-size": 20,
+                    "fill": "#222138",
                     "font-family": "Roboto Condensed",
                     "font-weight": "Normal",
                     "stroke-width": 0,
-                    "y-alignment": "middle",
-                    "fill": "#222138"
+                    "y-alignment": "middle"
                 },
                 ".body": {
                     "stroke": "#ffd600",
@@ -142,16 +114,9 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "left",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "left", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "left"
-                        }
+                        "position": { "name": "left" }
                     },
                     "out": {
                         "markup": "<circle class=\"port-body\" r=\"10\"/>",
@@ -170,49 +135,28 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "right",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "right", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "right"
-                        }
+                        "position": { "name": "right" }
                     }
                 },
                 "items": [
                     {
                         "id": "in1",
                         "group": "in",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "in1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "in1" } }
                     },
                     {
                         "id": "out1",
                         "group": "out",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "out1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "out1" } }
                     }
                 ]
             },
             "inPorts": ["in1"],
             "outPorts": ["out1"],
-            "size": {
-                "width": 90,
-                "height": 60
-            },
-            "position": {
-                "x": 380,
-                "y": 470
-            },
+            "size": { "width": 90, "height": 60 },
+            "position": { "x": 380, "y": 470 },
             "angle": 0,
             "allowOrthogonalResize": false,
             "id": "944987ef-4375-4f44-aae1-d13e716372e8",
@@ -226,11 +170,11 @@
                     "text": "2",
                     "ref-y": 0.5,
                     "font-size": 20,
+                    "fill": "#222138",
                     "font-family": "Roboto Condensed",
                     "font-weight": "Normal",
                     "stroke-width": 0,
-                    "y-alignment": "middle",
-                    "fill": "#222138"
+                    "y-alignment": "middle"
                 },
                 ".body": {
                     "stroke": "#ffd600",
@@ -263,16 +207,9 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "left",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "left", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "left"
-                        }
+                        "position": { "name": "left" }
                     },
                     "out": {
                         "markup": "<circle class=\"port-body\" r=\"10\"/>",
@@ -291,58 +228,33 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "right",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "right", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "right"
-                        }
+                        "position": { "name": "right" }
                     }
                 },
                 "items": [
                     {
                         "id": "in1",
                         "group": "in",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "in1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "in1" } }
                     },
                     {
                         "id": "in2",
                         "group": "in",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "in2"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "in2" } }
                     },
                     {
                         "id": "out1",
                         "group": "out",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "out1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "out1" } }
                     }
                 ]
             },
             "inPorts": ["in1", "in2"],
             "outPorts": ["out1"],
-            "size": {
-                "width": 90,
-                "height": 60
-            },
-            "position": {
-                "x": 380,
-                "y": 370
-            },
+            "size": { "width": 90, "height": 60 },
+            "position": { "x": 380, "y": 370 },
             "angle": 0,
             "allowOrthogonalResize": false,
             "id": "f42d62ad-26e9-4268-bcde-1e8fffd042ac",
@@ -356,11 +268,11 @@
                     "text": "3",
                     "ref-y": 0.5,
                     "font-size": 20,
+                    "fill": "#222138",
                     "font-family": "Roboto Condensed",
                     "font-weight": "Normal",
                     "stroke-width": 0,
-                    "y-alignment": "middle",
-                    "fill": "#222138"
+                    "y-alignment": "middle"
                 },
                 ".body": {
                     "stroke": "#ffd600",
@@ -374,14 +286,8 @@
         },
         {
             "type": "fsa.StartState",
-            "size": {
-                "width": 60,
-                "height": 60
-            },
-            "position": {
-                "x": 69,
-                "y": 370
-            },
+            "size": { "width": 60, "height": 60 },
+            "position": { "x": 69, "y": 370 },
             "angle": 0,
             "preserveAspectRatio": true,
             "id": "1b80eccf-7ec3-4082-b8f5-521a9cc65440",
@@ -409,14 +315,8 @@
         },
         {
             "type": "basic.Rect",
-            "position": {
-                "x": 214.9999999999978,
-                "y": 170.00000000000006
-            },
-            "size": {
-                "width": 20,
-                "height": 459.9999999999999
-            },
+            "position": { "x": 214.9999999999978, "y": 170.00000000000006 },
+            "size": { "width": 20, "height": 459.9999999999999 },
             "angle": 0,
             "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534",
             "z": 6,
@@ -446,14 +346,8 @@
         },
         {
             "type": "basic.Rect",
-            "position": {
-                "x": 590.9999999999931,
-                "y": 170.00000000000003
-            },
-            "size": {
-                "width": 20,
-                "height": 459.99999999999994
-            },
+            "position": { "x": 590.9999999999931, "y": 170.00000000000003 },
+            "size": { "width": 20, "height": 459.99999999999994 },
             "angle": 0,
             "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5",
             "z": 8,
@@ -502,16 +396,9 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "left",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "left", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "left"
-                        }
+                        "position": { "name": "left" }
                     },
                     "out": {
                         "markup": "<circle class=\"port-body\" r=\"10\"/>",
@@ -530,49 +417,28 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "right",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "right", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "right"
-                        }
+                        "position": { "name": "right" }
                     }
                 },
                 "items": [
                     {
                         "id": "in1",
                         "group": "in",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "in1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "in1" } }
                     },
                     {
                         "id": "out1",
                         "group": "out",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "out1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "out1" } }
                     }
                 ]
             },
             "inPorts": ["in1"],
             "outPorts": ["out1"],
-            "size": {
-                "width": 90,
-                "height": 60
-            },
-            "position": {
-                "x": 380,
-                "y": 570
-            },
+            "size": { "width": 90, "height": 60 },
+            "position": { "x": 380, "y": 570 },
             "angle": 0,
             "allowOrthogonalResize": false,
             "id": "16cbcee6-93db-41c3-a631-c576c110a86c",
@@ -586,11 +452,11 @@
                     "text": "4",
                     "ref-y": 0.5,
                     "font-size": 20,
+                    "fill": "#222138",
                     "font-family": "Roboto Condensed",
                     "font-weight": "Normal",
                     "stroke-width": 0,
-                    "y-alignment": "middle",
-                    "fill": "#222138"
+                    "y-alignment": "middle"
                 },
                 ".body": {
                     "stroke": "#ffd600",
@@ -604,14 +470,8 @@
         },
         {
             "type": "fsa.EndState",
-            "size": {
-                "width": 60,
-                "height": 60
-            },
-            "position": {
-                "x": 695,
-                "y": 370
-            },
+            "size": { "width": 60, "height": 60 },
+            "position": { "x": 695, "y": 370 },
             "angle": 0,
             "preserveAspectRatio": true,
             "id": "eb86335b-5937-420c-a83e-e23c2a805920",
@@ -623,10 +483,7 @@
                     "stroke-width": 2,
                     "stroke-dasharray": "0"
                 },
-                ".inner": {
-                    "fill": "#ffff52",
-                    "stroke": "transparent"
-                },
+                ".inner": { "fill": "#ffff52", "stroke": "transparent" },
                 ".": {
                     "data-tooltip-position": "left",
                     "data-tooltip-position-selector": ".joint-stencil"
@@ -643,18 +500,10 @@
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
-            "source": {
-                "id": "1b80eccf-7ec3-4082-b8f5-521a9cc65440"
-            },
-            "target": {
-                "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
+            "source": { "id": "1b80eccf-7ec3-4082-b8f5-521a9cc65440" },
+            "target": { "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534" },
             "id": "cf5d06d1-fda0-40dd-8fec-a4c64afd6bb9",
             "z": 11,
             "attrs": {}
@@ -680,16 +529,9 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "left",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "left", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "left"
-                        }
+                        "position": { "name": "left" }
                     },
                     "out": {
                         "markup": "<circle class=\"port-body\" r=\"10\"/>",
@@ -708,49 +550,28 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "right",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "right", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "right"
-                        }
+                        "position": { "name": "right" }
                     }
                 },
                 "items": [
                     {
                         "id": "in1",
                         "group": "in",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "in1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "in1" } }
                     },
                     {
                         "id": "out1",
                         "group": "out",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "out1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "out1" } }
                     }
                 ]
             },
             "inPorts": ["in1"],
             "outPorts": ["out1"],
-            "size": {
-                "width": 90,
-                "height": 60
-            },
-            "position": {
-                "x": 380,
-                "y": 170.00000000000006
-            },
+            "size": { "width": 90, "height": 60 },
+            "position": { "x": 380, "y": 170.00000000000006 },
             "angle": 0,
             "allowOrthogonalResize": false,
             "id": "88504fd4-dfb4-4e7b-a6d6-21266e05faa0",
@@ -782,15 +603,9 @@
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
-            "source": {
-                "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
+            "source": { "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534" },
             "target": {
                 "id": "88504fd4-dfb4-4e7b-a6d6-21266e05faa0",
                 "port": "in1",
@@ -803,15 +618,9 @@
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
-            "source": {
-                "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
+            "source": { "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534" },
             "target": {
                 "id": "df79d595-360a-40f0-b86c-4d12c656747e",
                 "port": "in1",
@@ -824,15 +633,9 @@
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
-            "source": {
-                "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
+            "source": { "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534" },
             "target": {
                 "id": "f42d62ad-26e9-4268-bcde-1e8fffd042ac",
                 "port": "in1",
@@ -845,15 +648,9 @@
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
-            "source": {
-                "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
+            "source": { "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534" },
             "target": {
                 "id": "f42d62ad-26e9-4268-bcde-1e8fffd042ac",
                 "port": "in2",
@@ -866,15 +663,9 @@
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
-            "source": {
-                "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
+            "source": { "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534" },
             "target": {
                 "id": "944987ef-4375-4f44-aae1-d13e716372e8",
                 "port": "in1",
@@ -887,15 +678,9 @@
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
-            "source": {
-                "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
+            "source": { "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534" },
             "target": {
                 "id": "16cbcee6-93db-41c3-a631-c576c110a86c",
                 "port": "in1",
@@ -908,126 +693,120 @@
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
             "source": {
                 "id": "88504fd4-dfb4-4e7b-a6d6-21266e05faa0",
                 "selector":
                     "g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)",
                 "port": "out1"
             },
-            "target": {
-                "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5"
-            },
+            "target": { "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5" },
             "id": "2d5c7d34-bbbe-483e-9237-facf649abfb3",
             "z": 19,
             "attrs": {}
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
             "source": {
                 "id": "df79d595-360a-40f0-b86c-4d12c656747e",
                 "selector":
                     "g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)",
                 "port": "out1"
             },
-            "target": {
-                "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5"
-            },
+            "target": { "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5" },
             "id": "5c27f29d-dfc1-45f1-bae2-eff5dc5ede6f",
             "z": 20,
             "attrs": {}
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
             "source": {
                 "id": "f42d62ad-26e9-4268-bcde-1e8fffd042ac",
                 "selector":
                     "g:nth-child(1) > g:nth-child(5) > circle:nth-child(1)",
                 "port": "out1"
             },
-            "target": {
-                "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5"
-            },
+            "target": { "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5" },
             "id": "5c5d046f-15f7-47c4-913f-aaf79d3d509d",
             "z": 21,
             "attrs": {}
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
             "source": {
                 "id": "944987ef-4375-4f44-aae1-d13e716372e8",
                 "selector":
                     "g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)",
                 "port": "out1"
             },
-            "target": {
-                "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5"
-            },
+            "target": { "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5" },
             "id": "b907d5e4-0149-4454-a50d-6a23a2043f27",
             "z": 22,
             "attrs": {}
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
             "source": {
                 "id": "16cbcee6-93db-41c3-a631-c576c110a86c",
                 "selector":
                     "g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)",
                 "port": "out1"
             },
-            "target": {
-                "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5"
-            },
+            "target": { "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5" },
             "id": "b55e51d0-0c1a-432c-aacf-c66d1559d1d1",
             "z": 23,
             "attrs": {}
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
-            "source": {
-                "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5"
-            },
-            "target": {
-                "id": "eb86335b-5937-420c-a83e-e23c2a805920"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
+            "source": { "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5" },
+            "target": { "id": "eb86335b-5937-420c-a83e-e23c2a805920" },
             "id": "b73c0841-9cc6-4d76-b647-28b33cb94e81",
             "z": 24,
             "attrs": {}
+        }
+    ],
+    "uuid": "c728b108-595d-4b7c-bb7c-462de7e3f2b3",
+    "Name": "Name of the Workflow",
+    "Operations": [
+        {
+            "OperationId": "2",
+            "OperationName": "PlayVideo",
+            "Messages": [{ "MessageId": "PlayMessage", "ContentExample": {} }],
+            "OperationDependency": "Verify",
+            "Description":
+                "Plays video file on verified location stored in [path] variable",
+            "inPorts": ["in"],
+            "outPorts": ["out"]
+        },
+        {
+            "OperationId": "3",
+            "OperationName": "PauseVideo",
+            "Messages": [{ "MessageId": "PauseMessage", "ContentExample": {} }],
+            "OperationDependency": "PlayVideo",
+            "Description": "Pause the currently playing video",
+            "inPorts": ["in", "in"],
+            "outPorts": ["out"]
+        },
+        {
+            "OperationId": "4",
+            "OperationName": "StopVideo",
+            "Messages": [{ "MessageId": "StopMessage", "ContentExample": {} }],
+            "OperationDependency": "PlayVideo",
+            "Description": "Stops the currently playing video",
+            "inPorts": ["in"],
+            "outPorts": ["out"]
         }
     ]
 },
@@ -1054,16 +833,9 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "left",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "left", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "left"
-                        }
+                        "position": { "name": "left" }
                     },
                     "out": {
                         "markup": "<circle class=\"port-body\" r=\"10\"/>",
@@ -1082,49 +854,28 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "right",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "right", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "right"
-                        }
+                        "position": { "name": "right" }
                     }
                 },
                 "items": [
                     {
                         "id": "in1",
                         "group": "in",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "in1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "in1" } }
                     },
                     {
                         "id": "out1",
                         "group": "out",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "out1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "out1" } }
                     }
                 ]
             },
             "inPorts": ["in1"],
             "outPorts": ["out1"],
-            "size": {
-                "width": 90,
-                "height": 60
-            },
-            "position": {
-                "x": 380,
-                "y": 270
-            },
+            "size": { "width": 90, "height": 60 },
+            "position": { "x": 380, "y": 270 },
             "angle": 0,
             "allowOrthogonalResize": false,
             "id": "df79d595-360a-40f0-b86c-4d12c656747e",
@@ -1138,11 +889,11 @@
                     "text": "2",
                     "ref-y": 0.5,
                     "font-size": 20,
+                    "fill": "#222138",
                     "font-family": "Roboto Condensed",
                     "font-weight": "Normal",
                     "stroke-width": 0,
-                    "y-alignment": "middle",
-                    "fill": "#222138"
+                    "y-alignment": "middle"
                 },
                 ".body": {
                     "stroke": "#ffd600",
@@ -1175,16 +926,9 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "left",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "left", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "left"
-                        }
+                        "position": { "name": "left" }
                     },
                     "out": {
                         "markup": "<circle class=\"port-body\" r=\"10\"/>",
@@ -1203,49 +947,28 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "right",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "right", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "right"
-                        }
+                        "position": { "name": "right" }
                     }
                 },
                 "items": [
                     {
                         "id": "in1",
                         "group": "in",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "in1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "in1" } }
                     },
                     {
                         "id": "out1",
                         "group": "out",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "out1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "out1" } }
                     }
                 ]
             },
             "inPorts": ["in1"],
             "outPorts": ["out1"],
-            "size": {
-                "width": 90,
-                "height": 60
-            },
-            "position": {
-                "x": 380,
-                "y": 470
-            },
+            "size": { "width": 90, "height": 60 },
+            "position": { "x": 380, "y": 470 },
             "angle": 0,
             "allowOrthogonalResize": false,
             "id": "944987ef-4375-4f44-aae1-d13e716372e8",
@@ -1259,11 +982,11 @@
                     "text": "2",
                     "ref-y": 0.5,
                     "font-size": 20,
+                    "fill": "#222138",
                     "font-family": "Roboto Condensed",
                     "font-weight": "Normal",
                     "stroke-width": 0,
-                    "y-alignment": "middle",
-                    "fill": "#222138"
+                    "y-alignment": "middle"
                 },
                 ".body": {
                     "stroke": "#ffd600",
@@ -1296,16 +1019,9 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "left",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "left", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "left"
-                        }
+                        "position": { "name": "left" }
                     },
                     "out": {
                         "markup": "<circle class=\"port-body\" r=\"10\"/>",
@@ -1324,58 +1040,33 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "right",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "right", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "right"
-                        }
+                        "position": { "name": "right" }
                     }
                 },
                 "items": [
                     {
                         "id": "in1",
                         "group": "in",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "in1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "in1" } }
                     },
                     {
                         "id": "in2",
                         "group": "in",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "in2"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "in2" } }
                     },
                     {
                         "id": "out1",
                         "group": "out",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "out1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "out1" } }
                     }
                 ]
             },
             "inPorts": ["in1", "in2"],
             "outPorts": ["out1"],
-            "size": {
-                "width": 90,
-                "height": 60
-            },
-            "position": {
-                "x": 380,
-                "y": 370
-            },
+            "size": { "width": 90, "height": 60 },
+            "position": { "x": 380, "y": 370 },
             "angle": 0,
             "allowOrthogonalResize": false,
             "id": "f42d62ad-26e9-4268-bcde-1e8fffd042ac",
@@ -1389,11 +1080,11 @@
                     "text": "3",
                     "ref-y": 0.5,
                     "font-size": 20,
+                    "fill": "#222138",
                     "font-family": "Roboto Condensed",
                     "font-weight": "Normal",
                     "stroke-width": 0,
-                    "y-alignment": "middle",
-                    "fill": "#222138"
+                    "y-alignment": "middle"
                 },
                 ".body": {
                     "stroke": "#ffd600",
@@ -1407,14 +1098,8 @@
         },
         {
             "type": "fsa.StartState",
-            "size": {
-                "width": 60,
-                "height": 60
-            },
-            "position": {
-                "x": 69,
-                "y": 370
-            },
+            "size": { "width": 60, "height": 60 },
+            "position": { "x": 69, "y": 370 },
             "angle": 0,
             "preserveAspectRatio": true,
             "id": "1b80eccf-7ec3-4082-b8f5-521a9cc65440",
@@ -1442,14 +1127,8 @@
         },
         {
             "type": "basic.Rect",
-            "position": {
-                "x": 214.9999999999978,
-                "y": 170.00000000000006
-            },
-            "size": {
-                "width": 20,
-                "height": 459.9999999999999
-            },
+            "position": { "x": 214.9999999999978, "y": 170.00000000000006 },
+            "size": { "width": 20, "height": 459.9999999999999 },
             "angle": 0,
             "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534",
             "z": 6,
@@ -1479,14 +1158,8 @@
         },
         {
             "type": "basic.Rect",
-            "position": {
-                "x": 590.9999999999931,
-                "y": 170.00000000000003
-            },
-            "size": {
-                "width": 20,
-                "height": 459.99999999999994
-            },
+            "position": { "x": 590.9999999999931, "y": 170.00000000000003 },
+            "size": { "width": 20, "height": 459.99999999999994 },
             "angle": 0,
             "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5",
             "z": 8,
@@ -1535,16 +1208,9 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "left",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "left", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "left"
-                        }
+                        "position": { "name": "left" }
                     },
                     "out": {
                         "markup": "<circle class=\"port-body\" r=\"10\"/>",
@@ -1563,49 +1229,28 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "right",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "right", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "right"
-                        }
+                        "position": { "name": "right" }
                     }
                 },
                 "items": [
                     {
                         "id": "in1",
                         "group": "in",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "in1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "in1" } }
                     },
                     {
                         "id": "out1",
                         "group": "out",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "out1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "out1" } }
                     }
                 ]
             },
             "inPorts": ["in1"],
             "outPorts": ["out1"],
-            "size": {
-                "width": 90,
-                "height": 60
-            },
-            "position": {
-                "x": 380,
-                "y": 570
-            },
+            "size": { "width": 90, "height": 60 },
+            "position": { "x": 380, "y": 570 },
             "angle": 0,
             "allowOrthogonalResize": false,
             "id": "16cbcee6-93db-41c3-a631-c576c110a86c",
@@ -1619,11 +1264,11 @@
                     "text": "4",
                     "ref-y": 0.5,
                     "font-size": 20,
+                    "fill": "#222138",
                     "font-family": "Roboto Condensed",
                     "font-weight": "Normal",
                     "stroke-width": 0,
-                    "y-alignment": "middle",
-                    "fill": "#222138"
+                    "y-alignment": "middle"
                 },
                 ".body": {
                     "stroke": "#ffd600",
@@ -1637,14 +1282,8 @@
         },
         {
             "type": "fsa.EndState",
-            "size": {
-                "width": 60,
-                "height": 60
-            },
-            "position": {
-                "x": 695,
-                "y": 370
-            },
+            "size": { "width": 60, "height": 60 },
+            "position": { "x": 695, "y": 370 },
             "angle": 0,
             "preserveAspectRatio": true,
             "id": "eb86335b-5937-420c-a83e-e23c2a805920",
@@ -1656,10 +1295,7 @@
                     "stroke-width": 2,
                     "stroke-dasharray": "0"
                 },
-                ".inner": {
-                    "fill": "#ffff52",
-                    "stroke": "transparent"
-                },
+                ".inner": { "fill": "#ffff52", "stroke": "transparent" },
                 ".": {
                     "data-tooltip-position": "left",
                     "data-tooltip-position-selector": ".joint-stencil"
@@ -1676,18 +1312,10 @@
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
-            "source": {
-                "id": "1b80eccf-7ec3-4082-b8f5-521a9cc65440"
-            },
-            "target": {
-                "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
+            "source": { "id": "1b80eccf-7ec3-4082-b8f5-521a9cc65440" },
+            "target": { "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534" },
             "id": "cf5d06d1-fda0-40dd-8fec-a4c64afd6bb9",
             "z": 11,
             "attrs": {}
@@ -1713,16 +1341,9 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "left",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "left", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "left"
-                        }
+                        "position": { "name": "left" }
                     },
                     "out": {
                         "markup": "<circle class=\"port-body\" r=\"10\"/>",
@@ -1741,49 +1362,28 @@
                             }
                         },
                         "label": {
-                            "position": {
-                                "name": "right",
-                                "args": {
-                                    "y": 0
-                                }
-                            }
+                            "position": { "name": "right", "args": { "y": 0 } }
                         },
-                        "position": {
-                            "name": "right"
-                        }
+                        "position": { "name": "right" }
                     }
                 },
                 "items": [
                     {
                         "id": "in1",
                         "group": "in",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "in1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "in1" } }
                     },
                     {
                         "id": "out1",
                         "group": "out",
-                        "attrs": {
-                            ".port-label": {
-                                "text": "out1"
-                            }
-                        }
+                        "attrs": { ".port-label": { "text": "out1" } }
                     }
                 ]
             },
             "inPorts": ["in1"],
             "outPorts": ["out1"],
-            "size": {
-                "width": 90,
-                "height": 60
-            },
-            "position": {
-                "x": 380,
-                "y": 170.00000000000006
-            },
+            "size": { "width": 90, "height": 60 },
+            "position": { "x": 380, "y": 170.00000000000006 },
             "angle": 0,
             "allowOrthogonalResize": false,
             "id": "88504fd4-dfb4-4e7b-a6d6-21266e05faa0",
@@ -1815,15 +1415,9 @@
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
-            "source": {
-                "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
+            "source": { "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534" },
             "target": {
                 "id": "88504fd4-dfb4-4e7b-a6d6-21266e05faa0",
                 "port": "in1",
@@ -1836,15 +1430,9 @@
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
-            "source": {
-                "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
+            "source": { "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534" },
             "target": {
                 "id": "df79d595-360a-40f0-b86c-4d12c656747e",
                 "port": "in1",
@@ -1857,15 +1445,9 @@
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
-            "source": {
-                "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
+            "source": { "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534" },
             "target": {
                 "id": "f42d62ad-26e9-4268-bcde-1e8fffd042ac",
                 "port": "in1",
@@ -1878,15 +1460,9 @@
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
-            "source": {
-                "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
+            "source": { "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534" },
             "target": {
                 "id": "f42d62ad-26e9-4268-bcde-1e8fffd042ac",
                 "port": "in2",
@@ -1899,15 +1475,9 @@
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
-            "source": {
-                "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
+            "source": { "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534" },
             "target": {
                 "id": "944987ef-4375-4f44-aae1-d13e716372e8",
                 "port": "in1",
@@ -1920,15 +1490,9 @@
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
-            "source": {
-                "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
+            "source": { "id": "92adcaa2-57c1-446a-8195-6bed7bdbe534" },
             "target": {
                 "id": "16cbcee6-93db-41c3-a631-c576c110a86c",
                 "port": "in1",
@@ -1941,126 +1505,120 @@
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
             "source": {
                 "id": "88504fd4-dfb4-4e7b-a6d6-21266e05faa0",
                 "selector":
                     "g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)",
                 "port": "out1"
             },
-            "target": {
-                "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5"
-            },
+            "target": { "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5" },
             "id": "2d5c7d34-bbbe-483e-9237-facf649abfb3",
             "z": 19,
             "attrs": {}
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
             "source": {
                 "id": "df79d595-360a-40f0-b86c-4d12c656747e",
                 "selector":
                     "g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)",
                 "port": "out1"
             },
-            "target": {
-                "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5"
-            },
+            "target": { "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5" },
             "id": "5c27f29d-dfc1-45f1-bae2-eff5dc5ede6f",
             "z": 20,
             "attrs": {}
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
             "source": {
                 "id": "f42d62ad-26e9-4268-bcde-1e8fffd042ac",
                 "selector":
                     "g:nth-child(1) > g:nth-child(5) > circle:nth-child(1)",
                 "port": "out1"
             },
-            "target": {
-                "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5"
-            },
+            "target": { "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5" },
             "id": "5c5d046f-15f7-47c4-913f-aaf79d3d509d",
             "z": 21,
             "attrs": {}
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
             "source": {
                 "id": "944987ef-4375-4f44-aae1-d13e716372e8",
                 "selector":
                     "g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)",
                 "port": "out1"
             },
-            "target": {
-                "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5"
-            },
+            "target": { "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5" },
             "id": "b907d5e4-0149-4454-a50d-6a23a2043f27",
             "z": 22,
             "attrs": {}
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
             "source": {
                 "id": "16cbcee6-93db-41c3-a631-c576c110a86c",
                 "selector":
                     "g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)",
                 "port": "out1"
             },
-            "target": {
-                "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5"
-            },
+            "target": { "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5" },
             "id": "b55e51d0-0c1a-432c-aacf-c66d1559d1d1",
             "z": 23,
             "attrs": {}
         },
         {
             "type": "app.Link",
-            "router": {
-                "name": "normal"
-            },
-            "connector": {
-                "name": "normal"
-            },
-            "source": {
-                "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5"
-            },
-            "target": {
-                "id": "eb86335b-5937-420c-a83e-e23c2a805920"
-            },
+            "router": { "name": "normal" },
+            "connector": { "name": "normal" },
+            "source": { "id": "84dacc01-545b-483d-aca4-9f9c840f0dd5" },
+            "target": { "id": "eb86335b-5937-420c-a83e-e23c2a805920" },
             "id": "b73c0841-9cc6-4d76-b647-28b33cb94e81",
             "z": 24,
             "attrs": {}
+        }
+    ],
+    "uuid": "ea719c1a-2655-4e0c-903e-7d22b6f86547",
+    "Name": "Name of the Workflow 1",
+    "Operations": [
+        {
+            "OperationId": "2",
+            "OperationName": "PlayVideo",
+            "Messages": [{ "MessageId": "PlayMessage", "ContentExample": {} }],
+            "OperationDependency": "Verify",
+            "Description":
+                "Plays video file on verified location stored in [path] variable",
+            "inPorts": ["in"],
+            "outPorts": ["out"]
+        },
+        {
+            "OperationId": "3",
+            "OperationName": "PauseVideo",
+            "Messages": [{ "MessageId": "PauseMessage", "ContentExample": {} }],
+            "OperationDependency": "PlayVideo",
+            "Description": "Pause the currently playing video",
+            "inPorts": ["in", "in"],
+            "outPorts": ["out"]
+        },
+        {
+            "OperationId": "4",
+            "OperationName": "StopVideo",
+            "Messages": [{ "MessageId": "StopMessage", "ContentExample": {} }],
+            "OperationDependency": "PlayVideo",
+            "Description": "Stops the currently playing video",
+            "inPorts": ["in"],
+            "outPorts": ["out"]
         }
     ]
 }]

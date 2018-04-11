@@ -23,8 +23,6 @@ const $stroke_color1: string = '#FF0000';
 const $stroke_width_body: number = 2;
 const $stroke_width_label: number = 1;
 
-// TODO KREIRATI KOMPLEKSAN OBLIK OD MODELA DA BI MOGAO DA DODAJEM IN I OUT PORTOVE
-
 export const stencil = {
     groups: <{ [key: string]: ui.Stencil.Group }>{
         basic: { index: 1, label: 'Shapes' },
@@ -178,6 +176,13 @@ export const stencil = {
             {
                 type: 'erd.WeakEntity',
                 size: { width: 30, height: 20 },
+                ports: {
+                    groups: {
+                        in: { position: { name: 'left' } },
+                        out: { position: { name: 'right' } }
+                    },
+                    items: []
+                },
                 allowOrthogonalResize: false,
                 attrs: {
                     '.': {
@@ -204,38 +209,6 @@ export const stencil = {
                         fill: 'transparent',
                         stroke: $stroke_color,
                         points: '160,0 160,60 0,60 0,0'
-                    }
-                }
-            },
-            {
-                type: 'devs.Model',
-                size: { width: 30, height: 20 },
-                inPorts: ['in1', 'in2'],
-                outPorts: ['out'],
-                allowOrthogonalResize: false,
-                attrs: {
-                    '.': {
-                        'data-tooltip': 'Actor',
-                        'data-tooltip-position': 'left',
-                        'data-tooltip-position-selector': '.joint-stencil'
-                    },
-                    '.body': {
-                        fill: 'transparent',
-                        rx: 2,
-                        ry: 2,
-                        stroke: $stroke_color,
-                        'stroke-width': $stroke_width_body,
-                        'stroke-dasharray': '0'
-                    },
-                    '.label': {
-                        text: '',
-                        fill: $font_color,
-                        'font-family': $font_family_p,
-                        'font-weight': $font_weight,
-                        'font-size': $font_size,
-                        'stroke-width': $stroke_width_label,
-                        'ref-y': 0.5,
-                        'y-alignment': 'middle'
                     }
                 }
             }

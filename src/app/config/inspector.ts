@@ -92,7 +92,7 @@ for (let i: number = 0; i < condition_len; i++) {
         content: conditions_JSON.Conditions[i].ConditionName
     });
 }
-for (let i: number = 0; i < condition_len; i++) {
+for (let i: number = 0; i < workflow_len; i++) {
     workflow_obj.push({
         value: workflow_JSON[i].uuid,
         content: workflow_JSON[i].Name

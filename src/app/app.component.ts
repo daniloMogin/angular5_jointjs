@@ -20,7 +20,7 @@ let index: number = 0;
 export class AppComponent implements OnInit {
     title = 'Geutebrueck Rappid';
     name: string = '';
-    test;
+    test; // name of the diagram prompt
 
     graph: joint.dia.Graph;
     commandManager: joint.dia.CommandManager;
@@ -535,9 +535,12 @@ export class AppComponent implements OnInit {
                 }
             }
             if (input.attributes.type === 'erd.WeakEntity') {
-                // console.log(`AAAAAAAAAAAAAAAAAAAAAAA`);
-                // console.log(input.attributes);
-                addPortsToWorkflow(workflows, input);
+                if (!input.hasPorts()) {
+                    addPortsToWorkflow(workflows, input);
+                } else {
+                    removePortsToWorkflow(input);
+                    addPortsToWorkflow(workflows, input);
+                }
             }
         });
 
@@ -717,12 +720,10 @@ export class AppComponent implements OnInit {
         this.paperScroller.centerContent();
     }
 
-    public saveToJSON() {
+    saveToJSON() {
         console.log(`saveToJSON`);
         const actions = getActions();
         const workflow = getWorkflow();
-        // console.log(`workflow`);
-        // console.log(workflow);
 
         const graphJson = this.graph;
         const usedOperationsInWorkflow: any = getUsedOperations(
@@ -735,14 +736,6 @@ export class AppComponent implements OnInit {
         );
         const name: string = this.name;
         const uuid = __.uuid();
-
-        // graphJson['uuid'] = uuid;
-        // graphJson['Name'] = name;
-        // graphJson['Operations'] = usedOperationsInWorkflow;
-
-        console.log(`graphJson`);
-        console.log(graphJson);
-
         const graphJson_str: any = JSON.stringify(graphJson);
         const graphJson_obj: any = JSON.parse(graphJson_str);
 
@@ -750,17 +743,10 @@ export class AppComponent implements OnInit {
         graphJson_obj['Name'] = name;
         graphJson_obj['Operations'] = usedOperationsInWorkflow;
         graphJson_obj['Workflow'] = usedWorkflowInWorkflow;
-
-        console.log(`graphJson_obj`);
-        console.log(graphJson_obj);
-        console.log(JSON.stringify(graphJson_obj));
     }
 
-    public loadFromJSON() {
+    loadFromJSON() {
         console.log(`loadFromJSON`);
-        // const jsonString = JSON.stringify(this.graph);
-        // console.log(jsonString);
-
         // TODO - logic for getting diagram from database
         const jsonString: any = {
             cells: [
@@ -5875,147 +5861,2722 @@ export class AppComponent implements OnInit {
             ]
         };
 
+        const jsonString5: any = {
+            cells: [
+                {
+                    type: 'app.RectangularModel',
+                    ports: {
+                        groups: {
+                            in: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'left', args: { y: 0 } }
+                                },
+                                position: { name: 'left' }
+                            },
+                            out: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'right', args: { y: 0 } }
+                                },
+                                position: { name: 'right' }
+                            }
+                        },
+                        items: [
+                            {
+                                id: 'in1',
+                                group: 'in',
+                                attrs: { '.port-label': { text: 'in1' } }
+                            },
+                            {
+                                id: 'out1',
+                                group: 'out',
+                                attrs: { '.port-label': { text: 'out1' } }
+                            }
+                        ]
+                    },
+                    inPorts: ['in1'],
+                    outPorts: ['out1'],
+                    size: { width: 90, height: 60 },
+                    position: { x: 380, y: 270 },
+                    angle: 0,
+                    allowOrthogonalResize: false,
+                    id: 'df79d595-360a-40f0-b86c-4d12c656747e',
+                    z: 2,
+                    attrs: {
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        },
+                        '.label': {
+                            text: '2',
+                            'ref-y': 0.5,
+                            'font-size': 20,
+                            fill: '#222138',
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'stroke-width': 0,
+                            'y-alignment': 'middle'
+                        },
+                        '.body': {
+                            stroke: '#ffd600',
+                            fill: 'transparent',
+                            rx: 2,
+                            ry: 2,
+                            'stroke-width': 2,
+                            'stroke-dasharray': '0'
+                        }
+                    }
+                },
+                {
+                    type: 'app.RectangularModel',
+                    ports: {
+                        groups: {
+                            in: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'left', args: { y: 0 } }
+                                },
+                                position: { name: 'left' }
+                            },
+                            out: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'right', args: { y: 0 } }
+                                },
+                                position: { name: 'right' }
+                            }
+                        },
+                        items: [
+                            {
+                                id: 'in1',
+                                group: 'in',
+                                attrs: { '.port-label': { text: 'in1' } }
+                            },
+                            {
+                                id: 'out1',
+                                group: 'out',
+                                attrs: { '.port-label': { text: 'out1' } }
+                            }
+                        ]
+                    },
+                    inPorts: ['in1'],
+                    outPorts: ['out1'],
+                    size: { width: 90, height: 60 },
+                    position: { x: 380, y: 470 },
+                    angle: 0,
+                    allowOrthogonalResize: false,
+                    id: '944987ef-4375-4f44-aae1-d13e716372e8',
+                    z: 3,
+                    attrs: {
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        },
+                        '.label': {
+                            text: '2',
+                            'ref-y': 0.5,
+                            'font-size': 20,
+                            fill: '#222138',
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'stroke-width': 0,
+                            'y-alignment': 'middle'
+                        },
+                        '.body': {
+                            stroke: '#ffd600',
+                            fill: 'transparent',
+                            rx: 2,
+                            ry: 2,
+                            'stroke-width': 2,
+                            'stroke-dasharray': '0'
+                        }
+                    }
+                },
+                {
+                    type: 'app.RectangularModel',
+                    ports: {
+                        groups: {
+                            in: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'left', args: { y: 0 } }
+                                },
+                                position: { name: 'left' }
+                            },
+                            out: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'right', args: { y: 0 } }
+                                },
+                                position: { name: 'right' }
+                            }
+                        },
+                        items: [
+                            {
+                                id: 'in1',
+                                group: 'in',
+                                attrs: { '.port-label': { text: 'in1' } }
+                            },
+                            {
+                                id: 'in2',
+                                group: 'in',
+                                attrs: { '.port-label': { text: 'in2' } }
+                            },
+                            {
+                                id: 'out1',
+                                group: 'out',
+                                attrs: { '.port-label': { text: 'out1' } }
+                            }
+                        ]
+                    },
+                    inPorts: ['in1', 'in2'],
+                    outPorts: ['out1'],
+                    size: { width: 90, height: 60 },
+                    position: { x: 380, y: 370 },
+                    angle: 0,
+                    allowOrthogonalResize: false,
+                    id: 'f42d62ad-26e9-4268-bcde-1e8fffd042ac',
+                    z: 4,
+                    attrs: {
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        },
+                        '.label': {
+                            text: '3',
+                            'ref-y': 0.5,
+                            'font-size': 20,
+                            fill: '#222138',
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'stroke-width': 0,
+                            'y-alignment': 'middle'
+                        },
+                        '.body': {
+                            stroke: '#ffd600',
+                            fill: 'transparent',
+                            rx: 2,
+                            ry: 2,
+                            'stroke-width': 2,
+                            'stroke-dasharray': '0'
+                        }
+                    }
+                },
+                {
+                    type: 'fsa.StartState',
+                    size: { width: 60, height: 60 },
+                    position: { x: 69, y: 330 },
+                    angle: 0,
+                    preserveAspectRatio: true,
+                    id: '1b80eccf-7ec3-4082-b8f5-521a9cc65440',
+                    z: 5,
+                    attrs: {
+                        circle: {
+                            fill: '#ffd600',
+                            width: 50,
+                            height: 30,
+                            'stroke-width': 0
+                        },
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        },
+                        text: {
+                            text: 'startState',
+                            fill: '#000',
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'font-size': 20,
+                            'stroke-width': 0
+                        }
+                    }
+                },
+                {
+                    type: 'basic.Rect',
+                    position: { x: 214.9999999999978, y: 170.00000000000006 },
+                    size: { width: 20, height: 459.9999999999999 },
+                    angle: 0,
+                    id: '92adcaa2-57c1-446a-8195-6bed7bdbe534',
+                    z: 6,
+                    attrs: {
+                        rect: {
+                            fill: 'transparent',
+                            stroke: '#ffd600',
+                            width: 50,
+                            height: 30,
+                            rx: 2,
+                            ry: 2,
+                            'stroke-width': 2,
+                            'stroke-dasharray': '0'
+                        },
+                        text: {
+                            fill: '#000',
+                            'font-size': 20,
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'stroke-width': 0
+                        },
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        }
+                    }
+                },
+                {
+                    type: 'basic.Rect',
+                    position: { x: 590.9999999999931, y: 170.00000000000003 },
+                    size: { width: 20, height: 459.99999999999994 },
+                    angle: 0,
+                    id: '84dacc01-545b-483d-aca4-9f9c840f0dd5',
+                    z: 8,
+                    attrs: {
+                        rect: {
+                            fill: 'transparent',
+                            stroke: '#ffd600',
+                            width: 50,
+                            height: 30,
+                            rx: 2,
+                            ry: 2,
+                            'stroke-width': 2,
+                            'stroke-dasharray': '0'
+                        },
+                        text: {
+                            fill: '#000',
+                            'font-size': 20,
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'stroke-width': 0
+                        },
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        }
+                    }
+                },
+                {
+                    type: 'app.RectangularModel',
+                    ports: {
+                        groups: {
+                            in: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'left', args: { y: 0 } }
+                                },
+                                position: { name: 'left' }
+                            },
+                            out: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'right', args: { y: 0 } }
+                                },
+                                position: { name: 'right' }
+                            }
+                        },
+                        items: [
+                            {
+                                id: 'in1',
+                                group: 'in',
+                                attrs: { '.port-label': { text: 'in1' } }
+                            },
+                            {
+                                id: 'out1',
+                                group: 'out',
+                                attrs: { '.port-label': { text: 'out1' } }
+                            }
+                        ]
+                    },
+                    inPorts: ['in1'],
+                    outPorts: ['out1'],
+                    size: { width: 90, height: 60 },
+                    position: { x: 380, y: 570 },
+                    angle: 0,
+                    allowOrthogonalResize: false,
+                    id: '16cbcee6-93db-41c3-a631-c576c110a86c',
+                    z: 9,
+                    attrs: {
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        },
+                        '.label': {
+                            text: '4',
+                            'ref-y': 0.5,
+                            'font-size': 20,
+                            fill: '#222138',
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'stroke-width': 0,
+                            'y-alignment': 'middle'
+                        },
+                        '.body': {
+                            stroke: '#ffd600',
+                            fill: 'transparent',
+                            rx: 2,
+                            ry: 2,
+                            'stroke-width': 2,
+                            'stroke-dasharray': '0'
+                        }
+                    }
+                },
+                {
+                    type: 'fsa.EndState',
+                    size: { width: 60, height: 60 },
+                    position: { x: 1265, y: 370 },
+                    angle: 0,
+                    preserveAspectRatio: true,
+                    id: 'eb86335b-5937-420c-a83e-e23c2a805920',
+                    z: 10,
+                    attrs: {
+                        '.outer': {
+                            fill: 'transparent',
+                            stroke: '#ffd600',
+                            'stroke-width': 2,
+                            'stroke-dasharray': '0'
+                        },
+                        '.inner': { fill: '#ffff52', stroke: 'transparent' },
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        },
+                        text: {
+                            text: 'endState',
+                            fill: '#000',
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'font-size': 20,
+                            'stroke-width': 0
+                        }
+                    }
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: { id: '1b80eccf-7ec3-4082-b8f5-521a9cc65440' },
+                    target: { id: '92adcaa2-57c1-446a-8195-6bed7bdbe534' },
+                    id: 'cf5d06d1-fda0-40dd-8fec-a4c64afd6bb9',
+                    z: 11,
+                    attrs: {}
+                },
+                {
+                    type: 'app.RectangularModel',
+                    ports: {
+                        groups: {
+                            in: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'left', args: { y: 0 } }
+                                },
+                                position: { name: 'left' }
+                            },
+                            out: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'right', args: { y: 0 } }
+                                },
+                                position: { name: 'right' }
+                            }
+                        },
+                        items: [
+                            {
+                                id: 'in1',
+                                group: 'in',
+                                attrs: { '.port-label': { text: 'in1' } }
+                            },
+                            {
+                                id: 'out1',
+                                group: 'out',
+                                attrs: { '.port-label': { text: 'out1' } }
+                            }
+                        ]
+                    },
+                    inPorts: ['in1'],
+                    outPorts: ['out1'],
+                    size: { width: 90, height: 60 },
+                    position: { x: 380, y: 170.00000000000006 },
+                    angle: 0,
+                    allowOrthogonalResize: false,
+                    id: '88504fd4-dfb4-4e7b-a6d6-21266e05faa0',
+                    z: 12,
+                    attrs: {
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        },
+                        '.label': {
+                            text: '4',
+                            'ref-y': 0.5,
+                            'font-size': 20,
+                            fill: '#222138',
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'stroke-width': 0,
+                            'y-alignment': 'middle'
+                        },
+                        '.body': {
+                            stroke: '#ffd600',
+                            fill: 'transparent',
+                            rx: 2,
+                            ry: 2,
+                            'stroke-width': 2,
+                            'stroke-dasharray': '0'
+                        }
+                    }
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: { id: '92adcaa2-57c1-446a-8195-6bed7bdbe534' },
+                    target: {
+                        id: '88504fd4-dfb4-4e7b-a6d6-21266e05faa0',
+                        port: 'in1',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+                    },
+                    id: 'bd6a3e65-e9c5-4a6f-9469-1017a46818d2',
+                    z: 13,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: { id: '92adcaa2-57c1-446a-8195-6bed7bdbe534' },
+                    target: {
+                        id: 'df79d595-360a-40f0-b86c-4d12c656747e',
+                        port: 'in1',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+                    },
+                    id: 'bca80e62-eed3-484f-9f01-54a6c78de304',
+                    z: 14,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: { id: '92adcaa2-57c1-446a-8195-6bed7bdbe534' },
+                    target: {
+                        id: 'f42d62ad-26e9-4268-bcde-1e8fffd042ac',
+                        port: 'in1',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+                    },
+                    id: 'd434e697-0010-40b5-a194-2b1ca40dec73',
+                    z: 15,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: { id: '92adcaa2-57c1-446a-8195-6bed7bdbe534' },
+                    target: {
+                        id: 'f42d62ad-26e9-4268-bcde-1e8fffd042ac',
+                        port: 'in2',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)'
+                    },
+                    id: '5ae7c96a-2e3d-4ad1-a8c2-637e85c38b78',
+                    z: 16,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: { id: '92adcaa2-57c1-446a-8195-6bed7bdbe534' },
+                    target: {
+                        id: '944987ef-4375-4f44-aae1-d13e716372e8',
+                        port: 'in1',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+                    },
+                    id: 'ba6409cf-082f-4c5f-a81c-d31ff7f1f76d',
+                    z: 17,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: { id: '92adcaa2-57c1-446a-8195-6bed7bdbe534' },
+                    target: {
+                        id: '16cbcee6-93db-41c3-a631-c576c110a86c',
+                        port: 'in1',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+                    },
+                    id: 'c7e9129d-48d0-48d3-a8a3-51811a9f0438',
+                    z: 18,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: {
+                        id: '88504fd4-dfb4-4e7b-a6d6-21266e05faa0',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                        port: 'out1'
+                    },
+                    target: { id: '84dacc01-545b-483d-aca4-9f9c840f0dd5' },
+                    id: '2d5c7d34-bbbe-483e-9237-facf649abfb3',
+                    z: 19,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: {
+                        id: 'df79d595-360a-40f0-b86c-4d12c656747e',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                        port: 'out1'
+                    },
+                    target: { id: '84dacc01-545b-483d-aca4-9f9c840f0dd5' },
+                    id: '5c27f29d-dfc1-45f1-bae2-eff5dc5ede6f',
+                    z: 20,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: {
+                        id: 'f42d62ad-26e9-4268-bcde-1e8fffd042ac',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(5) > circle:nth-child(1)',
+                        port: 'out1'
+                    },
+                    target: { id: '84dacc01-545b-483d-aca4-9f9c840f0dd5' },
+                    id: '5c5d046f-15f7-47c4-913f-aaf79d3d509d',
+                    z: 21,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: {
+                        id: '944987ef-4375-4f44-aae1-d13e716372e8',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                        port: 'out1'
+                    },
+                    target: { id: '84dacc01-545b-483d-aca4-9f9c840f0dd5' },
+                    id: 'b907d5e4-0149-4454-a50d-6a23a2043f27',
+                    z: 22,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: {
+                        id: '16cbcee6-93db-41c3-a631-c576c110a86c',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                        port: 'out1'
+                    },
+                    target: { id: '84dacc01-545b-483d-aca4-9f9c840f0dd5' },
+                    id: 'b55e51d0-0c1a-432c-aacf-c66d1559d1d1',
+                    z: 23,
+                    attrs: {}
+                },
+                {
+                    type: 'erd.WeakEntity',
+                    size: { width: 90, height: 60 },
+                    position: { x: 882, y: 370 },
+                    angle: 0,
+                    allowOrthogonalResize: false,
+                    id: 'ff360b81-af70-478c-9114-394a1c591a07',
+                    z: 24,
+                    attrs: {
+                        '.inner': {
+                            fill: 'transparent',
+                            stroke: '#ffd600',
+                            points: '140,0 140,60 20,60 20,0'
+                        },
+                        text: {
+                            text: 'c728b108-595d-4b7c-bb7c-462de7e3f2b3',
+                            'font-family': 'Roboto Condensed',
+                            'font-size': 20,
+                            fill: '#222138',
+                            'font-weight': 'Normal',
+                            'stroke-width': 1
+                        },
+                        '.outer': {
+                            fill: 'transparent',
+                            stroke: '#ffd600',
+                            points: '160,0 160,60 0,60 0,0'
+                        }
+                    }
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: { id: '84dacc01-545b-483d-aca4-9f9c840f0dd5' },
+                    target: { id: 'ff360b81-af70-478c-9114-394a1c591a07' },
+                    id: '9ba28e93-0e9f-4d42-b170-6907a89764bf',
+                    z: 25,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: { id: 'ff360b81-af70-478c-9114-394a1c591a07' },
+                    target: { id: 'eb86335b-5937-420c-a83e-e23c2a805920' },
+                    id: 'b11e1e2b-f56f-4ea7-bc51-d4c4a1ddb934',
+                    z: 26,
+                    attrs: {}
+                },
+                {
+                    type: 'fsa.StartState',
+                    size: { width: 60, height: 60 },
+                    position: { x: 69, y: 410 },
+                    angle: 0,
+                    preserveAspectRatio: true,
+                    id: '84a89074-f706-45ec-ae09-6909d2b6517b',
+                    z: 27,
+                    attrs: {
+                        circle: {
+                            fill: '#ffd600',
+                            width: 50,
+                            height: 30,
+                            'stroke-width': 0
+                        },
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        },
+                        text: {
+                            text: 'startState',
+                            fill: '#222138',
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'font-size': 20,
+                            'stroke-width': 0
+                        }
+                    }
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: { id: '84a89074-f706-45ec-ae09-6909d2b6517b' },
+                    target: { id: '92adcaa2-57c1-446a-8195-6bed7bdbe534' },
+                    id: '8a688fa6-9cc7-4d47-8ba6-b5fc48ec79ac',
+                    z: 28,
+                    attrs: {}
+                }
+            ],
+            uuid: '4f19ec15-c5bd-4bef-bba0-1eb8f010080a',
+            Name: 'asd',
+            Operations: [
+                {
+                    OperationId: '2',
+                    OperationName: 'PlayVideo',
+                    Messages: [
+                        { MessageId: 'PlayMessage', ContentExample: {} }
+                    ],
+                    OperationDependency: 'Verify',
+                    Description:
+                        'Plays video file on verified location stored in [path] variable',
+                    inPorts: ['in'],
+                    outPorts: ['out']
+                },
+                {
+                    OperationId: '3',
+                    OperationName: 'PauseVideo',
+                    Messages: [
+                        { MessageId: 'PauseMessage', ContentExample: {} }
+                    ],
+                    OperationDependency: 'PlayVideo',
+                    Description: 'Pause the currently playing video',
+                    inPorts: ['in', 'in'],
+                    outPorts: ['out']
+                },
+                {
+                    OperationId: '4',
+                    OperationName: 'StopVideo',
+                    Messages: [
+                        { MessageId: 'StopMessage', ContentExample: {} }
+                    ],
+                    OperationDependency: 'PlayVideo',
+                    Description: 'Stops the currently playing video',
+                    inPorts: ['in'],
+                    outPorts: ['out']
+                }
+            ],
+            Workflow: [
+                {
+                    cells: [
+                        {
+                            type: 'app.RectangularModel',
+                            ports: {
+                                groups: {
+                                    in: {
+                                        markup:
+                                            '<circle class="port-body" r="10"/>',
+                                        attrs: {
+                                            '.port-body': {
+                                                fill: '#61549C',
+                                                strokeWidth: 0,
+                                                stroke: '#000',
+                                                r: 10,
+                                                magnet: true
+                                            },
+                                            '.port-label': {
+                                                fontSize: 11,
+                                                fill: '#61549C',
+                                                fontWeight: 800
+                                            }
+                                        },
+                                        label: {
+                                            position: {
+                                                name: 'left',
+                                                args: { y: 0 }
+                                            }
+                                        },
+                                        position: { name: 'left' }
+                                    },
+                                    out: {
+                                        markup:
+                                            '<circle class="port-body" r="10"/>',
+                                        attrs: {
+                                            '.port-body': {
+                                                fill: '#61549C',
+                                                strokeWidth: 0,
+                                                stroke: '#000',
+                                                r: 10,
+                                                magnet: true
+                                            },
+                                            '.port-label': {
+                                                fontSize: 11,
+                                                fill: '#61549C',
+                                                fontWeight: 800
+                                            }
+                                        },
+                                        label: {
+                                            position: {
+                                                name: 'right',
+                                                args: { y: 0 }
+                                            }
+                                        },
+                                        position: { name: 'right' }
+                                    }
+                                },
+                                items: [
+                                    {
+                                        id: 'in1',
+                                        group: 'in',
+                                        attrs: {
+                                            '.port-label': { text: 'in1' }
+                                        }
+                                    },
+                                    {
+                                        id: 'out1',
+                                        group: 'out',
+                                        attrs: {
+                                            '.port-label': { text: 'out1' }
+                                        }
+                                    }
+                                ]
+                            },
+                            inPorts: ['in1'],
+                            outPorts: ['out1'],
+                            size: { width: 90, height: 60 },
+                            position: { x: 380, y: 270 },
+                            angle: 0,
+                            allowOrthogonalResize: false,
+                            id: 'df79d595-360a-40f0-b86c-4d12c656747e',
+                            z: 2,
+                            attrs: {
+                                '.': {
+                                    'data-tooltip-position': 'left',
+                                    'data-tooltip-position-selector':
+                                        '.joint-stencil'
+                                },
+                                '.label': {
+                                    text: '2',
+                                    'ref-y': 0.5,
+                                    'font-size': 20,
+                                    fill: '#222138',
+                                    'font-family': 'Roboto Condensed',
+                                    'font-weight': 'Normal',
+                                    'stroke-width': 0,
+                                    'y-alignment': 'middle'
+                                },
+                                '.body': {
+                                    stroke: '#ffd600',
+                                    fill: 'transparent',
+                                    rx: 2,
+                                    ry: 2,
+                                    'stroke-width': 2,
+                                    'stroke-dasharray': '0'
+                                }
+                            }
+                        },
+                        {
+                            type: 'app.RectangularModel',
+                            ports: {
+                                groups: {
+                                    in: {
+                                        markup:
+                                            '<circle class="port-body" r="10"/>',
+                                        attrs: {
+                                            '.port-body': {
+                                                fill: '#61549C',
+                                                strokeWidth: 0,
+                                                stroke: '#000',
+                                                r: 10,
+                                                magnet: true
+                                            },
+                                            '.port-label': {
+                                                fontSize: 11,
+                                                fill: '#61549C',
+                                                fontWeight: 800
+                                            }
+                                        },
+                                        label: {
+                                            position: {
+                                                name: 'left',
+                                                args: { y: 0 }
+                                            }
+                                        },
+                                        position: { name: 'left' }
+                                    },
+                                    out: {
+                                        markup:
+                                            '<circle class="port-body" r="10"/>',
+                                        attrs: {
+                                            '.port-body': {
+                                                fill: '#61549C',
+                                                strokeWidth: 0,
+                                                stroke: '#000',
+                                                r: 10,
+                                                magnet: true
+                                            },
+                                            '.port-label': {
+                                                fontSize: 11,
+                                                fill: '#61549C',
+                                                fontWeight: 800
+                                            }
+                                        },
+                                        label: {
+                                            position: {
+                                                name: 'right',
+                                                args: { y: 0 }
+                                            }
+                                        },
+                                        position: { name: 'right' }
+                                    }
+                                },
+                                items: [
+                                    {
+                                        id: 'in1',
+                                        group: 'in',
+                                        attrs: {
+                                            '.port-label': { text: 'in1' }
+                                        }
+                                    },
+                                    {
+                                        id: 'out1',
+                                        group: 'out',
+                                        attrs: {
+                                            '.port-label': { text: 'out1' }
+                                        }
+                                    }
+                                ]
+                            },
+                            inPorts: ['in1'],
+                            outPorts: ['out1'],
+                            size: { width: 90, height: 60 },
+                            position: { x: 380, y: 470 },
+                            angle: 0,
+                            allowOrthogonalResize: false,
+                            id: '944987ef-4375-4f44-aae1-d13e716372e8',
+                            z: 3,
+                            attrs: {
+                                '.': {
+                                    'data-tooltip-position': 'left',
+                                    'data-tooltip-position-selector':
+                                        '.joint-stencil'
+                                },
+                                '.label': {
+                                    text: '2',
+                                    'ref-y': 0.5,
+                                    'font-size': 20,
+                                    fill: '#222138',
+                                    'font-family': 'Roboto Condensed',
+                                    'font-weight': 'Normal',
+                                    'stroke-width': 0,
+                                    'y-alignment': 'middle'
+                                },
+                                '.body': {
+                                    stroke: '#ffd600',
+                                    fill: 'transparent',
+                                    rx: 2,
+                                    ry: 2,
+                                    'stroke-width': 2,
+                                    'stroke-dasharray': '0'
+                                }
+                            }
+                        },
+                        {
+                            type: 'app.RectangularModel',
+                            ports: {
+                                groups: {
+                                    in: {
+                                        markup:
+                                            '<circle class="port-body" r="10"/>',
+                                        attrs: {
+                                            '.port-body': {
+                                                fill: '#61549C',
+                                                strokeWidth: 0,
+                                                stroke: '#000',
+                                                r: 10,
+                                                magnet: true
+                                            },
+                                            '.port-label': {
+                                                fontSize: 11,
+                                                fill: '#61549C',
+                                                fontWeight: 800
+                                            }
+                                        },
+                                        label: {
+                                            position: {
+                                                name: 'left',
+                                                args: { y: 0 }
+                                            }
+                                        },
+                                        position: { name: 'left' }
+                                    },
+                                    out: {
+                                        markup:
+                                            '<circle class="port-body" r="10"/>',
+                                        attrs: {
+                                            '.port-body': {
+                                                fill: '#61549C',
+                                                strokeWidth: 0,
+                                                stroke: '#000',
+                                                r: 10,
+                                                magnet: true
+                                            },
+                                            '.port-label': {
+                                                fontSize: 11,
+                                                fill: '#61549C',
+                                                fontWeight: 800
+                                            }
+                                        },
+                                        label: {
+                                            position: {
+                                                name: 'right',
+                                                args: { y: 0 }
+                                            }
+                                        },
+                                        position: { name: 'right' }
+                                    }
+                                },
+                                items: [
+                                    {
+                                        id: 'in1',
+                                        group: 'in',
+                                        attrs: {
+                                            '.port-label': { text: 'in1' }
+                                        }
+                                    },
+                                    {
+                                        id: 'in2',
+                                        group: 'in',
+                                        attrs: {
+                                            '.port-label': { text: 'in2' }
+                                        }
+                                    },
+                                    {
+                                        id: 'out1',
+                                        group: 'out',
+                                        attrs: {
+                                            '.port-label': { text: 'out1' }
+                                        }
+                                    }
+                                ]
+                            },
+                            inPorts: ['in1', 'in2'],
+                            outPorts: ['out1'],
+                            size: { width: 90, height: 60 },
+                            position: { x: 380, y: 370 },
+                            angle: 0,
+                            allowOrthogonalResize: false,
+                            id: 'f42d62ad-26e9-4268-bcde-1e8fffd042ac',
+                            z: 4,
+                            attrs: {
+                                '.': {
+                                    'data-tooltip-position': 'left',
+                                    'data-tooltip-position-selector':
+                                        '.joint-stencil'
+                                },
+                                '.label': {
+                                    text: '3',
+                                    'ref-y': 0.5,
+                                    'font-size': 20,
+                                    fill: '#222138',
+                                    'font-family': 'Roboto Condensed',
+                                    'font-weight': 'Normal',
+                                    'stroke-width': 0,
+                                    'y-alignment': 'middle'
+                                },
+                                '.body': {
+                                    stroke: '#ffd600',
+                                    fill: 'transparent',
+                                    rx: 2,
+                                    ry: 2,
+                                    'stroke-width': 2,
+                                    'stroke-dasharray': '0'
+                                }
+                            }
+                        },
+                        {
+                            type: 'fsa.StartState',
+                            size: { width: 60, height: 60 },
+                            position: { x: 69, y: 370 },
+                            angle: 0,
+                            preserveAspectRatio: true,
+                            id: '1b80eccf-7ec3-4082-b8f5-521a9cc65440',
+                            z: 5,
+                            attrs: {
+                                circle: {
+                                    fill: '#ffd600',
+                                    width: 50,
+                                    height: 30,
+                                    'stroke-width': 0
+                                },
+                                '.': {
+                                    'data-tooltip-position': 'left',
+                                    'data-tooltip-position-selector':
+                                        '.joint-stencil'
+                                },
+                                text: {
+                                    text: 'startState',
+                                    fill: '#000',
+                                    'font-family': 'Roboto Condensed',
+                                    'font-weight': 'Normal',
+                                    'font-size': 20,
+                                    'stroke-width': 0
+                                }
+                            }
+                        },
+                        {
+                            type: 'basic.Rect',
+                            position: {
+                                x: 214.9999999999978,
+                                y: 170.00000000000006
+                            },
+                            size: { width: 20, height: 459.9999999999999 },
+                            angle: 0,
+                            id: '92adcaa2-57c1-446a-8195-6bed7bdbe534',
+                            z: 6,
+                            attrs: {
+                                rect: {
+                                    fill: 'transparent',
+                                    stroke: '#ffd600',
+                                    width: 50,
+                                    height: 30,
+                                    rx: 2,
+                                    ry: 2,
+                                    'stroke-width': 2,
+                                    'stroke-dasharray': '0'
+                                },
+                                text: {
+                                    fill: '#000',
+                                    'font-size': 20,
+                                    'font-family': 'Roboto Condensed',
+                                    'font-weight': 'Normal',
+                                    'stroke-width': 0
+                                },
+                                '.': {
+                                    'data-tooltip-position': 'left',
+                                    'data-tooltip-position-selector':
+                                        '.joint-stencil'
+                                }
+                            }
+                        },
+                        {
+                            type: 'basic.Rect',
+                            position: {
+                                x: 590.9999999999931,
+                                y: 170.00000000000003
+                            },
+                            size: { width: 20, height: 459.99999999999994 },
+                            angle: 0,
+                            id: '84dacc01-545b-483d-aca4-9f9c840f0dd5',
+                            z: 8,
+                            attrs: {
+                                rect: {
+                                    fill: 'transparent',
+                                    stroke: '#ffd600',
+                                    width: 50,
+                                    height: 30,
+                                    rx: 2,
+                                    ry: 2,
+                                    'stroke-width': 2,
+                                    'stroke-dasharray': '0'
+                                },
+                                text: {
+                                    fill: '#000',
+                                    'font-size': 20,
+                                    'font-family': 'Roboto Condensed',
+                                    'font-weight': 'Normal',
+                                    'stroke-width': 0
+                                },
+                                '.': {
+                                    'data-tooltip-position': 'left',
+                                    'data-tooltip-position-selector':
+                                        '.joint-stencil'
+                                }
+                            }
+                        },
+                        {
+                            type: 'app.RectangularModel',
+                            ports: {
+                                groups: {
+                                    in: {
+                                        markup:
+                                            '<circle class="port-body" r="10"/>',
+                                        attrs: {
+                                            '.port-body': {
+                                                fill: '#61549C',
+                                                strokeWidth: 0,
+                                                stroke: '#000',
+                                                r: 10,
+                                                magnet: true
+                                            },
+                                            '.port-label': {
+                                                fontSize: 11,
+                                                fill: '#61549C',
+                                                fontWeight: 800
+                                            }
+                                        },
+                                        label: {
+                                            position: {
+                                                name: 'left',
+                                                args: { y: 0 }
+                                            }
+                                        },
+                                        position: { name: 'left' }
+                                    },
+                                    out: {
+                                        markup:
+                                            '<circle class="port-body" r="10"/>',
+                                        attrs: {
+                                            '.port-body': {
+                                                fill: '#61549C',
+                                                strokeWidth: 0,
+                                                stroke: '#000',
+                                                r: 10,
+                                                magnet: true
+                                            },
+                                            '.port-label': {
+                                                fontSize: 11,
+                                                fill: '#61549C',
+                                                fontWeight: 800
+                                            }
+                                        },
+                                        label: {
+                                            position: {
+                                                name: 'right',
+                                                args: { y: 0 }
+                                            }
+                                        },
+                                        position: { name: 'right' }
+                                    }
+                                },
+                                items: [
+                                    {
+                                        id: 'in1',
+                                        group: 'in',
+                                        attrs: {
+                                            '.port-label': { text: 'in1' }
+                                        }
+                                    },
+                                    {
+                                        id: 'out1',
+                                        group: 'out',
+                                        attrs: {
+                                            '.port-label': { text: 'out1' }
+                                        }
+                                    }
+                                ]
+                            },
+                            inPorts: ['in1'],
+                            outPorts: ['out1'],
+                            size: { width: 90, height: 60 },
+                            position: { x: 380, y: 570 },
+                            angle: 0,
+                            allowOrthogonalResize: false,
+                            id: '16cbcee6-93db-41c3-a631-c576c110a86c',
+                            z: 9,
+                            attrs: {
+                                '.': {
+                                    'data-tooltip-position': 'left',
+                                    'data-tooltip-position-selector':
+                                        '.joint-stencil'
+                                },
+                                '.label': {
+                                    text: '4',
+                                    'ref-y': 0.5,
+                                    'font-size': 20,
+                                    fill: '#222138',
+                                    'font-family': 'Roboto Condensed',
+                                    'font-weight': 'Normal',
+                                    'stroke-width': 0,
+                                    'y-alignment': 'middle'
+                                },
+                                '.body': {
+                                    stroke: '#ffd600',
+                                    fill: 'transparent',
+                                    rx: 2,
+                                    ry: 2,
+                                    'stroke-width': 2,
+                                    'stroke-dasharray': '0'
+                                }
+                            }
+                        },
+                        {
+                            type: 'fsa.EndState',
+                            size: { width: 60, height: 60 },
+                            position: { x: 695, y: 370 },
+                            angle: 0,
+                            preserveAspectRatio: true,
+                            id: 'eb86335b-5937-420c-a83e-e23c2a805920',
+                            z: 10,
+                            attrs: {
+                                '.outer': {
+                                    fill: 'transparent',
+                                    stroke: '#ffd600',
+                                    'stroke-width': 2,
+                                    'stroke-dasharray': '0'
+                                },
+                                '.inner': {
+                                    fill: '#ffff52',
+                                    stroke: 'transparent'
+                                },
+                                '.': {
+                                    'data-tooltip-position': 'left',
+                                    'data-tooltip-position-selector':
+                                        '.joint-stencil'
+                                },
+                                text: {
+                                    text: 'endState',
+                                    fill: '#000',
+                                    'font-family': 'Roboto Condensed',
+                                    'font-weight': 'Normal',
+                                    'font-size': 20,
+                                    'stroke-width': 0
+                                }
+                            }
+                        },
+                        {
+                            type: 'app.Link',
+                            router: { name: 'normal' },
+                            connector: { name: 'normal' },
+                            source: {
+                                id: '1b80eccf-7ec3-4082-b8f5-521a9cc65440'
+                            },
+                            target: {
+                                id: '92adcaa2-57c1-446a-8195-6bed7bdbe534'
+                            },
+                            id: 'cf5d06d1-fda0-40dd-8fec-a4c64afd6bb9',
+                            z: 11,
+                            attrs: {}
+                        },
+                        {
+                            type: 'app.RectangularModel',
+                            ports: {
+                                groups: {
+                                    in: {
+                                        markup:
+                                            '<circle class="port-body" r="10"/>',
+                                        attrs: {
+                                            '.port-body': {
+                                                fill: '#61549C',
+                                                strokeWidth: 0,
+                                                stroke: '#000',
+                                                r: 10,
+                                                magnet: true
+                                            },
+                                            '.port-label': {
+                                                fontSize: 11,
+                                                fill: '#61549C',
+                                                fontWeight: 800
+                                            }
+                                        },
+                                        label: {
+                                            position: {
+                                                name: 'left',
+                                                args: { y: 0 }
+                                            }
+                                        },
+                                        position: { name: 'left' }
+                                    },
+                                    out: {
+                                        markup:
+                                            '<circle class="port-body" r="10"/>',
+                                        attrs: {
+                                            '.port-body': {
+                                                fill: '#61549C',
+                                                strokeWidth: 0,
+                                                stroke: '#000',
+                                                r: 10,
+                                                magnet: true
+                                            },
+                                            '.port-label': {
+                                                fontSize: 11,
+                                                fill: '#61549C',
+                                                fontWeight: 800
+                                            }
+                                        },
+                                        label: {
+                                            position: {
+                                                name: 'right',
+                                                args: { y: 0 }
+                                            }
+                                        },
+                                        position: { name: 'right' }
+                                    }
+                                },
+                                items: [
+                                    {
+                                        id: 'in1',
+                                        group: 'in',
+                                        attrs: {
+                                            '.port-label': { text: 'in1' }
+                                        }
+                                    },
+                                    {
+                                        id: 'out1',
+                                        group: 'out',
+                                        attrs: {
+                                            '.port-label': { text: 'out1' }
+                                        }
+                                    }
+                                ]
+                            },
+                            inPorts: ['in1'],
+                            outPorts: ['out1'],
+                            size: { width: 90, height: 60 },
+                            position: { x: 380, y: 170.00000000000006 },
+                            angle: 0,
+                            allowOrthogonalResize: false,
+                            id: '88504fd4-dfb4-4e7b-a6d6-21266e05faa0',
+                            z: 12,
+                            attrs: {
+                                '.': {
+                                    'data-tooltip-position': 'left',
+                                    'data-tooltip-position-selector':
+                                        '.joint-stencil'
+                                },
+                                '.label': {
+                                    text: '4',
+                                    'ref-y': 0.5,
+                                    'font-size': 20,
+                                    fill: '#222138',
+                                    'font-family': 'Roboto Condensed',
+                                    'font-weight': 'Normal',
+                                    'stroke-width': 0,
+                                    'y-alignment': 'middle'
+                                },
+                                '.body': {
+                                    stroke: '#ffd600',
+                                    fill: 'transparent',
+                                    rx: 2,
+                                    ry: 2,
+                                    'stroke-width': 2,
+                                    'stroke-dasharray': '0'
+                                }
+                            }
+                        },
+                        {
+                            type: 'app.Link',
+                            router: { name: 'normal' },
+                            connector: { name: 'normal' },
+                            source: {
+                                id: '92adcaa2-57c1-446a-8195-6bed7bdbe534'
+                            },
+                            target: {
+                                id: '88504fd4-dfb4-4e7b-a6d6-21266e05faa0',
+                                port: 'in1',
+                                selector:
+                                    'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+                            },
+                            id: 'bd6a3e65-e9c5-4a6f-9469-1017a46818d2',
+                            z: 13,
+                            attrs: {}
+                        },
+                        {
+                            type: 'app.Link',
+                            router: { name: 'normal' },
+                            connector: { name: 'normal' },
+                            source: {
+                                id: '92adcaa2-57c1-446a-8195-6bed7bdbe534'
+                            },
+                            target: {
+                                id: 'df79d595-360a-40f0-b86c-4d12c656747e',
+                                port: 'in1',
+                                selector:
+                                    'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+                            },
+                            id: 'bca80e62-eed3-484f-9f01-54a6c78de304',
+                            z: 14,
+                            attrs: {}
+                        },
+                        {
+                            type: 'app.Link',
+                            router: { name: 'normal' },
+                            connector: { name: 'normal' },
+                            source: {
+                                id: '92adcaa2-57c1-446a-8195-6bed7bdbe534'
+                            },
+                            target: {
+                                id: 'f42d62ad-26e9-4268-bcde-1e8fffd042ac',
+                                port: 'in1',
+                                selector:
+                                    'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+                            },
+                            id: 'd434e697-0010-40b5-a194-2b1ca40dec73',
+                            z: 15,
+                            attrs: {}
+                        },
+                        {
+                            type: 'app.Link',
+                            router: { name: 'normal' },
+                            connector: { name: 'normal' },
+                            source: {
+                                id: '92adcaa2-57c1-446a-8195-6bed7bdbe534'
+                            },
+                            target: {
+                                id: 'f42d62ad-26e9-4268-bcde-1e8fffd042ac',
+                                port: 'in2',
+                                selector:
+                                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)'
+                            },
+                            id: '5ae7c96a-2e3d-4ad1-a8c2-637e85c38b78',
+                            z: 16,
+                            attrs: {}
+                        },
+                        {
+                            type: 'app.Link',
+                            router: { name: 'normal' },
+                            connector: { name: 'normal' },
+                            source: {
+                                id: '92adcaa2-57c1-446a-8195-6bed7bdbe534'
+                            },
+                            target: {
+                                id: '944987ef-4375-4f44-aae1-d13e716372e8',
+                                port: 'in1',
+                                selector:
+                                    'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+                            },
+                            id: 'ba6409cf-082f-4c5f-a81c-d31ff7f1f76d',
+                            z: 17,
+                            attrs: {}
+                        },
+                        {
+                            type: 'app.Link',
+                            router: { name: 'normal' },
+                            connector: { name: 'normal' },
+                            source: {
+                                id: '92adcaa2-57c1-446a-8195-6bed7bdbe534'
+                            },
+                            target: {
+                                id: '16cbcee6-93db-41c3-a631-c576c110a86c',
+                                port: 'in1',
+                                selector:
+                                    'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+                            },
+                            id: 'c7e9129d-48d0-48d3-a8a3-51811a9f0438',
+                            z: 18,
+                            attrs: {}
+                        },
+                        {
+                            type: 'app.Link',
+                            router: { name: 'normal' },
+                            connector: { name: 'normal' },
+                            source: {
+                                id: '88504fd4-dfb4-4e7b-a6d6-21266e05faa0',
+                                selector:
+                                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                                port: 'out1'
+                            },
+                            target: {
+                                id: '84dacc01-545b-483d-aca4-9f9c840f0dd5'
+                            },
+                            id: '2d5c7d34-bbbe-483e-9237-facf649abfb3',
+                            z: 19,
+                            attrs: {}
+                        },
+                        {
+                            type: 'app.Link',
+                            router: { name: 'normal' },
+                            connector: { name: 'normal' },
+                            source: {
+                                id: 'df79d595-360a-40f0-b86c-4d12c656747e',
+                                selector:
+                                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                                port: 'out1'
+                            },
+                            target: {
+                                id: '84dacc01-545b-483d-aca4-9f9c840f0dd5'
+                            },
+                            id: '5c27f29d-dfc1-45f1-bae2-eff5dc5ede6f',
+                            z: 20,
+                            attrs: {}
+                        },
+                        {
+                            type: 'app.Link',
+                            router: { name: 'normal' },
+                            connector: { name: 'normal' },
+                            source: {
+                                id: 'f42d62ad-26e9-4268-bcde-1e8fffd042ac',
+                                selector:
+                                    'g:nth-child(1) > g:nth-child(5) > circle:nth-child(1)',
+                                port: 'out1'
+                            },
+                            target: {
+                                id: '84dacc01-545b-483d-aca4-9f9c840f0dd5'
+                            },
+                            id: '5c5d046f-15f7-47c4-913f-aaf79d3d509d',
+                            z: 21,
+                            attrs: {}
+                        },
+                        {
+                            type: 'app.Link',
+                            router: { name: 'normal' },
+                            connector: { name: 'normal' },
+                            source: {
+                                id: '944987ef-4375-4f44-aae1-d13e716372e8',
+                                selector:
+                                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                                port: 'out1'
+                            },
+                            target: {
+                                id: '84dacc01-545b-483d-aca4-9f9c840f0dd5'
+                            },
+                            id: 'b907d5e4-0149-4454-a50d-6a23a2043f27',
+                            z: 22,
+                            attrs: {}
+                        },
+                        {
+                            type: 'app.Link',
+                            router: { name: 'normal' },
+                            connector: { name: 'normal' },
+                            source: {
+                                id: '16cbcee6-93db-41c3-a631-c576c110a86c',
+                                selector:
+                                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                                port: 'out1'
+                            },
+                            target: {
+                                id: '84dacc01-545b-483d-aca4-9f9c840f0dd5'
+                            },
+                            id: 'b55e51d0-0c1a-432c-aacf-c66d1559d1d1',
+                            z: 23,
+                            attrs: {}
+                        },
+                        {
+                            type: 'app.Link',
+                            router: { name: 'normal' },
+                            connector: { name: 'normal' },
+                            source: {
+                                id: '84dacc01-545b-483d-aca4-9f9c840f0dd5'
+                            },
+                            target: {
+                                id: 'eb86335b-5937-420c-a83e-e23c2a805920'
+                            },
+                            id: 'b73c0841-9cc6-4d76-b647-28b33cb94e81',
+                            z: 24,
+                            attrs: {}
+                        }
+                    ],
+                    uuid: 'c728b108-595d-4b7c-bb7c-462de7e3f2b3',
+                    Name: 'Name of the Workflow',
+                    Operations: [
+                        {
+                            OperationId: '2',
+                            OperationName: 'PlayVideo',
+                            Messages: [
+                                { MessageId: 'PlayMessage', ContentExample: {} }
+                            ],
+                            OperationDependency: 'Verify',
+                            Description:
+                                'Plays video file on verified location stored in [path] variable',
+                            inPorts: ['in'],
+                            outPorts: ['out']
+                        },
+                        {
+                            OperationId: '3',
+                            OperationName: 'PauseVideo',
+                            Messages: [
+                                {
+                                    MessageId: 'PauseMessage',
+                                    ContentExample: {}
+                                }
+                            ],
+                            OperationDependency: 'PlayVideo',
+                            Description: 'Pause the currently playing video',
+                            inPorts: ['in', 'in'],
+                            outPorts: ['out']
+                        },
+                        {
+                            OperationId: '4',
+                            OperationName: 'StopVideo',
+                            Messages: [
+                                { MessageId: 'StopMessage', ContentExample: {} }
+                            ],
+                            OperationDependency: 'PlayVideo',
+                            Description: 'Stops the currently playing video',
+                            inPorts: ['in'],
+                            outPorts: ['out']
+                        }
+                    ]
+                }
+            ]
+        };
+
+        const jsonString6: any = {
+            cells: [
+                {
+                    type: 'app.RectangularModel',
+                    ports: {
+                        groups: {
+                            in: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'left', args: { y: 0 } }
+                                },
+                                position: { name: 'left' }
+                            },
+                            out: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'right', args: { y: 0 } }
+                                },
+                                position: { name: 'right' }
+                            }
+                        },
+                        items: [
+                            {
+                                id: 'in1',
+                                group: 'in',
+                                attrs: { '.port-label': { text: 'in1' } }
+                            },
+                            {
+                                id: 'out1',
+                                group: 'out',
+                                attrs: { '.port-label': { text: 'out1' } }
+                            }
+                        ]
+                    },
+                    inPorts: ['in1'],
+                    outPorts: ['out1'],
+                    size: { width: 90, height: 60 },
+                    position: { x: 380, y: 270 },
+                    angle: 0,
+                    allowOrthogonalResize: false,
+                    id: 'df79d595-360a-40f0-b86c-4d12c656747e',
+                    z: 2,
+                    attrs: {
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        },
+                        '.label': {
+                            text: '2',
+                            'ref-y': 0.5,
+                            'font-size': 20,
+                            fill: '#222138',
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'stroke-width': 0,
+                            'y-alignment': 'middle'
+                        },
+                        '.body': {
+                            stroke: '#ffd600',
+                            fill: 'transparent',
+                            rx: 2,
+                            ry: 2,
+                            'stroke-width': 2,
+                            'stroke-dasharray': '0'
+                        }
+                    }
+                },
+                {
+                    type: 'app.RectangularModel',
+                    ports: {
+                        groups: {
+                            in: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'left', args: { y: 0 } }
+                                },
+                                position: { name: 'left' }
+                            },
+                            out: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'right', args: { y: 0 } }
+                                },
+                                position: { name: 'right' }
+                            }
+                        },
+                        items: [
+                            {
+                                id: 'in1',
+                                group: 'in',
+                                attrs: { '.port-label': { text: 'in1' } }
+                            },
+                            {
+                                id: 'out1',
+                                group: 'out',
+                                attrs: { '.port-label': { text: 'out1' } }
+                            }
+                        ]
+                    },
+                    inPorts: ['in1'],
+                    outPorts: ['out1'],
+                    size: { width: 90, height: 60 },
+                    position: { x: 380, y: 470 },
+                    angle: 0,
+                    allowOrthogonalResize: false,
+                    id: '944987ef-4375-4f44-aae1-d13e716372e8',
+                    z: 3,
+                    attrs: {
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        },
+                        '.label': {
+                            text: '2',
+                            'ref-y': 0.5,
+                            'font-size': 20,
+                            fill: '#222138',
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'stroke-width': 0,
+                            'y-alignment': 'middle'
+                        },
+                        '.body': {
+                            stroke: '#ffd600',
+                            fill: 'transparent',
+                            rx: 2,
+                            ry: 2,
+                            'stroke-width': 2,
+                            'stroke-dasharray': '0'
+                        }
+                    }
+                },
+                {
+                    type: 'app.RectangularModel',
+                    ports: {
+                        groups: {
+                            in: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'left', args: { y: 0 } }
+                                },
+                                position: { name: 'left' }
+                            },
+                            out: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'right', args: { y: 0 } }
+                                },
+                                position: { name: 'right' }
+                            }
+                        },
+                        items: [
+                            {
+                                id: 'in1',
+                                group: 'in',
+                                attrs: { '.port-label': { text: 'in1' } }
+                            },
+                            {
+                                id: 'in2',
+                                group: 'in',
+                                attrs: { '.port-label': { text: 'in2' } }
+                            },
+                            {
+                                id: 'out1',
+                                group: 'out',
+                                attrs: { '.port-label': { text: 'out1' } }
+                            }
+                        ]
+                    },
+                    inPorts: ['in1', 'in2'],
+                    outPorts: ['out1'],
+                    size: { width: 90, height: 60 },
+                    position: { x: 380, y: 370 },
+                    angle: 0,
+                    allowOrthogonalResize: false,
+                    id: 'f42d62ad-26e9-4268-bcde-1e8fffd042ac',
+                    z: 4,
+                    attrs: {
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        },
+                        '.label': {
+                            text: '3',
+                            'ref-y': 0.5,
+                            'font-size': 20,
+                            fill: '#222138',
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'stroke-width': 0,
+                            'y-alignment': 'middle'
+                        },
+                        '.body': {
+                            stroke: '#ffd600',
+                            fill: 'transparent',
+                            rx: 2,
+                            ry: 2,
+                            'stroke-width': 2,
+                            'stroke-dasharray': '0'
+                        }
+                    }
+                },
+                {
+                    type: 'fsa.StartState',
+                    size: { width: 60, height: 60 },
+                    position: { x: 69, y: 370 },
+                    angle: 0,
+                    preserveAspectRatio: true,
+                    id: '1b80eccf-7ec3-4082-b8f5-521a9cc65440',
+                    z: 5,
+                    attrs: {
+                        circle: {
+                            fill: '#ffd600',
+                            width: 50,
+                            height: 30,
+                            'stroke-width': 0
+                        },
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        },
+                        text: {
+                            text: 'startState',
+                            fill: '#000',
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'font-size': 20,
+                            'stroke-width': 0
+                        }
+                    }
+                },
+                {
+                    type: 'basic.Rect',
+                    position: { x: 214.9999999999978, y: 170.00000000000006 },
+                    size: { width: 20, height: 459.9999999999999 },
+                    angle: 0,
+                    id: '92adcaa2-57c1-446a-8195-6bed7bdbe534',
+                    z: 6,
+                    attrs: {
+                        rect: {
+                            fill: 'transparent',
+                            stroke: '#ffd600',
+                            width: 50,
+                            height: 30,
+                            rx: 2,
+                            ry: 2,
+                            'stroke-width': 2,
+                            'stroke-dasharray': '0'
+                        },
+                        text: {
+                            fill: '#000',
+                            'font-size': 20,
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'stroke-width': 0
+                        },
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        }
+                    }
+                },
+                {
+                    type: 'basic.Rect',
+                    position: { x: 590.9999999999931, y: 170.00000000000003 },
+                    size: { width: 20, height: 459.99999999999994 },
+                    angle: 0,
+                    id: '84dacc01-545b-483d-aca4-9f9c840f0dd5',
+                    z: 8,
+                    attrs: {
+                        rect: {
+                            fill: 'transparent',
+                            stroke: '#ffd600',
+                            width: 50,
+                            height: 30,
+                            rx: 2,
+                            ry: 2,
+                            'stroke-width': 2,
+                            'stroke-dasharray': '0'
+                        },
+                        text: {
+                            fill: '#000',
+                            'font-size': 20,
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'stroke-width': 0
+                        },
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        }
+                    }
+                },
+                {
+                    type: 'app.RectangularModel',
+                    ports: {
+                        groups: {
+                            in: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'left', args: { y: 0 } }
+                                },
+                                position: { name: 'left' }
+                            },
+                            out: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'right', args: { y: 0 } }
+                                },
+                                position: { name: 'right' }
+                            }
+                        },
+                        items: [
+                            {
+                                id: 'in1',
+                                group: 'in',
+                                attrs: { '.port-label': { text: 'in1' } }
+                            },
+                            {
+                                id: 'out1',
+                                group: 'out',
+                                attrs: { '.port-label': { text: 'out1' } }
+                            }
+                        ]
+                    },
+                    inPorts: ['in1'],
+                    outPorts: ['out1'],
+                    size: { width: 90, height: 60 },
+                    position: { x: 380, y: 570 },
+                    angle: 0,
+                    allowOrthogonalResize: false,
+                    id: '16cbcee6-93db-41c3-a631-c576c110a86c',
+                    z: 9,
+                    attrs: {
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        },
+                        '.label': {
+                            text: '4',
+                            'ref-y': 0.5,
+                            'font-size': 20,
+                            fill: '#222138',
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'stroke-width': 0,
+                            'y-alignment': 'middle'
+                        },
+                        '.body': {
+                            stroke: '#ffd600',
+                            fill: 'transparent',
+                            rx: 2,
+                            ry: 2,
+                            'stroke-width': 2,
+                            'stroke-dasharray': '0'
+                        }
+                    }
+                },
+                {
+                    type: 'fsa.EndState',
+                    size: { width: 60, height: 60 },
+                    position: { x: 695, y: 370 },
+                    angle: 0,
+                    preserveAspectRatio: true,
+                    id: 'eb86335b-5937-420c-a83e-e23c2a805920',
+                    z: 10,
+                    attrs: {
+                        '.outer': {
+                            fill: 'transparent',
+                            stroke: '#ffd600',
+                            'stroke-width': 2,
+                            'stroke-dasharray': '0'
+                        },
+                        '.inner': { fill: '#ffff52', stroke: 'transparent' },
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        },
+                        text: {
+                            text: 'endState',
+                            fill: '#000',
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'font-size': 20,
+                            'stroke-width': 0
+                        }
+                    }
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: { id: '1b80eccf-7ec3-4082-b8f5-521a9cc65440' },
+                    target: { id: '92adcaa2-57c1-446a-8195-6bed7bdbe534' },
+                    id: 'cf5d06d1-fda0-40dd-8fec-a4c64afd6bb9',
+                    z: 11,
+                    attrs: {}
+                },
+                {
+                    type: 'app.RectangularModel',
+                    ports: {
+                        groups: {
+                            in: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'left', args: { y: 0 } }
+                                },
+                                position: { name: 'left' }
+                            },
+                            out: {
+                                markup: '<circle class="port-body" r="10"/>',
+                                attrs: {
+                                    '.port-body': {
+                                        fill: '#61549C',
+                                        strokeWidth: 0,
+                                        stroke: '#000',
+                                        r: 10,
+                                        magnet: true
+                                    },
+                                    '.port-label': {
+                                        fontSize: 11,
+                                        fill: '#61549C',
+                                        fontWeight: 800
+                                    }
+                                },
+                                label: {
+                                    position: { name: 'right', args: { y: 0 } }
+                                },
+                                position: { name: 'right' }
+                            }
+                        },
+                        items: [
+                            {
+                                id: 'in1',
+                                group: 'in',
+                                attrs: { '.port-label': { text: 'in1' } }
+                            },
+                            {
+                                id: 'out1',
+                                group: 'out',
+                                attrs: { '.port-label': { text: 'out1' } }
+                            }
+                        ]
+                    },
+                    inPorts: ['in1'],
+                    outPorts: ['out1'],
+                    size: { width: 90, height: 60 },
+                    position: { x: 380, y: 170.00000000000006 },
+                    angle: 0,
+                    allowOrthogonalResize: false,
+                    id: '88504fd4-dfb4-4e7b-a6d6-21266e05faa0',
+                    z: 12,
+                    attrs: {
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        },
+                        '.label': {
+                            text: '4',
+                            'ref-y': 0.5,
+                            'font-size': 20,
+                            fill: '#222138',
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'stroke-width': 0,
+                            'y-alignment': 'middle'
+                        },
+                        '.body': {
+                            stroke: '#ffd600',
+                            fill: 'transparent',
+                            rx: 2,
+                            ry: 2,
+                            'stroke-width': 2,
+                            'stroke-dasharray': '0'
+                        }
+                    }
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: { id: '92adcaa2-57c1-446a-8195-6bed7bdbe534' },
+                    target: {
+                        id: '88504fd4-dfb4-4e7b-a6d6-21266e05faa0',
+                        port: 'in1',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+                    },
+                    id: 'bd6a3e65-e9c5-4a6f-9469-1017a46818d2',
+                    z: 13,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: { id: '92adcaa2-57c1-446a-8195-6bed7bdbe534' },
+                    target: {
+                        id: 'df79d595-360a-40f0-b86c-4d12c656747e',
+                        port: 'in1',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+                    },
+                    id: 'bca80e62-eed3-484f-9f01-54a6c78de304',
+                    z: 14,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: { id: '92adcaa2-57c1-446a-8195-6bed7bdbe534' },
+                    target: {
+                        id: 'f42d62ad-26e9-4268-bcde-1e8fffd042ac',
+                        port: 'in1',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+                    },
+                    id: 'd434e697-0010-40b5-a194-2b1ca40dec73',
+                    z: 15,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: { id: '92adcaa2-57c1-446a-8195-6bed7bdbe534' },
+                    target: {
+                        id: 'f42d62ad-26e9-4268-bcde-1e8fffd042ac',
+                        port: 'in2',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)'
+                    },
+                    id: '5ae7c96a-2e3d-4ad1-a8c2-637e85c38b78',
+                    z: 16,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: { id: '92adcaa2-57c1-446a-8195-6bed7bdbe534' },
+                    target: {
+                        id: '944987ef-4375-4f44-aae1-d13e716372e8',
+                        port: 'in1',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+                    },
+                    id: 'ba6409cf-082f-4c5f-a81c-d31ff7f1f76d',
+                    z: 17,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: { id: '92adcaa2-57c1-446a-8195-6bed7bdbe534' },
+                    target: {
+                        id: '16cbcee6-93db-41c3-a631-c576c110a86c',
+                        port: 'in1',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+                    },
+                    id: 'c7e9129d-48d0-48d3-a8a3-51811a9f0438',
+                    z: 18,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: {
+                        id: '88504fd4-dfb4-4e7b-a6d6-21266e05faa0',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                        port: 'out1'
+                    },
+                    target: { id: '84dacc01-545b-483d-aca4-9f9c840f0dd5' },
+                    id: '2d5c7d34-bbbe-483e-9237-facf649abfb3',
+                    z: 19,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: {
+                        id: 'df79d595-360a-40f0-b86c-4d12c656747e',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                        port: 'out1'
+                    },
+                    target: { id: '84dacc01-545b-483d-aca4-9f9c840f0dd5' },
+                    id: '5c27f29d-dfc1-45f1-bae2-eff5dc5ede6f',
+                    z: 20,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: {
+                        id: 'f42d62ad-26e9-4268-bcde-1e8fffd042ac',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(5) > circle:nth-child(1)',
+                        port: 'out1'
+                    },
+                    target: { id: '84dacc01-545b-483d-aca4-9f9c840f0dd5' },
+                    id: '5c5d046f-15f7-47c4-913f-aaf79d3d509d',
+                    z: 21,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: {
+                        id: '944987ef-4375-4f44-aae1-d13e716372e8',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                        port: 'out1'
+                    },
+                    target: { id: '84dacc01-545b-483d-aca4-9f9c840f0dd5' },
+                    id: 'b907d5e4-0149-4454-a50d-6a23a2043f27',
+                    z: 22,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: {
+                        id: '16cbcee6-93db-41c3-a631-c576c110a86c',
+                        selector:
+                            'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                        port: 'out1'
+                    },
+                    target: { id: '84dacc01-545b-483d-aca4-9f9c840f0dd5' },
+                    id: 'b55e51d0-0c1a-432c-aacf-c66d1559d1d1',
+                    z: 23,
+                    attrs: {}
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: { id: '84dacc01-545b-483d-aca4-9f9c840f0dd5' },
+                    target: { id: 'eb86335b-5937-420c-a83e-e23c2a805920' },
+                    id: 'b73c0841-9cc6-4d76-b647-28b33cb94e81',
+                    z: 24,
+                    attrs: {}
+                },
+                {
+                    type: 'fsa.StartState',
+                    size: { width: 60, height: 60 },
+                    position: { x: 69, y: 288 },
+                    angle: 0,
+                    preserveAspectRatio: true,
+                    id: '1c7fb640-a261-4724-ad8e-3c35e9830a88',
+                    z: 25,
+                    attrs: {
+                        circle: {
+                            fill: '#ffd600',
+                            width: 50,
+                            height: 30,
+                            'stroke-width': 0
+                        },
+                        '.': {
+                            'data-tooltip-position': 'left',
+                            'data-tooltip-position-selector': '.joint-stencil'
+                        },
+                        text: {
+                            text: 'startState',
+                            fill: '#222138',
+                            'font-family': 'Roboto Condensed',
+                            'font-weight': 'Normal',
+                            'font-size': 20,
+                            'stroke-width': 0
+                        }
+                    }
+                },
+                {
+                    type: 'app.Link',
+                    router: { name: 'normal' },
+                    connector: { name: 'normal' },
+                    source: { id: '1c7fb640-a261-4724-ad8e-3c35e9830a88' },
+                    target: { id: '92adcaa2-57c1-446a-8195-6bed7bdbe534' },
+                    id: '1b3e5fe5-5073-400c-aa28-b8d01c8f1406',
+                    z: 26,
+                    attrs: {}
+                }
+            ],
+            uuid: '633fc9ec-a78d-469d-9cff-4038001020c3',
+            Name: 'asd',
+            Operations: [
+                {
+                    OperationId: '2',
+                    OperationName: 'PlayVideo',
+                    Messages: [
+                        { MessageId: 'PlayMessage', ContentExample: {} }
+                    ],
+                    OperationDependency: 'Verify',
+                    Description:
+                        'Plays video file on verified location stored in [path] variable',
+                    inPorts: ['in'],
+                    outPorts: ['out']
+                },
+                {
+                    OperationId: '3',
+                    OperationName: 'PauseVideo',
+                    Messages: [
+                        { MessageId: 'PauseMessage', ContentExample: {} }
+                    ],
+                    OperationDependency: 'PlayVideo',
+                    Description: 'Pause the currently playing video',
+                    inPorts: ['in', 'in'],
+                    outPorts: ['out']
+                },
+                {
+                    OperationId: '4',
+                    OperationName: 'StopVideo',
+                    Messages: [
+                        { MessageId: 'StopMessage', ContentExample: {} }
+                    ],
+                    OperationDependency: 'PlayVideo',
+                    Description: 'Stops the currently playing video',
+                    inPorts: ['in'],
+                    outPorts: ['out']
+                }
+            ],
+            Workflow: []
+        };
+
         if (this.test != undefined) {
             jsonString2 = JSON.stringify(this.test);
-            console.log(`jsonString2`);
-            console.log(jsonString2);
             jsonString2 = JSON.parse(jsonString2);
         }
-        // console.log(`jsonString2`);
-        // console.log(jsonString2);
-
-        this.graph.fromJSON(jsonString4);
+        this.graph.fromJSON(jsonString3);
     }
 
-    public validateDiagram() {
+    validateDiagram() {
         console.log(`validateDiagram`);
-
-        const jsonString = JSON.stringify(this.graph);
-        console.log(`jsonString`);
-        console.log(jsonString);
-
         // TODO - logic for validating diagram
     }
 
-    public startDiagram() {
+    startDiagram() {
         console.log(`startDiagram`);
-        let test: any[] = [];
-        let isPaused: boolean = false;
-        let time: number = 0;
-
-        if (test.length < 1) {
-            test.push(this.graph.getElements()[0]);
-            test.push(this.graph.getElements()[3]);
-            test.push(this.graph.getElements()[4]);
-            test.push(this.graph.getElements()[2]);
-            test.push(this.graph.getElements()[1]);
-            test.push(this.graph.getElements()[5]);
-            test.push(this.graph.getElements()[12]);
-            test.push(this.graph.getElements()[6]);
-            test.push(this.graph.getElements()[7]);
-            test.push(this.graph.getElements()[13]);
-            test.push(this.graph.getElements()[14]);
-
-            test.push(this.graph.getElements()[10]);
-            test.push(this.graph.getElements()[15]);
-            test.push(this.graph.getElements()[11]);
-            test.push(this.graph.getElements()[9]);
-            test.push(this.graph.getElements()[8]);
-        }
-
-        time1 = setInterval(function() {
-            // console.log(`index -> ${index}, test.length -> ${test.length}`);
-            // console.log(test[index].attributes.type);
-            // console.log(test[index].attributes.type.charAt(0));
-            let name: string = '';
-
-            if (
-                test[index].attributes.type.charAt(0) === 'f' ||
-                test[index].attributes.type.charAt(0) === 'e'
-            ) {
-                name = test[index].attributes.type
-                    .substring(4, test[index].attributes.type.length)
-                    .toLowerCase();
-            } else {
-                name = test[index].attributes.type
-                    .substring(6, test[index].attributes.type.length)
-                    .toLowerCase();
-            }
-
-            if (index != test.length - 1) {
-                colorElement(test[index], name);
-
-                setTimeout(function() {
-                    removeColorElement(test[index - 1], name);
-                }, 700);
-
-                index++;
-            }
-            if (index == test.length - 1) {
-                index = 0;
-                clearInterval(time1);
-            }
-        }, 1000);
     }
 
-    public pauseDiagram() {
-        // console.log(`pauseDiagram`);
-        clearInterval(time1);
+    pauseDiagram() {
+        console.log(`pauseDiagram`);
     }
 
-    public stopDiagram() {
-        // console.log(`stopDiagram`);
-        clearInterval(time1);
-        index = 0;
-        _.each(this.graph.getElements(), (node, index) => {
-            removeColorElement(
-                node,
-                node.attributes.type
-                    .substring(6, node.attributes.type.length)
-                    .toLowerCase()
-            );
-        });
+    stopDiagram() {
+        console.log(`stopDiagram`);
     }
 }
 
-function isBorderClicked(
-    bbox: any,
-    x: number,
-    y: number,
-    strokeWidth: number
-): boolean {
-    let borderClicked: boolean = false;
 
-    // checking the place of click on element.
-    const element_click_x: number = bbox.width + bbox.x - x;
-    const element_click_y: number = bbox.height + bbox.y - y;
-
-    if (strokeWidth < 5) {
-        strokeWidth = 5;
-    }
-
-    if (element_click_x <= strokeWidth || element_click_y <= strokeWidth) {
-        borderClicked = true;
-    }
-
-    if (
-        bbox.width - 5 <= element_click_x ||
-        element_click_x >= bbox.width + 5
-    ) {
-        borderClicked = true;
-    }
-
-    if (
-        bbox.height - 5 <= element_click_y ||
-        element_click_y >= bbox.height + 5
-    ) {
-        borderClicked = true;
-    }
-
-    return borderClicked;
-}
-
-function colorElement(node: any, name: string) {
+const colorElement = (node: any, name: string) => {
     // console.log(`colorElement`);
     // console.log(node.attributes.attrs.text.text);
     console.log(node);
@@ -6042,7 +8603,7 @@ function colorElement(node: any, name: string) {
     }
 }
 
-function removeColorElement(node: any, name: string) {
+const removeColorElement = (node: any, name: string) => {
     // console.log(`removeColorElement`);
     if (name === 'state') {
         name = 'circle';
@@ -6058,7 +8619,7 @@ function removeColorElement(node: any, name: string) {
     }
 }
 
-function getActions() {
+const getActions = () => {
     const request = new XMLHttpRequest();
     request.open('GET', '/assets/JSON/getAction.json', false);
     request.send(null);
@@ -6067,7 +8628,7 @@ function getActions() {
     return my_JSON_object;
 }
 
-function getWorkflow() {
+const getWorkflow = () => {
     const request = new XMLHttpRequest();
     request.open('GET', '/assets/JSON/getWorkflowAlter.json', false);
     request.send(null);
@@ -6076,15 +8637,15 @@ function getWorkflow() {
     return my_JSON_object;
 }
 
-function addPortsToWorkflow(workflow, input): void {
+const addPortsToWorkflow = (workflow, input): void => {
     console.log(`addPortsToWorkflow`);
-
-    let in_port_temp: string[] = [];
-    let out_port_temp: string[] = [];
+    let in_port_temp: any[] = [];
+    let out_port_temp: any[] = [];
 
     const in_port = {
         id: 'temp',
         markup: '<circle class="port-body" r="10"/>',
+        group: 'in',
         attrs: {
             '.port-body': {
                 fill: '#61549C',
@@ -6116,6 +8677,7 @@ function addPortsToWorkflow(workflow, input): void {
     const out_port = {
         id: 'temp',
         markup: '<circle class="port-body" r="10"/>',
+        group: 'out',
         attrs: {
             '.port-body': {
                 fill: '#61549C',
@@ -6132,6 +8694,7 @@ function addPortsToWorkflow(workflow, input): void {
             }
         },
         label: {
+            text: 'fgh',
             position: {
                 name: 'right',
                 args: {
@@ -6144,37 +8707,42 @@ function addPortsToWorkflow(workflow, input): void {
         }
     };
 
-    // console.log(`workflow`);
-    // console.log(workflow);
-    // console.log(`input`);
-    // console.log(input.attributes.attrs.text.text);
+    let index_in: number = 0;
+    let index_out: number = 0;
 
     for (let i: number = 0; i < workflow.length; i++) {
         if (workflow[i].uuid === input.attributes.attrs.text.text) {
-            console.log(`OVDE`);
-            // console.log(workflow[i].cells);
             for (let k of workflow[i].cells) {
-                // console.log(k);
                 if (k.type === 'fsa.StartState') {
-                    in_port_temp.push('')
+                    index_in++;
+                    in_port_temp.push({
+                        ...in_port,
+                        id: 'in' + index_in
+                    });
                 }
                 if (k.type === 'fsa.EndState') {
-                    out_port_temp.push('')
+                    index_out++;
+                    out_port_temp.push({ 
+                        ...out_port, 
+                        id: 'out' + index_out 
+                    });
                 }
             }
         }
     }
-    console.log(`in_port_temp`);
-    console.log(in_port_temp);
-    console.log(`out_port_temp`);
-    console.log(out_port_temp);
+    const port = _.flattenDeep([in_port_temp, out_port_temp]);
+    input.addPorts(port);
+};
 
-    for (let i of in_port_temp) {
-        input.addInPort('in1');
+const removePortsToWorkflow = (input): void => {
+    console.log(`removePortsToWorkflow`);
+    const allPorts: any = input.getPorts();
+    for (let i of allPorts) {
+        input.removePort(i);
     }
-}
+};
 
-function addPortsToElement(actions, input): void {
+const addPortsToElement = (actions, input): void => {
     let in_port_temp: string[] = [];
     let out_port_temp: string[] = [];
 
@@ -6271,6 +8839,9 @@ function addPortsToElement(actions, input): void {
                 in_port_arr_new_id[i].attrs['.port-label'].text + (i + 1)
             );
         }
+        // console.log(`in_port_name`);
+        // console.log(in_port_name);
+
         input.addInPort(in_port_name);
     }
     if (out_port_temp !== undefined) {
@@ -6299,7 +8870,7 @@ function addPortsToElement(actions, input): void {
     }
 }
 
-function removePortsFromElement(input): void {
+const removePortsFromElement = (input): void => {
     const allPorts: any = input.getPorts();
     const allPorts_len: number = allPorts.length;
 
@@ -6312,7 +8883,7 @@ function removePortsFromElement(input): void {
     }
 }
 
-function getUsedOperations(jsonObj, actions) {
+const getUsedOperations = (jsonObj, actions) => {
     const result = [];
     const actions_len: number = actions.Operations.length;
     const jsonObj_length: number = jsonObj.attributes.cells.models.length;
@@ -6346,7 +8917,7 @@ function getUsedOperations(jsonObj, actions) {
     return _.uniq(result);
 }
 
-function getUsedWorkflow(jsonObj, workflow) {
+const getUsedWorkflow = (jsonObj, workflow) => {
     const result = [];
     const workflow_len: number = workflow.length;
     const jsonObj_length: number = jsonObj.attributes.cells.models.length;

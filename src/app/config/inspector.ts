@@ -487,9 +487,8 @@ export const inspector = <{ [index: string]: any }>{
             attrs: {
                 text: {
                     text: {
-                        type: 'select',
+                        type: 'content-editable',
                         label: 'Text',
-                        options: options.select,
                         group: 'text',
                         index: 1
                     },
@@ -758,6 +757,217 @@ export const inspector = <{ [index: string]: any }>{
                         type: 'select-box',
                         label: 'Text',
                         options: options.select,
+                        group: 'text',
+                        index: 1
+                    },
+                    'font-size': {
+                        type: 'range',
+                        min: 5,
+                        max: 80,
+                        unit: 'px',
+                        label: 'Font size',
+                        group: 'text',
+                        when: { ne: { 'attrs/.label/text': '' } },
+                        index: 2
+                    },
+                    'font-family': {
+                        type: 'select-box',
+                        options: options.fontFamily,
+                        label: 'Font family',
+                        group: 'text',
+                        when: { ne: { 'attrs/.label/text': '' } },
+                        index: 3
+                    },
+                    'font-weight': {
+                        type: 'select-box',
+                        options: options.fontWeight,
+                        label: 'Font thickness',
+                        group: 'text',
+                        when: { ne: { 'attrs/.label/text': '' } },
+                        index: 4
+                    },
+                    fill: {
+                        type: 'color-palette',
+                        options: options.colorPalette,
+                        label: 'Fill',
+                        group: 'text',
+                        when: { ne: { 'attrs/.label/text': '' } },
+                        index: 5
+                    }
+                },
+                '.body': {
+                    fill: {
+                        type: 'color-palette',
+                        options: options.colorPalette,
+                        label: 'Fill',
+                        group: 'presentation',
+                        index: 1
+                    },
+                    stroke: {
+                        type: 'color-palette',
+                        options: options.colorPalette,
+                        label: 'Outline',
+                        group: 'presentation',
+                        index: 2
+                    },
+                    'stroke-width': {
+                        type: 'range',
+                        min: 0,
+                        max: 30,
+                        step: 1,
+                        defaultValue: 1,
+                        unit: 'px',
+                        label: 'Outline thickness',
+                        group: 'presentation',
+                        when: { ne: { 'attrs/.body/stroke': 'transparent' } },
+                        index: 3
+                    },
+                    'stroke-dasharray': {
+                        type: 'select-box',
+                        options: options.strokeStyle,
+                        label: 'Outline style',
+                        group: 'presentation',
+                        when: {
+                            and: [
+                                { ne: { 'attrs/.body/stroke': 'transparent' } },
+                                { ne: { 'attrs/.body/stroke-width': 0 } }
+                            ]
+                        },
+                        index: 4
+                    }
+                }
+            }
+            // ports: {
+            //     groups: {
+            //         'in': {
+            //             attrs: {
+            //                 '.port-body': {
+            //                     fill: {
+            //                         type: 'color-palette',
+            //                         options: options.colorPalette,
+            //                         label: 'Fill',
+            //                         when: { not: { equal: { inPorts: [] } } },
+            //                         group: 'inPorts',
+            //                         index: 1
+            //                     }
+            //                 }
+            //             },
+            //             position: {
+            //                 name: {
+            //                     type: 'select-box',
+            //                     options: options.side,
+            //                     label: 'Position',
+            //                     when: { not: { equal: { inPorts: [] } } },
+            //                     group: 'inPorts',
+            //                     index: 3
+            //                 }
+            //             },
+            //             label: {
+            //                 position: {
+            //                     type: 'select-box',
+            //                     options: options.portLabelPositionRectangle,
+            //                     label: 'Text Position',
+            //                     when: { not: { equal: { inPorts: [] } } },
+            //                     group: 'inPorts',
+            //                     index: 4
+            //                 }
+            //             },
+            //             markup: {
+            //                 type: 'select-box',
+            //                 options: options.portMarkup,
+            //                 label: 'Port Shape',
+            //                 group: 'inPorts',
+            //                 index: 5
+            //             }
+            //         },
+            //         'out': {
+            //             attrs: {
+            //                 '.port-body': {
+            //                     fill: {
+            //                         type: 'color-palette',
+            //                         options: options.colorPalette,
+            //                         label: 'Fill',
+            //                         when: { not: { equal: { outPorts: [] } } },
+            //                         group: 'outPorts',
+            //                         index: 2
+            //                     }
+            //                 }
+            //             },
+            //             position: {
+            //                 name: {
+            //                     type: 'select-box',
+            //                     options: options.side,
+            //                     label: 'Position',
+            //                     when: { not: { equal: { outPorts: [] } } },
+            //                     group: 'outPorts',
+            //                     index: 4
+            //                 }
+            //             },
+            //             label: {
+            //                 position: {
+            //                     type: 'select-box',
+            //                     options: options.portLabelPositionRectangle,
+            //                     label: 'Text Position',
+            //                     when: { not: { equal: { outPorts: [] } } },
+            //                     group: 'outPorts',
+            //                     index: 5
+            //                 }
+            //             },
+            //             markup: {
+            //                 type: 'select-box',
+            //                 options: options.portMarkup,
+            //                 label: 'Port Shape',
+            //                 group: 'outPorts',
+            //                 index: 6
+            //             }
+            //         }
+            //     }
+            // },
+            // inPorts: {
+            //     type: 'list',
+            //     label: 'Ports',
+            //     item: {
+            //         type: 'text'
+            //     },
+            //     group: 'inPorts',
+            //     index: 0
+            // },
+            // outPorts: {
+            //     type: 'list',
+            //     label: 'Ports',
+            //     item: {
+            //         type: 'text'
+            //     },
+            //     group: 'outPorts',
+            //     index: 0
+            // }
+        },
+        groups: {
+            // inPorts: {
+            //     label: 'Input Ports',
+            //     index: 1
+            // },
+            // outPorts: {
+            //     label: 'Output Ports',
+            //     index: 2
+            // },
+            presentation: {
+                label: 'Presentation',
+                index: 3
+            },
+            text: {
+                label: 'Text',
+                index: 4
+            }
+        }
+    },
+    'app.State': {
+        inputs: {
+            attrs: {
+                '.label': {
+                    text: {
+                        type: 'content-editable',
+                        label: 'Text ',
                         group: 'text',
                         index: 1
                     },

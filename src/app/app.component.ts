@@ -5,6 +5,8 @@ import * as _ from 'lodash';
 import * as __ from 'lodash-uuid';
 import * as Backbone from 'backbone';
 
+import * as jsonM from './../assets/JSON/allJSONstrings';
+
 import '../models/joint.shapes.app';
 import * as joint from '../assets/build/rappid.min';
 
@@ -36,7 +38,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         console.log(`ngOnInit`);
-        this.name = prompt('Unesi naziv diagrama');
+        // this.name = prompt('Unesi naziv diagrama');
         this.initializePaper();
         this.initializeStencil();
         this.initializeSelection();
@@ -548,6 +550,90 @@ export class AppComponent implements OnInit {
                     addPortsToWorkflow(workflows, input);
                 }
             }
+            console.log(`input.attributes.type`);
+            console.log(input.attributes.type);
+
+            if (input.attributes.type === 'erd.IdentifyingRelationship') {
+                let in_port_temp: any[] = [];
+                let out_port_temp: any[] = [];
+
+                const in_port = {
+                    id: 'temp1',
+                    markup: '<circle class="port-body" r="10"/>',
+                    group: 'in',
+                    attrs: {
+                        '.port-body': {
+                            fill: '#61549C',
+                            strokeWidth: 0,
+                            stroke: '#000',
+                            r: 10,
+                            magnet: true
+                        },
+                        '.port-label': {
+                            text: 'in',
+                            fontSize: 11,
+                            fill: '#61549C',
+                            fontWeight: 800
+                        }
+                    },
+                    label: {
+                        position: {
+                            name: 'left',
+                            args: {
+                                y: 0
+                            }
+                        }
+                    },
+                    position: {
+                        name: 'left'
+                    }
+                };
+
+                const out_port = {
+                    id: 'temp',
+                    markup: '<circle class="port-body" r="10"/>',
+                    group: 'out',
+                    attrs: {
+                        '.port-body': {
+                            fill: '#61549C',
+                            strokeWidth: 0,
+                            stroke: '#000',
+                            r: 10,
+                            magnet: true
+                        },
+                        '.port-label': {
+                            text: 'out',
+                            fontSize: 11,
+                            fill: '#61549C',
+                            fontWeight: 800
+                        }
+                    },
+                    label: {
+                        text: 'fgh',
+                        position: {
+                            name: 'right',
+                            args: {
+                                y: 0
+                            }
+                        }
+                    },
+                    position: {
+                        name: 'bottom'
+                    }
+                };
+
+                let index_in: number = 0;
+                let index_out: number = 0;
+
+                let port = [];
+                port.push(out_port);
+                port.push(in_port);
+
+                console.log(`port`);
+                console.log(port);
+
+                input.addPorts(port);
+            }
         });
 
         return joint.ui.Inspector.create(
@@ -565,7 +651,12 @@ export class AppComponent implements OnInit {
                 const cell = cellView.model;
                 if (!this.selection.collection.contains(cell)) {
                     if (cell.isElement()) {
-                        if (cell.attributes.type === 'app.RectangularModel' || cell.attributes.type === 'erd.WeakEntity') {
+                        if (
+                            cell.attributes.type === 'app.RectangularModel' ||
+                            cell.attributes.type === 'erd.WeakEntity' ||
+                            cell.attributes.type ===
+                                'erd.IdentifyingRelationship'
+                        ) {
                             new joint.ui.FreeTransform({
                                 cellView,
                                 allowRotation: false,
@@ -738,8 +829,12 @@ export class AppComponent implements OnInit {
         console.log(`saveToJSON`);
         const actions = getActions();
         const workflow = getWorkflow();
-
         const graphJson = this.graph;
+        let lastZIndex: number = 0;
+        console.log(`graphJson`);
+        console.log(graphJson);
+        
+
         const usedOperationsInWorkflow: any = getUsedOperations(
             graphJson,
             actions
@@ -757,12 +852,95 @@ export class AppComponent implements OnInit {
         graphJson_obj['Name'] = name;
         graphJson_obj['Operations'] = usedOperationsInWorkflow;
         graphJson_obj['Workflow'] = usedWorkflowInWorkflow;
+        graphJson_obj['States'] = [];
+
+        // console.log(`graphJson_obj`);
+        // console.log(graphJson_obj);
+        // console.log(JSON.stringify(graphJson_obj));
+
+        for (let i of graphJson_obj.cells) {
+            lastZIndex = i.z;
+        }
+
+        for (let i of graphJson.attributes.cells.models) {
+            console.log(i);
+            
+            if (i.attributes.z === 1 && i.attributes.type !== 'fsa.StartState') {
+                i.attributes.z = lastZIndex + 1;
+            } else {
+                if (i.attributes.type === 'fsa.StartState') {
+                    if (i.attributes.z !== 1) {
+                        i.attributes.z = 1;
+                    }
+                }
+            }
+        }
+        console.log(`graphJson`);
+        console.log(graphJson);
+
+        // TODO TODO 
+
+        // console.log(`graphJson_obj.cells`);
+        // console.log(_.orderBy(graphJson_obj.cells, 'z'));
+        // const models = _.orderBy(graphJson_obj.cells, 'z');
+
+        // let tessss = {...graphJson.attributes.cells.models, models}
+        // console.log(`tessss`);
+        // console.log(tessss);
+        
+
+        _.each(this.graph.getElements(), (element: joint.dia.Element): void => {
+            const connectedElements_temp = graphJson.getSuccessors(element);
+            let connectedElement: any = [];
+            let connectedElementMessage: any = [];
+
+            let connectedElementsName: string[] = [];
+            const currentElementTextPart = _.find(
+                element.attributes.attrs,
+                'text'
+            ).text;
+            // console.log(`currentElementTextPart`);
+            // console.log(currentElementTextPart);
+            // console.log(`connectedElements_temp`);
+            // console.log(connectedElements_temp);
+
+            // if (connectedElements_temp.length > 0) {
+            //     for (let i of connectedElements_temp) {
+            //         if (i.attributes.type === 'basic.Rect') {
+            //             connectedElement = i;
+            //         }
+            //     }
+            //     console.log(`connectedElement`);
+            //     console.log(connectedElement);
+            //     console.log(
+            //         _.find(connectedElement.attributes.attrs, 'text').text
+            //     );
+            // }
+
+            // console.log(element.getAncestors());
+
+            // for (let i of connectedElements) {
+            //     connectedElementsName.push(
+            //         _.find(i.attributes.attrs, 'text').text
+            //     );
+            // }
+            // console.log(`connectedElementsName`);
+            // console.log(connectedElementsName);
+            // console.log(connectedElementsName.length);
+
+            // const stateName: string = createNames(
+            //     currentElementTextPart,
+            //     connectedElementsName
+            // );
+            // console.log(`stateName`);
+            // console.log(stateName);
+        });
     }
 
     loadFromJSON() {
         console.log(`loadFromJSON`);
         // TODO - logic for getting diagram from database
-        
+        this.graph.fromJSON(jsonM.jsonString7);
     }
 
     validateDiagram() {
@@ -783,6 +961,25 @@ export class AppComponent implements OnInit {
     }
 }
 
+const getElementsName = (graph: joint.dia.Graph) => {};
+
+const createNames = (
+    currentStateName: string,
+    nextStateName: string[],
+    message?: string
+): string => {
+    let name: string | string[] = '';
+
+    // if (nextStateName.length === 1) {
+    //     name = `${currentStateName}_${nextStateName.pop()}`
+    // } else {
+    //     for (let i of nextStateName) {
+    //         name.push()
+    //     }
+    // }
+
+    return name;
+};
 
 const colorElement = (node: any, name: string) => {
     console.log(`colorElement`);
@@ -809,7 +1006,7 @@ const colorElement = (node: any, name: string) => {
             stops: [{ offset: '0%', color: '#ED3032' }]
         });
     }
-}
+};
 
 const removeColorElement = (node: any, name: string) => {
     console.log(`removeColorElement`);
@@ -825,27 +1022,27 @@ const removeColorElement = (node: any, name: string) => {
             stops: [{ offset: '0%', color: 'transparent' }]
         });
     }
-}
+};
 
 const getActions = () => {
-    console.log(`getActions`);
+    // console.log(`getActions`);
     const request = new XMLHttpRequest();
     request.open('GET', '/assets/JSON/getAction.json', false);
     request.send(null);
     const my_JSON_object = JSON.parse(request.responseText);
 
     return my_JSON_object;
-}
+};
 
 const getWorkflow = () => {
-    console.log(`getWorkflow`);
+    // console.log(`getWorkflow`);
     const request = new XMLHttpRequest();
     request.open('GET', '/assets/JSON/getWorkflowAlter.json', false);
     request.send(null);
     const my_JSON_object = JSON.parse(request.responseText);
 
     return my_JSON_object;
-}
+};
 
 const addPortsToWorkflow = (workflow, input): void => {
     console.log(`addPortsToWorkflow`);
@@ -932,15 +1129,20 @@ const addPortsToWorkflow = (workflow, input): void => {
                 }
                 if (k.type === 'fsa.EndState') {
                     index_out++;
-                    out_port_temp.push({ 
-                        ...out_port, 
-                        id: 'out' + index_out 
+                    out_port_temp.push({
+                        ...out_port,
+                        id: 'out' + index_out
                     });
                 }
             }
         }
     }
+    console.log(`in_port_temp`);
+    console.log(in_port_temp);
+
     const port = _.flattenDeep([in_port_temp, out_port_temp]);
+    console.log(`port`);
+    console.log(port);
     input.addPorts(port);
 };
 
@@ -984,7 +1186,7 @@ const addPortsToElement = (actions, input): void => {
             }
         },
         position: {
-            name: 'left'
+            name: 'top'
         }
     };
 
@@ -1015,7 +1217,7 @@ const addPortsToElement = (actions, input): void => {
             }
         },
         position: {
-            name: 'right'
+            name: 'bottom'
         }
     };
 
@@ -1079,7 +1281,7 @@ const addPortsToElement = (actions, input): void => {
         }
         input.addOutPort(out_port_name);
     }
-}
+};
 
 const removePortsFromElement = (input): void => {
     console.log(`removePortsFromElement`);
@@ -1093,10 +1295,10 @@ const removePortsFromElement = (input): void => {
             input.removeOutPort(allPorts[i].attrs['.port-label'].text);
         }
     }
-}
+};
 
 const getUsedOperations = (jsonObj, actions) => {
-    console.log(`getUsedOperations`);
+    // console.log(`getUsedOperations`);
     const result = [];
     const actions_len: number = actions.Operations.length;
     const jsonObj_length: number = jsonObj.attributes.cells.models.length;
@@ -1128,10 +1330,10 @@ const getUsedOperations = (jsonObj, actions) => {
         }
     }
     return _.uniq(result);
-}
+};
 
 const getUsedWorkflow = (jsonObj, workflow) => {
-    console.log(`getUsedWorkflow`);
+    // console.log(`getUsedWorkflow`);
     const result = [];
     const workflow_len: number = workflow.length;
     const jsonObj_length: number = jsonObj.attributes.cells.models.length;
@@ -1152,4 +1354,4 @@ const getUsedWorkflow = (jsonObj, workflow) => {
         }
     }
     return _.uniq(result);
-}
+};

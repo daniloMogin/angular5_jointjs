@@ -13,7 +13,7 @@ file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
 import { ui } from '../../assets/build/rappid.min';
 
 const $font_color: string = '#222138';
-const $font_size: number = 20;
+const $font_size: number = 17;
 const $font_family_p: string = 'Roboto Condensed';
 const $font_family_s: string = 'Averia Libre';
 const $font_family_o: string = 'Alegreya Sans';
@@ -31,93 +31,6 @@ export const stencil = {
     shapes: {
         basic: [
             {
-                type: 'app.RectangularModel',
-                size: { width: 30, height: 20 },
-                allowOrthogonalResize: false,
-                attrs: {
-                    '.': {
-                        'data-tooltip': 'Actor',
-                        'data-tooltip-position': 'left',
-                        'data-tooltip-position-selector': '.joint-stencil'
-                    },
-                    '.body': {
-                        fill: 'transparent',
-                        rx: 2,
-                        ry: 2,
-                        stroke: $stroke_color,
-                        'stroke-width': $stroke_width_body,
-                        'stroke-dasharray': '0'
-                    },
-                    '.label': {
-                        text: '',
-                        fill: $font_color,
-                        'font-family': $font_family_p,
-                        'font-weight': $font_weight,
-                        'font-size': $font_size,
-                        'stroke-width': $stroke_width_label,
-                        'ref-y': 0.5,
-                        'y-alignment': 'middle'
-                    }
-                }
-            },
-            {
-                type: 'erd.IdentifyingRelationship',
-                attrs: {
-                    '.': {
-                        'data-tooltip': 'Condition',
-                        'data-tooltip-position': 'left',
-                        'data-tooltip-position-selector': '.joint-stencil'
-                    },
-                    '.outer': {
-                        fill: 'transparent',
-                        stroke: $stroke_color,
-                        'stroke-dasharray': '0'
-                    },
-                    '.inner': {
-                        fill: 'transparent',
-                        stroke: 'transparent',
-                        'stroke-dasharray': '0'
-                    },
-                    text: {
-                        text: '',
-                        'font-size': $font_size,
-                        'font-family': $font_family_p,
-                        'font-weight': $font_weight,
-                        fill: $font_color,
-                        'stroke-width': 0
-                    }
-                }
-            },
-            {
-                type: 'basic.Rect',
-                size: { width: 2, height: 8 },
-                attrs: {
-                    '.': {
-                        'data-tooltip': 'Transition',
-                        'data-tooltip-position': 'left',
-                        'data-tooltip-position-selector': '.joint-stencil'
-                    },
-                    rect: {
-                        rx: 2,
-                        ry: 2,
-                        width: 50,
-                        height: 30,
-                        fill: 'transparent',
-                        stroke: $stroke_color,
-                        'stroke-width': $stroke_width_body,
-                        'stroke-dasharray': '0'
-                    },
-                    text: {
-                        // text: 'rect',
-                        fill: $font_color,
-                        'font-family': $font_family_p,
-                        'font-weight': $font_weight,
-                        'font-size': $font_size,
-                        'stroke-width': 0
-                    }
-                }
-            },
-            {
                 type: 'fsa.StartState',
                 preserveAspectRatio: true,
                 attrs: {
@@ -133,7 +46,7 @@ export const stencil = {
                         'stroke-width': 0
                     },
                     text: {
-                        text: 'startState',
+                        text: 'Init',
                         fill: $font_color,
                         'font-family': $font_family_p,
                         'font-weight': $font_weight,
@@ -170,6 +83,156 @@ export const stencil = {
                         'stroke-width': 0
                     }
                 }
+            },
+            {
+                type: 'app.RectangularModel',
+                size: { width: 30, height: 20 },
+                allowOrthogonalResize: false,
+                attrs: {
+                    '.': {
+                        'data-tooltip': 'Actor: Operation',
+                        'data-tooltip-position': 'left',
+                        'data-tooltip-position-selector': '.joint-stencil'
+                    },
+                    '.body': {
+                        fill: 'transparent',
+                        stroke: $stroke_color,
+                        'stroke-width': $stroke_width_body,
+                        'stroke-dasharray': '0'
+                    },
+                    '.label': {
+                        text: '',
+                        fill: $font_color,
+                        'font-family': $font_family_p,
+                        'font-weight': $font_weight,
+                        'font-size': $font_size,
+                        'stroke-width': $stroke_width_label,
+                        'ref-y': 0.5,
+                        'y-alignment': 'middle'
+                    }
+                }
+            },
+            {
+                type: 'basic.Rect',
+                size: { width: 30, height: 20 },
+                allowOrthogonalResize: false,
+                attrs: {
+                    '.': {
+                        'data-tooltip': 'State',
+                        'data-tooltip-position': 'left',
+                        'data-tooltip-position-selector': '.joint-stencil'
+                    },
+                    rect: {
+                        rx: 15,
+                        ry: 15,
+                        fill: 'transparent',
+                        stroke: $stroke_color,
+                        'stroke-width': $stroke_width_body,
+                        'stroke-dasharray': '0'
+                    },
+                    text: {
+                        text: '',
+                        fill: $font_color,
+                        'font-family': $font_family_p,
+                        'font-weight': $font_weight,
+                        'font-size': $font_size,
+                        'stroke-width': $stroke_width_label,
+                    }
+                }
+            },
+            {
+                type: 'erd.IdentifyingRelationship',
+                ports: {
+                    groups: {
+                        in: { position: { name: 'left' } },
+                        out: { position: { name: 'right' } }
+                    },
+                    items: []
+                },
+                attrs: {
+                    '.': {
+                        'data-tooltip': 'Condition',
+                        'data-tooltip-position': 'left',
+                        'data-tooltip-position-selector': '.joint-stencil'
+                    },
+                    '.outer': {
+                        fill: 'transparent',
+                        stroke: $stroke_color,
+                        'stroke-dasharray': '0'
+                    },
+                    '.inner': {
+                        fill: 'transparent',
+                        stroke: 'transparent',
+                        'stroke-dasharray': '0'
+                    },
+                    text: {
+                        text: '',
+                        'font-size': $font_size,
+                        'font-family': $font_family_p,
+                        'font-weight': $font_weight,
+                        fill: $font_color,
+                        'stroke-width': 0
+                    }
+                }
+            },
+            {
+                type: 'basic.Rect',
+                size: { width: 2, height: 8 },
+                attrs: {
+                    '.': {
+                        'data-tooltip': 'Parallel transition',
+                        'data-tooltip-position': 'left',
+                        'data-tooltip-position-selector': '.joint-stencil'
+                    },
+                    rect: {
+                        rx: 2,
+                        ry: 2,
+                        width: 50,
+                        height: 30,
+                        fill: 'transparent',
+                        stroke: $stroke_color,
+                        'stroke-width': $stroke_width_body,
+                        'stroke-dasharray': '0'
+                    },
+                    text: {
+                        // text: 'rect',
+                        fill: $font_color,
+                        'font-family': $font_family_p,
+                        'font-weight': $font_weight,
+                        'font-size': $font_size,
+                        'stroke-width': 0
+                    }
+                }
+            },
+            {
+                type: 'erd.ISA',
+                size: { width: 30, height: 20 },
+                allowOrthogonalResize: false,
+                attrs: {
+                    '.': {
+                        'data-tooltip': 'Message',
+                        'data-tooltip-position': 'left',
+                        'data-tooltip-position-selector': '.joint-stencil'
+                    },
+                    text: {
+                        text: '',
+                        fill: $font_color,
+                        'letter-spacing': 0,
+                        'font-family': $font_family_p,
+                        'font-weight': $font_weight,
+                        'font-size': $font_size,
+                        'ref-y': 28,
+                        'y-alignment': 'middle'
+                    },
+                    polygon: {
+                        fill: 'transparent',
+                        // rx: 15,
+                        // ry: 15,
+                        stroke: $stroke_color,
+                        'stroke-dasharray': '0',
+                        points: '0 0, 100 0, 100 100, 0 100, 13 50'
+                    }
+                }
             }
         ],
         comp: [
@@ -179,7 +242,7 @@ export const stencil = {
                 ports: {
                     groups: {
                         in: { position: { name: 'left' } },
-                        out: { position: { name: 'right' } }
+                        out: { position: { name: 'bottom' } }
                     },
                     items: []
                 },

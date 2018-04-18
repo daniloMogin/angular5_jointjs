@@ -21,6 +21,10 @@ declare module '../assets/build/rappid.min' {
             class CircularModel extends shapes.devs.Model {}
 
             class RectangularModel extends shapes.devs.Model {}
+
+            class State extends shapes.devs.Model {}
+
+            class Message extends shapes.devs.Model {}
         }
     }
 }
@@ -125,6 +129,93 @@ shapes.devs.Model.define('app.CircularModel', {
 });
 
 shapes.devs.Model.define('app.RectangularModel', {
+    ports: {
+        groups: {
+            'in': {
+                markup: '<circle class="port-body" r="10"/>',
+                attrs: {
+                    '.port-body': {
+                        fill: '#61549C',
+                        strokeWidth: 0
+                    },
+                    '.port-label': {
+                        fontSize: 11,
+                        fill: '#61549C',
+                        fontWeight: 800
+                    }
+                },
+                label: {
+                    position: {
+                        name: 'left',
+                        args: {
+                            y: 0
+                        }
+                    }
+                },
+                position: {
+                    name: 'top'
+                }
+            },
+            'out': {
+                markup: '<circle class="port-body" r="10"/>',
+                attrs: {
+                    '.port-body': {
+                        fill: '#61549C',
+                        strokeWidth: 0
+                    },
+                    '.port-label': {
+                        fontSize: 11,
+                        fill: '#61549C',
+                        fontWeight: 800
+                    }
+                },
+                label: {
+                    position: {
+                        name: 'right',
+                        args: {
+                            y: 0
+                        }
+                    }
+                },
+                position: {
+                    name: 'bottom'
+                }
+            }
+        }
+    }
+});
+
+shapes.devs.Model.define('app.State', {
+});
+
+shapes.devs.Model.define('app.Message', {
+    attrs: {
+        '.': {
+            'data-tooltip': 'Workflow',
+            'data-tooltip-position': 'left',
+            'data-tooltip-position-selector': '.joint-stencil'
+        },
+        text: {
+            text: '',
+            fill: '',
+            'font-family': '',
+            'font-weight': '',
+            'font-size': '',
+            'stroke-width': '',
+            'ref-y': 0.5,
+            'y-alignment': 'middle'
+        },
+        '.inner': {
+            fill: 'transparent',
+            stroke: '',
+            points: '140,0 140,60 20,60 20,0'
+        },
+        '.outer': {
+            fill: 'transparent',
+            stroke: '',
+            points: '160,0 160,60 0,60 0,0'
+        }
+    },
     ports: {
         groups: {
             'in': {

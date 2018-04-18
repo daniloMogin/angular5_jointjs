@@ -77,6 +77,60 @@
             "outPorts": [
                 "out"
             ]
+        },
+        {
+            "OperationId": "5",
+            "OperationName": "Initialize()",
+            "Messages": [
+                {
+                    "MessageId": "InitializeMessage",
+                    "ContentExample": {}
+                }
+            ],
+            "OperationDependency": "None",
+            "Description": "Initialize workflow",
+            "inPorts": [
+                "in"
+            ],
+            "outPorts": [
+                "out"
+            ]
+        },
+        {
+            "OperationId": "6",
+            "OperationName": "Shutdown()",
+            "Messages": [
+                {
+                    "MessageId": "ShutdownMessage",
+                    "ContentExample": {}
+                }
+            ],
+            "OperationDependency": "None",
+            "Description": "Purpose of the operation is to release resources, and prepare workflow for shutdown.",
+            "inPorts": [
+                "in"
+            ],
+            "outPorts": [
+                "out"
+            ]
+        },
+        {
+            "OperationId": "7",
+            "OperationName": "Assignment()",
+            "Messages": [
+                {
+                    "MessageId": "AssignmentMessage",
+                    "ContentExample": {}
+                }
+            ],
+            "OperationDependency": "None",
+            "Description": "Assign",
+            "inPorts": [
+                "in"
+            ],
+            "outPorts": [
+                "out"
+            ]
         }
     ]
 }

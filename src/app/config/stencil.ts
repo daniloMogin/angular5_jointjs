@@ -75,7 +75,7 @@ export const stencil = {
                         'stroke-dasharray': '0'
                     },
                     text: {
-                        text: 'endState',
+                        text: 'End',
                         fill: $font_color,
                         'font-family': $font_family_p,
                         'font-weight': $font_weight,

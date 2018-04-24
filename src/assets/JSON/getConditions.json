@@ -2,7 +2,7 @@
     "Conditions": [
         {
             "ConditionId": "1",
-            "ConditionName": "Condition1",
+            "ConditionName": "RowLoop",
             "ConditionPars": [
                 {
                     "Parameter1": 1,
@@ -12,7 +12,27 @@
         },
         {
             "ConditionId": "2",
-            "ConditionName": "Condition2",
+            "ConditionName": "RowIsFree",
+            "ConditionPars": [
+                {
+                    "Parameter1": 2,
+                    "Parameter2": "qwe"
+                }
+            ]
+        },
+        {
+            "ConditionId": "3",
+            "ConditionName": "TheLastRowReached",
+            "ConditionPars": [
+                {
+                    "Parameter1": 2,
+                    "Parameter2": "qwe"
+                }
+            ]
+        },
+        {
+            "ConditionId": "4",
+            "ConditionName": "TheFirstRowReached",
             "ConditionPars": [
                 {
                     "Parameter1": 2,

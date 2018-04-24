@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import * as config from './config/configuration';
 import * as _ from 'lodash';
-import * as __ from 'lodash-uuid';
+// import * as __ from 'lodash-uuid';
 import * as Backbone from 'backbone';
 
 import * as jsonM from './../assets/JSON/allJSONstrings';
@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
     navigator: joint.ui.Navigator;
 
     ngOnInit() {
-        console.log(`ngOnInit`);
+        // console.log(`ngOnInit`);
         // this.name = prompt('Unesi naziv diagrama');
         this.initializePaper();
         this.initializeStencil();
@@ -51,305 +51,9 @@ export class AppComponent implements OnInit {
 
     // Create a graph, paper and wrap the paper in a PaperScroller.
     initializePaper() {
-        console.log(`initializePaper`);
+        // console.log(`initializePaper`);
         joint.setTheme('modern');
         const graph = (this.graph = new joint.dia.Graph());
-
-        const jsonString = {
-            cells: [
-                {
-                    type: 'basic.Circle',
-                    size: { width: 90, height: 54 },
-                    position: { x: 110, y: 100 },
-                    angle: 0,
-                    id: '0bbd0dc7-bac8-4327-8f34-4fc6ebfbec50',
-                    z: 1,
-                    attrs: {
-                        circle: {
-                            fill: '#f6f6f6',
-                            stroke: '#31d0c6',
-                            width: 50,
-                            height: 30,
-                            'stroke-width': 2,
-                            'stroke-dasharray': '0'
-                        },
-                        text: {
-                            'font-size': 16,
-                            text: 'Start',
-                            fill: '#222138',
-                            'font-family': 'Roboto Condensed',
-                            'font-weight': 'Normal',
-                            'stroke-width': 0
-                        },
-                        '.': {
-                            'data-tooltip-position': 'left',
-                            'data-tooltip-position-selector': '.joint-stencil'
-                        }
-                    }
-                },
-                {
-                    type: 'basic.Rect',
-                    position: { x: 110, y: 204 },
-                    size: { width: 90, height: 54 },
-                    angle: 0,
-                    id: 'cee7b5ba-cc82-4069-8dac-dac0ec7f8d63',
-                    z: 2,
-                    attrs: {
-                        rect: {
-                            fill: '#f6f6f6',
-                            stroke: '#31d0c6',
-                            width: 50,
-                            height: 30,
-                            rx: 2,
-                            ry: 2,
-                            'stroke-width': 2,
-                            'stroke-dasharray': '0'
-                        },
-                        text: {
-                            fill: '#222138',
-                            text: 'Opened',
-                            'font-size': 16,
-                            'font-family': 'Roboto Condensed',
-                            'font-weight': 'Normal',
-                            'stroke-width': 0
-                        },
-                        '.': {
-                            'data-tooltip-position': 'left',
-                            'data-tooltip-position-selector': '.joint-stencil'
-                        }
-                    }
-                },
-                {
-                    type: 'basic.Rect',
-                    position: { x: 110, y: 308 },
-                    size: { width: 90, height: 54 },
-                    angle: 0,
-                    id: 'b3531991-aaa2-43d8-94ad-3adc86f25746',
-                    z: 3,
-                    attrs: {
-                        rect: {
-                            fill: '#f6f6f6',
-                            stroke: '#31d0c6',
-                            width: 50,
-                            height: 30,
-                            rx: 2,
-                            ry: 2,
-                            'stroke-width': 2,
-                            'stroke-dasharray': '0'
-                        },
-                        text: {
-                            fill: '#222138',
-                            text: 'Verified',
-                            'font-size': 16,
-                            'font-family': 'Roboto Condensed',
-                            'font-weight': 'Normal',
-                            'stroke-width': 0
-                        },
-                        '.': {
-                            'data-tooltip-position': 'left',
-                            'data-tooltip-position-selector': '.joint-stencil'
-                        }
-                    }
-                },
-                {
-                    type: 'app.Link',
-                    router: { name: 'normal' },
-                    connector: { name: 'normal' },
-                    source: { id: 'cee7b5ba-cc82-4069-8dac-dac0ec7f8d63' },
-                    target: { id: 'b3531991-aaa2-43d8-94ad-3adc86f25746' },
-                    id: 'ebafcd9f-1b25-4a16-affc-9183b0a3a40f',
-                    z: 4,
-                    labels: [
-                        { attrs: { text: { text: 'Verify' } }, position: 0.5 }
-                    ],
-                    vertices: [{ x: 155, y: 283 }],
-                    attrs: {}
-                },
-                {
-                    type: 'basic.Rect',
-                    position: { x: 110, y: 412 },
-                    size: { width: 90, height: 54 },
-                    angle: 0,
-                    id: 'a93d25d0-87c1-4742-b901-1106f5c16c78',
-                    z: 5,
-                    attrs: {
-                        rect: {
-                            fill: '#f6f6f6',
-                            stroke: '#31d0c6',
-                            width: 50,
-                            height: 30,
-                            rx: 2,
-                            ry: 2,
-                            'stroke-width': 2,
-                            'stroke-dasharray': '0'
-                        },
-                        text: {
-                            fill: '#222138',
-                            text: 'Playing',
-                            'font-size': 16,
-                            'font-family': 'Roboto Condensed',
-                            'font-weight': 'Normal',
-                            'stroke-width': 0
-                        },
-                        '.': {
-                            'data-tooltip-position': 'left',
-                            'data-tooltip-position-selector': '.joint-stencil'
-                        }
-                    }
-                },
-                {
-                    type: 'app.Link',
-                    router: { name: 'normal' },
-                    connector: { name: 'normal' },
-                    source: { id: 'b3531991-aaa2-43d8-94ad-3adc86f25746' },
-                    target: { id: 'a93d25d0-87c1-4742-b901-1106f5c16c78' },
-                    id: 'e8e72a8a-8569-4648-8bf5-20e80eadf40a',
-                    z: 6,
-                    labels: [
-                        { attrs: { text: { text: 'Play' } }, position: 0.5 }
-                    ],
-                    vertices: [{ x: 155, y: 387 }],
-                    attrs: {}
-                },
-                {
-                    type: 'basic.Rect',
-                    position: { x: 140, y: 516 },
-                    size: { width: 90, height: 54 },
-                    angle: 0,
-                    id: '4bce2379-8ede-48bc-968e-45c9e95f87b2',
-                    z: 7,
-                    attrs: {
-                        rect: {
-                            fill: '#f6f6f6',
-                            stroke: '#31d0c6',
-                            width: 50,
-                            height: 30,
-                            rx: 2,
-                            ry: 2,
-                            'stroke-width': 2,
-                            'stroke-dasharray': '0'
-                        },
-                        text: {
-                            fill: '#222138',
-                            text: 'Paused',
-                            'font-size': 16,
-                            'font-family': 'Roboto Condensed',
-                            'font-weight': 'Normal',
-                            'stroke-width': 0
-                        },
-                        '.': {
-                            'data-tooltip-position': 'left',
-                            'data-tooltip-position-selector': '.joint-stencil'
-                        }
-                    }
-                },
-                {
-                    type: 'app.Link',
-                    router: { name: 'normal' },
-                    connector: { name: 'normal' },
-                    source: { id: 'a93d25d0-87c1-4742-b901-1106f5c16c78' },
-                    target: { id: '4bce2379-8ede-48bc-968e-45c9e95f87b2' },
-                    id: '66e6b65c-0327-43f1-959e-e1d4c1ac7311',
-                    z: 8,
-                    vertices: [{ x: 155, y: 491 }],
-                    labels: [
-                        { attrs: { text: { text: 'Pause' } }, position: 0.5 }
-                    ],
-                    attrs: {}
-                },
-                {
-                    type: 'basic.Circle',
-                    size: { width: 90, height: 54 },
-                    position: { x: 100, y: 620 },
-                    angle: 0,
-                    id: '396f191a-ce20-452a-8f87-37e4e3fe4bfe',
-                    z: 9,
-                    attrs: {
-                        circle: {
-                            fill: '#f6f6f6',
-                            stroke: '#31d0c6',
-                            width: 50,
-                            height: 30,
-                            'stroke-width': 2,
-                            'stroke-dasharray': '0'
-                        },
-                        text: {
-                            'font-size': 16,
-                            text: 'End',
-                            fill: '#222138',
-                            'font-family': 'Roboto Condensed',
-                            'font-weight': 'Normal',
-                            'stroke-width': 0
-                        },
-                        '.': {
-                            'data-tooltip-position': 'left',
-                            'data-tooltip-position-selector': '.joint-stencil'
-                        }
-                    }
-                },
-                {
-                    type: 'app.Link',
-                    router: { name: 'normal' },
-                    connector: { name: 'normal' },
-                    source: { id: '0bbd0dc7-bac8-4327-8f34-4fc6ebfbec50' },
-                    target: { id: 'cee7b5ba-cc82-4069-8dac-dac0ec7f8d63' },
-                    id: 'cbe0a327-febb-4ab1-86b5-219c15dac6e8',
-                    z: 10,
-                    labels: [
-                        { attrs: { text: { text: 'Start' } }, position: 0.5 }
-                    ],
-                    vertices: [{ x: 155, y: 179 }],
-                    attrs: {}
-                },
-                {
-                    type: 'app.Link',
-                    router: { name: 'normal' },
-                    connector: { name: 'normal' },
-                    source: { id: 'a93d25d0-87c1-4742-b901-1106f5c16c78' },
-                    target: { id: '396f191a-ce20-452a-8f87-37e4e3fe4bfe' },
-                    id: '8e6c1a0a-66c4-49ee-96e3-399221ed8a89',
-                    z: 12,
-                    vertices: [
-                        { x: 105, y: 491 },
-                        { x: 105, y: 543 },
-                        { x: 105, y: 595 }
-                    ],
-                    labels: [
-                        { attrs: { text: { text: 'Stop' } }, position: 0.5 }
-                    ],
-                    attrs: {}
-                },
-                {
-                    type: 'app.Link',
-                    router: { name: 'normal' },
-                    connector: { name: 'normal' },
-                    source: { id: '4bce2379-8ede-48bc-968e-45c9e95f87b2' },
-                    target: { id: '396f191a-ce20-452a-8f87-37e4e3fe4bfe' },
-                    id: '3966e856-f017-488c-b288-f1ab3453a224',
-                    z: 13,
-                    vertices: [{ x: 185, y: 595 }],
-                    labels: [
-                        { attrs: { text: { text: 'Stop' } }, position: 0.5 }
-                    ],
-                    attrs: {}
-                },
-                {
-                    type: 'app.Link',
-                    router: { name: 'normal' },
-                    connector: { name: 'normal' },
-                    source: { id: '4bce2379-8ede-48bc-968e-45c9e95f87b2' },
-                    target: { id: 'a93d25d0-87c1-4742-b901-1106f5c16c78' },
-                    id: 'b586b675-8330-413e-9b48-979a1d826e6a',
-                    z: 14,
-                    vertices: [{ x: 195, y: 491 }],
-                    labels: [
-                        { attrs: { text: { text: 'Play' } }, position: 0.5 }
-                    ],
-                    attrs: {}
-                }
-            ]
-        };
-
         // graph.on('add', (cell: joint.dia.Cell, collection: any, opt: any) => {
         //     console.log(`cell??????????????????`);
         //     console.log(cell);
@@ -382,12 +86,11 @@ export class AppComponent implements OnInit {
         $('.paper-container').append(paperScroller.el);
 
         paperScroller.render().center();
-        // graph.fromJSON(jsonString)
     }
 
     // Create and populate stencil.
     initializeStencil() {
-        console.log(`initializeStencil`);
+        // console.log(`initializeStencil`);
         const stencil = (this.stencil = new joint.ui.Stencil({
             paper: this.paperScroller,
             snaplines: this.snaplines,
@@ -413,7 +116,7 @@ export class AppComponent implements OnInit {
 
     // Create keyboard schortcuts
     initializeKeyboardShortcuts() {
-        console.log(`initializeKeyboardShortcuts`);
+        // console.log(`initializeKeyboardShortcuts`);
         this.keyboard = new joint.ui.Keyboard();
         this.keyboard.on({
             'ctrl+c': () => {
@@ -487,7 +190,7 @@ export class AppComponent implements OnInit {
 
     // Selection single element and selecting multi elements with holding shift
     initializeSelection() {
-        console.log(`initializeSelection`);
+        // console.log(`initializeSelection`);
         this.clipboard = new joint.ui.Clipboard();
         this.selection = new joint.ui.Selection({
             paper: this.paper,
@@ -530,7 +233,7 @@ export class AppComponent implements OnInit {
     }
 
     createInspector(cell: joint.dia.Cell) {
-        console.log(`createInspector`);
+        // console.log(`createInspector`);
         cell.on('change:attrs', input => {
             const actions = getActions();
             const workflows = getWorkflow();
@@ -550,8 +253,8 @@ export class AppComponent implements OnInit {
                     addPortsToWorkflow(workflows, input);
                 }
             }
-            console.log(`input.attributes.type`);
-            console.log(input.attributes.type);
+            // console.log(`input.attributes.type`);
+            // console.log(input.attributes.type);
 
             if (input.attributes.type === 'erd.IdentifyingRelationship') {
                 let in_port_temp: any[] = [];
@@ -644,7 +347,7 @@ export class AppComponent implements OnInit {
 
     // Click on element create frame with functions for manipulating size, link...
     initializeHaloAndInspector() {
-        console.log(`initializeHaloAndInspector`);
+        // console.log(`initializeHaloAndInspector`);
         this.paper.on(
             'element:pointerup link:options',
             (cellView: joint.dia.CellView) => {
@@ -700,7 +403,7 @@ export class AppComponent implements OnInit {
 
     // Minimap for designer
     initializeNavigator() {
-        console.log(`initializeNavigator`);
+        // console.log(`initializeNavigator`);
         const navigator = (this.navigator = new joint.ui.Navigator({
             width: 240,
             height: 115,
@@ -714,7 +417,7 @@ export class AppComponent implements OnInit {
 
     // Create toolbar with all desired options
     initializeToolbar() {
-        console.log(`initializeToolbar`);
+        // console.log(`initializeToolbar`);
         const toolbar = (this.toolbar = new joint.ui.Toolbar({
             groups: config.toolbar.groups,
             tools: config.toolbar.tools,
@@ -745,7 +448,7 @@ export class AppComponent implements OnInit {
 
     // Turn on/off snaping to other elements on drag
     changeSnapLines(checked: boolean) {
-        console.log(`changeSnapLines`);
+        // console.log(`changeSnapLines`);
         if (checked) {
             this.snaplines.startListening();
             this.stencil.options.snaplines = this.snaplines;
@@ -757,7 +460,7 @@ export class AppComponent implements OnInit {
 
     // Adding tooltips on all designer UI
     initializeTooltips() {
-        console.log(`initializeTooltips`);
+        // console.log(`initializeTooltips`);
         new joint.ui.Tooltip({
             rootTarget: document.body,
             target: '[data-tooltip]',
@@ -767,7 +470,7 @@ export class AppComponent implements OnInit {
     }
 
     openAsSVG() {
-        console.log(`openAsSVG`);
+        // console.log(`openAsSVG`);
         this.paper.toSVG(
             (svg: string) => {
                 new joint.ui.Lightbox({
@@ -781,7 +484,7 @@ export class AppComponent implements OnInit {
     }
 
     openAsPNG() {
-        console.log(`openAsPNG`);
+        // console.log(`openAsPNG`);
         this.paper.toPNG(
             (dataURL: string) => {
                 new joint.ui.Lightbox({
@@ -815,7 +518,7 @@ export class AppComponent implements OnInit {
 
     // Creating auto layout
     layoutDirectedGraph() {
-        console.log(`layoutDirectedGraph`);
+        // console.log(`layoutDirectedGraph`);
         joint.layout.DirectedGraph.layout(this.graph, {
             setVertices: true,
             rankDir: 'LR',
@@ -826,15 +529,10 @@ export class AppComponent implements OnInit {
     }
 
     saveToJSON() {
-        console.log(`saveToJSON`);
+        // console.log(`saveToJSON`);
         const actions = getActions();
         const workflow = getWorkflow();
         const graphJson = this.graph;
-        let lastZIndex: number = 0;
-        console.log(`graphJson`);
-        console.log(graphJson);
-        
-
         const usedOperationsInWorkflow: any = getUsedOperations(
             graphJson,
             actions
@@ -844,101 +542,165 @@ export class AppComponent implements OnInit {
             workflow
         );
         const name: string = this.name;
-        const uuid = __.uuid();
+        // const uuid = __.uuid();
         const graphJson_str: any = JSON.stringify(graphJson);
         const graphJson_obj: any = JSON.parse(graphJson_str);
 
-        graphJson_obj['uuid'] = uuid;
+        // graphJson_obj['uuid'] = uuid;
         graphJson_obj['Name'] = name;
         graphJson_obj['Operations'] = usedOperationsInWorkflow;
         graphJson_obj['Workflow'] = usedWorkflowInWorkflow;
         graphJson_obj['States'] = [];
-
         // console.log(`graphJson_obj`);
         // console.log(graphJson_obj);
         // console.log(JSON.stringify(graphJson_obj));
 
-        for (let i of graphJson_obj.cells) {
-            lastZIndex = i.z;
-        }
+        setInitAsFirstState(graphJson, graphJson_obj);
+        // console.log(`graphJson`);
+        // console.log(graphJson);
+        // console.log(`-------------------------------------`);
+        let state: any[] = [];
 
-        for (let i of graphJson.attributes.cells.models) {
-            console.log(i);
-            
-            if (i.attributes.z === 1 && i.attributes.type !== 'fsa.StartState') {
-                i.attributes.z = lastZIndex + 1;
-            } else {
-                if (i.attributes.type === 'fsa.StartState') {
-                    if (i.attributes.z !== 1) {
-                        i.attributes.z = 1;
-                    }
-                }
-            }
-        }
-        console.log(`graphJson`);
-        console.log(graphJson);
-
-        // TODO TODO 
-
-        // console.log(`graphJson_obj.cells`);
-        // console.log(_.orderBy(graphJson_obj.cells, 'z'));
-        // const models = _.orderBy(graphJson_obj.cells, 'z');
-
-        // let tessss = {...graphJson.attributes.cells.models, models}
-        // console.log(`tessss`);
-        // console.log(tessss);
-        
-
-        _.each(this.graph.getElements(), (element: joint.dia.Element): void => {
-            const connectedElements_temp = graphJson.getSuccessors(element);
-            let connectedElement: any = [];
-            let connectedElementMessage: any = [];
-
-            let connectedElementsName: string[] = [];
+        _.each(graphJson.getElements(), (element: joint.dia.Element): void => {
+            const opt = {
+                outbound: true
+            };
+            let nesto = [];
             const currentElementTextPart = _.find(
                 element.attributes.attrs,
                 'text'
             ).text;
-            // console.log(`currentElementTextPart`);
-            // console.log(currentElementTextPart);
-            // console.log(`connectedElements_temp`);
-            // console.log(connectedElements_temp);
 
-            // if (connectedElements_temp.length > 0) {
-            //     for (let i of connectedElements_temp) {
-            //         if (i.attributes.type === 'basic.Rect') {
-            //             connectedElement = i;
-            //         }
-            //     }
-            //     console.log(`connectedElement`);
-            //     console.log(connectedElement);
-            //     console.log(
-            //         _.find(connectedElement.attributes.attrs, 'text').text
-            //     );
-            // }
+            if (
+                element.attributes.type === 'fsa.StartState' ||
+                element.attributes.type === 'erd.IdentifyingRelationship' ||
+                element.attributes.type === 'basic.Rect'
+            ) {
+                if (
+                    // currentElementTextPart === 'Init' ||
+                    // currentElementTextPart === '1' ||
+                    // currentElementTextPart === 'WaitOnAlarm'
+                    currentElementTextPart === '3'
+                ) {
+                    let allStates = [];
+                    let finalState = [];
 
-            // console.log(element.getAncestors());
+                    const connectedElements_temp = getNeighborsRec(
+                        graphJson,
+                        element,
+                        opt,
+                        allStates,
+                        finalState
+                    );
+                    console.log(`currentElementTextPart`);
+                    console.log(currentElementTextPart);
 
-            // for (let i of connectedElements) {
-            //     connectedElementsName.push(
-            //         _.find(i.attributes.attrs, 'text').text
-            //     );
-            // }
-            // console.log(`connectedElementsName`);
-            // console.log(connectedElementsName);
-            // console.log(connectedElementsName.length);
+                    console.log(`connectedElements_temp`);
+                    console.log(connectedElements_temp);
+                    const finalStateLen: number =
+                        connectedElements_temp.finalState.length;
 
-            // const stateName: string = createNames(
-            //     currentElementTextPart,
-            //     connectedElementsName
-            // );
-            // console.log(`stateName`);
-            // console.log(stateName);
+                    const connectedElement: string[] = findName(
+                        connectedElements_temp.finalState,
+                        false,
+                        false,
+                        finalStateLen,
+                        element,
+                        graphJson,
+                        connectedElements_temp
+                    );
+                    console.log(`connectedElement`);
+                    console.log(connectedElement);
+
+                    const connectedOperations: string[] = findName(
+                        connectedElements_temp.allStates,
+                        false,
+                        true,
+                        finalStateLen,
+                        element,
+                        graphJson,
+                        connectedElements_temp
+                    );
+                    console.log(`connectedOperations`);
+                    console.log(connectedOperations);
+
+                    const connectedElementMessage: string[] = findName(
+                        connectedElements_temp.allStates,
+                        true,
+                        false,
+                        finalStateLen,
+                        element,
+                        graphJson,
+                        connectedElements_temp
+                    );
+                    console.log(`connectedElementMessage`);
+                    console.log(connectedElementMessage);
+
+                    const stateName: {
+                        name: string;
+                        name_arr: string[];
+                    } = createNames(
+                        currentElementTextPart,
+                        connectedElement,
+                        connectedElementMessage,
+                        connectedOperations
+                    );
+                    console.log(`stateName`);
+                    console.log(stateName);
+                    console.log(stateName.name_arr.length);
+
+                    const nextStateOnSuccess: string = _.flatten(
+                        connectedElement
+                    );
+                    const nextStateOnFail: string = _.flatten(connectedElement);
+                    // console.log(`nextStateOnSuccess`);
+                    // console.log(nextStateOnSuccess);
+                    // console.log(`nextStateOnFail`);
+                    // console.log(nextStateOnFail);
+
+                    // if (connectedOperations.length > 1) {
+                    nesto = createState(
+                        currentElementTextPart,
+                        stateName,
+                        nextStateOnSuccess,
+                        nextStateOnFail,
+                        null,
+                        connectedElementMessage,
+                        'StepByStep',
+                        0,
+                        connectedOperations
+                    );
+                    // } else {
+                    //     nesto = createState(
+                    //         currentElementTextPart,
+                    //         stateName,
+                    //         nextStateOnSuccess,
+                    //         nextStateOnFail,
+                    //         null,
+                    //         connectedElementMessage,
+                    //         'StepByStep',
+                    //         0,
+                    //         connectedOperations
+                    //     );
+                    // }
+                    // console.log(`nesto`);
+                    // console.log(nesto);
+                    // console.log(
+                    //     `~~~~~~~~~~~~~~~~---------------------------~~~~~~~~~~~~~~~~`
+                    // );
+
+                    state.push(nesto);
+                }
+            }
         });
+        if (state.length > 0) {
+            console.log(`state`);
+            console.log(state);
+        }
     }
 
     loadFromJSON() {
-        console.log(`loadFromJSON`);
+        // console.log(`loadFromJSON`);
         // TODO - logic for getting diagram from database
         this.graph.fromJSON(jsonM.jsonString7);
     }
@@ -961,30 +723,264 @@ export class AppComponent implements OnInit {
     }
 }
 
-const getElementsName = (graph: joint.dia.Graph) => {};
-
 const createNames = (
-    currentStateName: string,
-    nextStateName: string[],
-    message?: string
-): string => {
-    let name: string | string[] = '';
+    currentElementTextPart: string,
+    connectedElement: string[],
+    connectedElementMessage: string[],
+    connectedOperations: string[]
+): { name: string; name_arr: string[] } => {
+    let name: string = '';
+    let name_arr: string[] = [];
 
-    // if (nextStateName.length === 1) {
-    //     name = `${currentStateName}_${nextStateName.pop()}`
-    // } else {
-    //     for (let i of nextStateName) {
-    //         name.push()
-    //     }
-    // }
+    const elementLength: number = connectedElement.length;
+    const operationLength: number = connectedOperations.length;
+    const messageLength: number = connectedElementMessage.length;
+    let len: number = 0;
+    if (elementLength > 1) {
+        len = elementLength;
+    }
+    if (operationLength > 1) {
+        len = operationLength;
+    }
+    if (messageLength > 1) {
+        len = messageLength;
+    }
 
-    return name;
+    if (len > 1) {
+        for (let i: number = 0; i < len; i++) {
+            name = `${currentElementTextPart}_${connectedElement[i]}_${
+                connectedElementMessage[i]
+            }`;
+            name_arr.push(name);
+            name = '';
+        }
+    } else {
+        for (let i: number = 0; i < connectedElement.length; i++) {
+            name = `${currentElementTextPart}_${connectedElement[i]}_${
+                connectedElementMessage[i]
+            }`;
+        }
+    }
+
+    return { name, name_arr };
+};
+
+const getNeighborsRec = (graph, element, opt, allStates, finalState) => {
+    const connectedElements_temp = graph.getNeighbors(element, opt);
+
+    for (let i of connectedElements_temp) {
+        if (
+            i.attributes.type === 'fsa.StartState' ||
+            i.attributes.type === 'erd.IdentifyingRelationship' ||
+            i.attributes.type === 'basic.Rect' ||
+            i.attributes.type === 'fsa.EndState'
+        ) {
+            finalState.push(i);
+        } else {
+            allStates.push(i);
+            getNeighborsRec(graph, i, opt, allStates, finalState);
+        }
+    }
+
+    return { allStates, finalState };
+};
+
+interface StateModel {
+    Name: string | string[];
+    Transitions: [
+        {
+            Name: string | string[];
+            NextStateOnSuccess: string;
+            NextStateOnFailure: string;
+            Condition: string;
+            Trigger: {
+                Message: string;
+                Timeout: number;
+            };
+            Operations: [
+                {
+                    name: string;
+                    arguments: [
+                        {
+                            parameter: string;
+                            argument: string;
+                            modifier: string[];
+                        }
+                    ];
+                }
+            ];
+            TransitionScenario: string;
+        }
+    ];
+}
+
+const createState = (
+    name: string | string[],
+    transitionName: any, //{ name: string; name_arr: string[] },
+    nextStateOnSuccess: string,
+    nextStateOnFail: string,
+    condition: string,
+    message: string[],
+    transitionScenario: string,
+    timeout: number = 0,
+    operations: any
+) => {
+    let state: any = [];
+    let temp: any = [];
+    const elementLength: number = transitionName.name_arr.length;
+    const operationLength: number = operations.length;
+    const messageLength: number = message.length;
+    let len: number = 0;
+    if (elementLength > 1) {
+        len = elementLength;
+    }
+    if (operationLength > 1) {
+        len = operationLength;
+    }
+    if (messageLength > 1) {
+        len = messageLength;
+    }
+    if (len > 1) {
+        for (let i: number = 0; i < len; i++) {
+            if (_.isNil(message[i])) {
+                message[i] = null;
+            }
+            temp.push({
+                Name: transitionName.name_arr[i],
+                NextStateOnSuccess: nextStateOnSuccess[i],
+                NextStateOnFailure: nextStateOnFail[i],
+                Condition: 'null',
+                Trigger: {
+                    Message: message[i],
+                    Timeout: timeout
+                },
+                Operations: operations[i],
+                TransitionScenario: transitionScenario
+            });
+        }
+        state = {
+            Name: name,
+            Transitions: [...temp]
+        };
+    } else {
+        const nextStateS: string =
+            nextStateOnSuccess[nextStateOnSuccess.length - 1];
+        const nextStateF: string = nextStateOnFail[nextStateOnFail.length - 1];
+        const msg: string = message[message.length - 1];
+        const operation: string = operations[operations.length - 1];
+        state = {
+            Name: name,
+            Transitions: [
+                {
+                    Name: transitionName.name,
+                    NextStateOnSuccess: nextStateS,
+                    NextStateOnFailure: nextStateF,
+                    Condition: 'null',
+                    Trigger: {
+                        Message: msg,
+                        Timeout: timeout
+                    },
+                    Operations: operation,
+                    TransitionScenario: transitionScenario
+                }
+            ]
+        };
+    }
+
+    return state;
+};
+
+const findName = (
+    elementsArray,
+    message: boolean,
+    operation: boolean,
+    finalStateLen: number,
+    element,
+    graphJson,
+    connectedElements_temp
+): string[] => {
+    let connectedElement: string[] = [];
+
+    let operationTempArray: string[] = [];
+    for (let i: number = 0; i < finalStateLen; i++) {
+        operationTempArray.push(elementsArray[elementsArray.length - 1]);
+    }
+    if (message) {
+        for (let i of elementsArray) {
+            if (i.attributes.type === 'erd.ISA') {
+                connectedElement.push(_.find(i.attributes.attrs, 'text').text);
+            }
+        }
+    }
+    if (operation) {
+        let arr = [];
+        for (let i of elementsArray) {
+            if (i.attributes.type === 'app.RectangularModel') {
+                arr.push(i);
+            }
+        }
+        
+        if (arr.length === 1) {
+            for (let i: number = 0; i < finalStateLen; i++) {
+                if (
+                    graphJson.isNeighbor(
+                        connectedElements_temp.finalState[i],
+                        arr[arr.length - 1],
+                        { inbound: true }
+                    )
+                ) {
+                    connectedElement.push(
+                        _.find(arr[0].attributes.attrs, 'text').text
+                    );
+                } else {
+                    connectedElement.push('');
+                }
+            }
+        } else {
+            for (let i of arr) {
+                if (i.attributes.type === 'app.RectangularModel') {
+                    connectedElement.push(_.find(i.attributes.attrs, 'text').text);
+                }
+            }
+        }
+    }
+    if (!message && !operation) {
+        for (let i of elementsArray) {
+            connectedElement.push(_.find(i.attributes.attrs, 'text').text);
+        }
+    }
+
+    return connectedElement;
+};
+
+const setInitAsFirstState = (graph, graph_json): void => {
+    let lastZIndex: number = 0;
+
+    for (let i of graph_json.cells) {
+        lastZIndex = i.z;
+    }
+    for (let i of graph.attributes.cells.models) {
+        if (i.attributes.z === 1 && i.attributes.type !== 'fsa.StartState') {
+            i.attributes.z = lastZIndex + 1;
+        } else {
+            if (i.attributes.type === 'fsa.StartState') {
+                if (i.attributes.z !== 1) {
+                    i.attributes.z = 1;
+                }
+            }
+        }
+    }
+    graph.attributes.cells.models = _.sortBy(
+        graph.attributes.cells.models,
+        ['attributes.z'],
+        [`asc`]
+    );
 };
 
 const colorElement = (node: any, name: string) => {
     console.log(`colorElement`);
     // console.log(node.attributes.attrs.text.text);
-    console.log(node);
+    // console.log(node);
     // console.log(name);
 
     if (name === 'state') {
@@ -1045,7 +1041,7 @@ const getWorkflow = () => {
 };
 
 const addPortsToWorkflow = (workflow, input): void => {
-    console.log(`addPortsToWorkflow`);
+    // console.log(`addPortsToWorkflow`);
     let in_port_temp: any[] = [];
     let out_port_temp: any[] = [];
 
@@ -1137,17 +1133,17 @@ const addPortsToWorkflow = (workflow, input): void => {
             }
         }
     }
-    console.log(`in_port_temp`);
-    console.log(in_port_temp);
+    // console.log(`in_port_temp`);
+    // console.log(in_port_temp);
 
     const port = _.flattenDeep([in_port_temp, out_port_temp]);
-    console.log(`port`);
-    console.log(port);
+    // console.log(`port`);
+    // console.log(port);
     input.addPorts(port);
 };
 
 const removePortsToWorkflow = (input): void => {
-    console.log(`removePortsToWorkflow`);
+    // console.log(`removePortsToWorkflow`);
     const allPorts: any = input.getPorts();
     for (let i of allPorts) {
         input.removePort(i);
@@ -1155,7 +1151,7 @@ const removePortsToWorkflow = (input): void => {
 };
 
 const addPortsToElement = (actions, input): void => {
-    console.log(`addPortsToElement`);
+    // console.log(`addPortsToElement`);
     let in_port_temp: string[] = [];
     let out_port_temp: string[] = [];
 
@@ -1230,7 +1226,7 @@ const addPortsToElement = (actions, input): void => {
             out_port_temp = actions.Operations[i].outPorts;
         }
     }
-    if (in_port_temp !== undefined) {
+    if (_.isNil(in_port_temp)) {
         let port: any[] = [];
         let new_id: any = [];
         let in_port_name: string[] = [];
@@ -1252,12 +1248,9 @@ const addPortsToElement = (actions, input): void => {
                 in_port_arr_new_id[i].attrs['.port-label'].text + (i + 1)
             );
         }
-        // console.log(`in_port_name`);
-        // console.log(in_port_name);
-
         input.addInPort(in_port_name);
     }
-    if (out_port_temp !== undefined) {
+    if (_.isNil(out_port_temp)) {
         let port: any[] = [];
         let new_id: any = [];
         let out_port_name: string[] = [];
@@ -1284,7 +1277,7 @@ const addPortsToElement = (actions, input): void => {
 };
 
 const removePortsFromElement = (input): void => {
-    console.log(`removePortsFromElement`);
+    // console.log(`removePortsFromElement`);
     const allPorts: any = input.getPorts();
     const allPorts_len: number = allPorts.length;
 

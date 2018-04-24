@@ -131,6 +131,99 @@
             "outPorts": [
                 "out"
             ]
+        },
+        {
+            "OperationId": "8",
+            "OperationName": "Decrement()",
+            "Messages": [
+                {
+                    "MessageId": "DecrementMessage",
+                    "ContentExample": {}
+                }
+            ],
+            "OperationDependency": "None",
+            "Description": "Decrement",
+            "inPorts": [
+                "in",
+                "in",
+                "in",
+                "in"
+            ],
+            "outPorts": [
+                "out"
+            ]
+        },
+        {
+            "OperationId": "9",
+            "OperationName": "ClearRow()",
+            "Messages": [
+                {
+                    "MessageId": "ClearRowMessage",
+                    "ContentExample": {}
+                }
+            ],
+            "OperationDependency": "None",
+            "Description": "ClearRow",
+            "inPorts": [
+                "in"
+            ],
+            "outPorts": [
+                "out"
+            ]
+        },
+        {
+            "OperationId": "10",
+            "OperationName": "CheckIfRowIsFree()",
+            "Messages": [
+                {
+                    "MessageId": "CheckIfRowIsFreeMessage",
+                    "ContentExample": {}
+                }
+            ],
+            "OperationDependency": "None",
+            "Description": "CheckIfRowIsFree",
+            "inPorts": [
+                "in"
+            ],
+            "outPorts": [
+                "out"
+            ]
+        },
+        {
+            "OperationId": "11",
+            "OperationName": "MoveFromRowToRow()",
+            "Messages": [
+                {
+                    "MessageId": "MoveFromRowToRowMessage",
+                    "ContentExample": {}
+                }
+            ],
+            "OperationDependency": "None",
+            "Description": "MoveFromRowToRow",
+            "inPorts": [
+                "in"
+            ],
+            "outPorts": [
+                "out"
+            ]
+        },
+        {
+            "OperationId": "12",
+            "OperationName": "ShowRow()",
+            "Messages": [
+                {
+                    "MessageId": "ShowRowMessage",
+                    "ContentExample": {}
+                }
+            ],
+            "OperationDependency": "None",
+            "Description": "ShowRow",
+            "inPorts": [
+                "in"
+            ],
+            "outPorts": [
+                "out"
+            ]
         }
     ]
 }

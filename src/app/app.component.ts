@@ -10,9 +10,34 @@ import * as jsonM from './../assets/JSON/allJSONstrings';
 import '../models/joint.shapes.app';
 import * as joint from '../assets/build/rappid.min';
 
-let time1: any = 0;
-let time2: any = 0;
-let index: number = 0;
+interface StateModel {
+    Name: string;
+    Transitions: [
+        {
+            Name: string;
+            NextStateOnSuccess: string;
+            NextStateOnFailure: string;
+            Condition: string;
+            Trigger: {
+                Message: string;
+                Timeout: number;
+            };
+            Operations: [
+                {
+                    name: string;
+                    arguments: [
+                        {
+                            parameter: string;
+                            argument: string;
+                            modifier: string[];
+                        }
+                    ];
+                }
+            ];
+            TransitionScenario: string;
+        }
+    ];
+}
 
 @Component({
     selector: 'app-root',
@@ -257,10 +282,7 @@ export class AppComponent implements OnInit {
             // console.log(input.attributes.type);
 
             if (input.attributes.type === 'erd.IdentifyingRelationship') {
-                let in_port_temp: any[] = [];
-                let out_port_temp: any[] = [];
-
-                const in_port = {
+               const in_port = {
                     id: 'temp1',
                     markup: '<circle class="port-body" r="10"/>',
                     group: 'in',
@@ -324,11 +346,7 @@ export class AppComponent implements OnInit {
                         name: 'bottom'
                     }
                 };
-
-                let index_in: number = 0;
-                let index_out: number = 0;
-
-                let port = [];
+                const port = [];
                 port.push(out_port);
                 port.push(in_port);
 
@@ -542,11 +560,9 @@ export class AppComponent implements OnInit {
             workflow
         );
         const name: string = this.name;
-        // const uuid = __.uuid();
         const graphJson_str: any = JSON.stringify(graphJson);
         const graphJson_obj: any = JSON.parse(graphJson_str);
 
-        // graphJson_obj['uuid'] = uuid;
         graphJson_obj['Name'] = name;
         graphJson_obj['Operations'] = usedOperationsInWorkflow;
         graphJson_obj['Workflow'] = usedWorkflowInWorkflow;
@@ -555,17 +571,12 @@ export class AppComponent implements OnInit {
         // console.log(graphJson_obj);
         // console.log(JSON.stringify(graphJson_obj));
 
-        setInitAsFirstState(graphJson, graphJson_obj);
-        // console.log(`graphJson`);
-        // console.log(graphJson);
-        // console.log(`-------------------------------------`);
-        let state: any[] = [];
+        const result: any = [];
 
         _.each(graphJson.getElements(), (element: joint.dia.Element): void => {
             const opt = {
                 outbound: true
             };
-            let nesto = [];
             const currentElementTextPart = _.find(
                 element.attributes.attrs,
                 'text'
@@ -576,133 +587,55 @@ export class AppComponent implements OnInit {
                 element.attributes.type === 'erd.IdentifyingRelationship' ||
                 element.attributes.type === 'basic.Rect'
             ) {
-                if (
-                    // currentElementTextPart === 'Init' ||
-                    // currentElementTextPart === '1' ||
-                    // currentElementTextPart === 'WaitOnAlarm'
-                    currentElementTextPart === '3'
-                ) {
-                    let allStates = [];
-                    let finalState = [];
+                // if (
+                //     // currentElementTextPart === 'Init'
+                //     currentElementTextPart === '1'
+                //     // currentElementTextPart === 'WaitOnAlarm'
+                //     // currentElementTextPart === '3'
+                // ) {
+                const allStates = [];
+                const finalState = [];
+                const connectedElements_temp = getNeighborsRec(
+                    graphJson,
+                    element,
+                    opt,
+                    allStates,
+                    finalState
+                );
+                const states = findAllStates(
+                    graphJson,
+                    element,
+                    connectedElements_temp.finalState
+                );
 
-                    const connectedElements_temp = getNeighborsRec(
-                        graphJson,
-                        element,
-                        opt,
-                        allStates,
-                        finalState
-                    );
-                    console.log(`currentElementTextPart`);
-                    console.log(currentElementTextPart);
-
-                    console.log(`connectedElements_temp`);
-                    console.log(connectedElements_temp);
-                    const finalStateLen: number =
-                        connectedElements_temp.finalState.length;
-
-                    const connectedElement: string[] = findName(
-                        connectedElements_temp.finalState,
-                        false,
-                        false,
-                        finalStateLen,
-                        element,
-                        graphJson,
-                        connectedElements_temp
-                    );
-                    console.log(`connectedElement`);
-                    console.log(connectedElement);
-
-                    const connectedOperations: string[] = findName(
-                        connectedElements_temp.allStates,
-                        false,
-                        true,
-                        finalStateLen,
-                        element,
-                        graphJson,
-                        connectedElements_temp
-                    );
-                    console.log(`connectedOperations`);
-                    console.log(connectedOperations);
-
-                    const connectedElementMessage: string[] = findName(
-                        connectedElements_temp.allStates,
-                        true,
-                        false,
-                        finalStateLen,
-                        element,
-                        graphJson,
-                        connectedElements_temp
-                    );
-                    console.log(`connectedElementMessage`);
-                    console.log(connectedElementMessage);
-
-                    const stateName: {
-                        name: string;
-                        name_arr: string[];
-                    } = createNames(
+                let createdState: any;
+                const state: any[] = [];
+                for (const i of states) {
+                    createdState = createStateFunc(
                         currentElementTextPart,
-                        connectedElement,
-                        connectedElementMessage,
-                        connectedOperations
-                    );
-                    console.log(`stateName`);
-                    console.log(stateName);
-                    console.log(stateName.name_arr.length);
-
-                    const nextStateOnSuccess: string = _.flatten(
-                        connectedElement
-                    );
-                    const nextStateOnFail: string = _.flatten(connectedElement);
-                    // console.log(`nextStateOnSuccess`);
-                    // console.log(nextStateOnSuccess);
-                    // console.log(`nextStateOnFail`);
-                    // console.log(nextStateOnFail);
-
-                    // if (connectedOperations.length > 1) {
-                    nesto = createState(
-                        currentElementTextPart,
-                        stateName,
-                        nextStateOnSuccess,
-                        nextStateOnFail,
-                        null,
-                        connectedElementMessage,
+                        i,
                         'StepByStep',
-                        0,
-                        connectedOperations
+                        null
                     );
-                    // } else {
-                    //     nesto = createState(
-                    //         currentElementTextPart,
-                    //         stateName,
-                    //         nextStateOnSuccess,
-                    //         nextStateOnFail,
-                    //         null,
-                    //         connectedElementMessage,
-                    //         'StepByStep',
-                    //         0,
-                    //         connectedOperations
-                    //     );
-                    // }
-                    // console.log(`nesto`);
-                    // console.log(nesto);
-                    // console.log(
-                    //     `~~~~~~~~~~~~~~~~---------------------------~~~~~~~~~~~~~~~~`
-                    // );
-
-                    state.push(nesto);
+                    state.push(createdState);
                 }
+                result.push({
+                    Name: currentElementTextPart,
+                    Transitions: [...state]
+                });
+                // }
             }
         });
-        if (state.length > 0) {
-            console.log(`state`);
-            console.log(state);
+        if (result.length > 0) {
+            console.log(`result`);
+            console.log(result);
         }
     }
 
     loadFromJSON() {
         // console.log(`loadFromJSON`);
         // TODO - logic for getting diagram from database
-        this.graph.fromJSON(jsonM.jsonString7);
+        this.graph.fromJSON(jsonM.jsonString8);
     }
 
     validateDiagram() {
@@ -723,52 +656,154 @@ export class AppComponent implements OnInit {
     }
 }
 
-const createNames = (
-    currentElementTextPart: string,
-    connectedElement: string[],
-    connectedElementMessage: string[],
-    connectedOperations: string[]
-): { name: string; name_arr: string[] } => {
-    let name: string = '';
-    let name_arr: string[] = [];
+const findAllStates = (
+    graphJson: joint.dia.Graph,
+    element: joint.dia.Element,
+    connectedElementsFinal
+) => {
+    const allLinks: joint.dia.Link[] = graphJson.getLinks();
+    const resultArr: any[] = [];
+    for (const i of connectedElementsFinal) {
+        const operationArr: any = [];
+        const messageArr: any = [];
+        const linksArr: any = [];
+        const result: any = [];
+        resultArr.push(
+            findLink(
+                graphJson,
+                allLinks,
+                element,
+                i,
+                operationArr,
+                messageArr,
+                linksArr,
+                result
+            )
+        );
+    }
+    for (const i of resultArr) {
+        i.result.firstElement = element;
+    }
 
-    const elementLength: number = connectedElement.length;
-    const operationLength: number = connectedOperations.length;
-    const messageLength: number = connectedElementMessage.length;
-    let len: number = 0;
-    if (elementLength > 1) {
-        len = elementLength;
-    }
-    if (operationLength > 1) {
-        len = operationLength;
-    }
-    if (messageLength > 1) {
-        len = messageLength;
-    }
+    return resultArr;
+};
 
-    if (len > 1) {
-        for (let i: number = 0; i < len; i++) {
-            name = `${currentElementTextPart}_${connectedElement[i]}_${
-                connectedElementMessage[i]
-            }`;
-            name_arr.push(name);
-            name = '';
+const findLink = (
+    graphJson: joint.dia.Graph,
+    allLinks: joint.dia.Link[],
+    firstElement: joint.dia.Element,
+    lastElement: joint.dia.Element,
+    operationArr,
+    messageArr,
+    linksArr,
+    result
+) => {
+    let tempFirstElement: any = [];
+
+    for (let i: number = 0; i < allLinks.length; i++) {
+        if (allLinks[i].attributes.source.id === firstElement.id) {
+            tempFirstElement = graphJson.getCell(
+                allLinks[i].attributes.target.id
+            );
+            linksArr.push(allLinks[i]);
+            const index = allLinks.indexOf(allLinks[i]);
+            allLinks.splice(index, 1);
+            if (tempFirstElement.attributes.type === 'app.RectangularModel') {
+                operationArr.push(tempFirstElement);
+                findLink(
+                    graphJson,
+                    allLinks,
+                    tempFirstElement,
+                    lastElement,
+                    operationArr,
+                    messageArr,
+                    linksArr,
+                    result
+                );
+            }
+            if (tempFirstElement.attributes.type === 'erd.ISA') {
+                messageArr.push(tempFirstElement);
+                findLink(
+                    graphJson,
+                    allLinks,
+                    tempFirstElement,
+                    lastElement,
+                    operationArr,
+                    messageArr,
+                    linksArr,
+                    result
+                );
+            }
+            break;
         }
-    } else {
-        for (let i: number = 0; i < connectedElement.length; i++) {
-            name = `${currentElementTextPart}_${connectedElement[i]}_${
-                connectedElementMessage[i]
-            }`;
+    }
+    result = {
+        firstElement: '',
+        lastElement,
+        operation: operationArr,
+        message: messageArr,
+        links: linksArr
+    };
+    return { result };
+};
+
+const createStateFunc = (
+    currentElementTextPart,
+    stateSlice,
+    transitionScenario,
+    condition
+) => {
+    const tempState: any = [];
+    const endElementTextPart: string[] = [];
+    let messageTextPart: string[] = [];
+    const operationTextPart: string[] = [];
+    const linksTextPart: string[] = [];
+    let message: string;
+
+    endElementTextPart.push(
+        _.find(stateSlice.result.lastElement.attributes.attrs, 'text').text
+    );
+    for (const j of stateSlice.result.message) {
+        messageTextPart.push(_.find(j.attributes.attrs, 'text').text);
+    }
+    for (const k of stateSlice.result.operation) {
+        operationTextPart.push(_.find(k.attributes.attrs, 'text').text);
+    }
+    for (const k of stateSlice.result.links) {
+        if (!_.isNil(k.attributes.labels)) {
+            for (const m of k.attributes.labels) {
+                linksTextPart.push(m.attrs.text.text);
+            }
         }
     }
-
-    return { name, name_arr };
+    message = messageTextPart[messageTextPart.length - 1] || null;
+    if (linksTextPart.length > 0) {
+        messageTextPart = linksTextPart;
+    }
+    tempState.push({
+        Name:
+            currentElementTextPart +
+            '_' +
+            endElementTextPart[endElementTextPart.length - 1] +
+            '_' +
+            messageTextPart[messageTextPart.length - 1],
+        NextStateOnSuccess: endElementTextPart[endElementTextPart.length - 1],
+        NextStateOnFailure: endElementTextPart[endElementTextPart.length - 1],
+        Condition: condition,
+        Trigger: {
+            Message: message,
+            Timeout: 0
+        },
+        Operations: operationTextPart,
+        TransitionScenario: transitionScenario
+    });
+    return tempState;
 };
 
 const getNeighborsRec = (graph, element, opt, allStates, finalState) => {
     const connectedElements_temp = graph.getNeighbors(element, opt);
 
-    for (let i of connectedElements_temp) {
+    for (const i of connectedElements_temp) {
         if (
             i.attributes.type === 'fsa.StartState' ||
             i.attributes.type === 'erd.IdentifyingRelationship' ||
@@ -783,198 +818,6 @@ const getNeighborsRec = (graph, element, opt, allStates, finalState) => {
     }
 
     return { allStates, finalState };
-};
-
-interface StateModel {
-    Name: string | string[];
-    Transitions: [
-        {
-            Name: string | string[];
-            NextStateOnSuccess: string;
-            NextStateOnFailure: string;
-            Condition: string;
-            Trigger: {
-                Message: string;
-                Timeout: number;
-            };
-            Operations: [
-                {
-                    name: string;
-                    arguments: [
-                        {
-                            parameter: string;
-                            argument: string;
-                            modifier: string[];
-                        }
-                    ];
-                }
-            ];
-            TransitionScenario: string;
-        }
-    ];
-}
-
-const createState = (
-    name: string | string[],
-    transitionName: any, //{ name: string; name_arr: string[] },
-    nextStateOnSuccess: string,
-    nextStateOnFail: string,
-    condition: string,
-    message: string[],
-    transitionScenario: string,
-    timeout: number = 0,
-    operations: any
-) => {
-    let state: any = [];
-    let temp: any = [];
-    const elementLength: number = transitionName.name_arr.length;
-    const operationLength: number = operations.length;
-    const messageLength: number = message.length;
-    let len: number = 0;
-    if (elementLength > 1) {
-        len = elementLength;
-    }
-    if (operationLength > 1) {
-        len = operationLength;
-    }
-    if (messageLength > 1) {
-        len = messageLength;
-    }
-    if (len > 1) {
-        for (let i: number = 0; i < len; i++) {
-            if (_.isNil(message[i])) {
-                message[i] = null;
-            }
-            temp.push({
-                Name: transitionName.name_arr[i],
-                NextStateOnSuccess: nextStateOnSuccess[i],
-                NextStateOnFailure: nextStateOnFail[i],
-                Condition: 'null',
-                Trigger: {
-                    Message: message[i],
-                    Timeout: timeout
-                },
-                Operations: operations[i],
-                TransitionScenario: transitionScenario
-            });
-        }
-        state = {
-            Name: name,
-            Transitions: [...temp]
-        };
-    } else {
-        const nextStateS: string =
-            nextStateOnSuccess[nextStateOnSuccess.length - 1];
-        const nextStateF: string = nextStateOnFail[nextStateOnFail.length - 1];
-        const msg: string = message[message.length - 1];
-        const operation: string = operations[operations.length - 1];
-        state = {
-            Name: name,
-            Transitions: [
-                {
-                    Name: transitionName.name,
-                    NextStateOnSuccess: nextStateS,
-                    NextStateOnFailure: nextStateF,
-                    Condition: 'null',
-                    Trigger: {
-                        Message: msg,
-                        Timeout: timeout
-                    },
-                    Operations: operation,
-                    TransitionScenario: transitionScenario
-                }
-            ]
-        };
-    }
-
-    return state;
-};
-
-const findName = (
-    elementsArray,
-    message: boolean,
-    operation: boolean,
-    finalStateLen: number,
-    element,
-    graphJson,
-    connectedElements_temp
-): string[] => {
-    let connectedElement: string[] = [];
-
-    let operationTempArray: string[] = [];
-    for (let i: number = 0; i < finalStateLen; i++) {
-        operationTempArray.push(elementsArray[elementsArray.length - 1]);
-    }
-    if (message) {
-        for (let i of elementsArray) {
-            if (i.attributes.type === 'erd.ISA') {
-                connectedElement.push(_.find(i.attributes.attrs, 'text').text);
-            }
-        }
-    }
-    if (operation) {
-        let arr = [];
-        for (let i of elementsArray) {
-            if (i.attributes.type === 'app.RectangularModel') {
-                arr.push(i);
-            }
-        }
-        
-        if (arr.length === 1) {
-            for (let i: number = 0; i < finalStateLen; i++) {
-                if (
-                    graphJson.isNeighbor(
-                        connectedElements_temp.finalState[i],
-                        arr[arr.length - 1],
-                        { inbound: true }
-                    )
-                ) {
-                    connectedElement.push(
-                        _.find(arr[0].attributes.attrs, 'text').text
-                    );
-                } else {
-                    connectedElement.push('');
-                }
-            }
-        } else {
-            for (let i of arr) {
-                if (i.attributes.type === 'app.RectangularModel') {
-                    connectedElement.push(_.find(i.attributes.attrs, 'text').text);
-                }
-            }
-        }
-    }
-    if (!message && !operation) {
-        for (let i of elementsArray) {
-            connectedElement.push(_.find(i.attributes.attrs, 'text').text);
-        }
-    }
-
-    return connectedElement;
-};
-
-const setInitAsFirstState = (graph, graph_json): void => {
-    let lastZIndex: number = 0;
-
-    for (let i of graph_json.cells) {
-        lastZIndex = i.z;
-    }
-    for (let i of graph.attributes.cells.models) {
-        if (i.attributes.z === 1 && i.attributes.type !== 'fsa.StartState') {
-            i.attributes.z = lastZIndex + 1;
-        } else {
-            if (i.attributes.type === 'fsa.StartState') {
-                if (i.attributes.z !== 1) {
-                    i.attributes.z = 1;
-                }
-            }
-        }
-    }
-    graph.attributes.cells.models = _.sortBy(
-        graph.attributes.cells.models,
-        ['attributes.z'],
-        [`asc`]
-    );
 };
 
 const colorElement = (node: any, name: string) => {
@@ -1042,8 +885,6 @@ const getWorkflow = () => {
 
 const addPortsToWorkflow = (workflow, input): void => {
     // console.log(`addPortsToWorkflow`);
-    let in_port_temp: any[] = [];
-    let out_port_temp: any[] = [];
 
     const in_port = {
         id: 'temp',
@@ -1110,12 +951,17 @@ const addPortsToWorkflow = (workflow, input): void => {
         }
     };
 
+    const in_port_temp: any[] = [];
+    const out_port_temp: any[] = [];
+
     let index_in: number = 0;
     let index_out: number = 0;
 
-    for (let i: number = 0; i < workflow.length; i++) {
+    const workflowLen: number = workflow.length;
+
+    for (let i: number = 0; i < workflowLen; i++) {
         if (workflow[i].uuid === input.attributes.attrs.text.text) {
-            for (let k of workflow[i].cells) {
+            for (const k of workflow[i].cells) {
                 if (k.type === 'fsa.StartState') {
                     index_in++;
                     in_port_temp.push({
@@ -1145,7 +991,7 @@ const addPortsToWorkflow = (workflow, input): void => {
 const removePortsToWorkflow = (input): void => {
     // console.log(`removePortsToWorkflow`);
     const allPorts: any = input.getPorts();
-    for (let i of allPorts) {
+    for (const i of allPorts) {
         input.removePort(i);
     }
 };
@@ -1227,19 +1073,19 @@ const addPortsToElement = (actions, input): void => {
         }
     }
     if (_.isNil(in_port_temp)) {
-        let port: any[] = [];
-        let new_id: any = [];
-        let in_port_name: string[] = [];
+        const port: any[] = [];
+        const new_id: any = [];
+        const in_port_name: string[] = [];
         for (let i: number = 0; i < in_port_temp.length; i++) {
             new_id.push({
                 id: in_port_temp[i] + '_' + Date.now()
             });
         }
-        let in_port_arr = [];
+        const in_port_arr = [];
         for (let i: number = 0; i < new_id.length; i++) {
             in_port_arr.push(in_port);
         }
-        let in_port_arr_new_id = [];
+        const in_port_arr_new_id = [];
         for (let i = 0; i < in_port_arr.length; i++) {
             in_port_arr_new_id.push({ ...in_port_arr[i], ...new_id[i] });
         }
@@ -1251,19 +1097,19 @@ const addPortsToElement = (actions, input): void => {
         input.addInPort(in_port_name);
     }
     if (_.isNil(out_port_temp)) {
-        let port: any[] = [];
-        let new_id: any = [];
-        let out_port_name: string[] = [];
+        const port: any[] = [];
+        const new_id: any = [];
+        const out_port_name: string[] = [];
         for (let i: number = 0; i < out_port_temp.length; i++) {
             new_id.push({
                 id: out_port_temp[i] + '_' + Date.now()
             });
         }
-        let out_port_arr = [];
+        const out_port_arr = [];
         for (let i: number = 0; i < new_id.length; i++) {
             out_port_arr.push(out_port);
         }
-        let out_port_arr_new_id = [];
+        const out_port_arr_new_id = [];
         for (let i = 0; i < out_port_arr.length; i++) {
             out_port_arr_new_id.push({ ...out_port_arr[i], ...new_id[i] });
         }
@@ -1299,23 +1145,23 @@ const getUsedOperations = (jsonObj, actions) => {
     for (let i: number = 0; i < jsonObj_length; i++) {
         for (let j: number = 0; j < actions_len; j++) {
             if (
-                jsonObj.attributes.cells.models[i].attributes.type ==
+                jsonObj.attributes.cells.models[i].attributes.type ===
                 'app.RectangularModel'
             ) {
                 if (
                     jsonObj.attributes.cells.models[i].attributes.attrs[
                         '.label'
-                    ].text == actions.Operations[j].OperationId
+                    ].text === actions.Operations[j].OperationId
                 ) {
                     result.push(actions.Operations[j]);
                 }
             } else if (
-                jsonObj.attributes.cells.models[i].attributes.type ==
+                jsonObj.attributes.cells.models[i].attributes.type ===
                 'erd.WeakEntity'
             ) {
                 if (
                     jsonObj.attributes.cells.models[i].attributes.attrs.text
-                        .text == actions.Operations[j].OperationId
+                        .text === actions.Operations[j].OperationId
                 ) {
                     result.push(actions.Operations[j]);
                 }
@@ -1334,12 +1180,12 @@ const getUsedWorkflow = (jsonObj, workflow) => {
     for (let i: number = 0; i < jsonObj_length; i++) {
         for (let j: number = 0; j < workflow_len; j++) {
             if (
-                jsonObj.attributes.cells.models[i].attributes.type ==
+                jsonObj.attributes.cells.models[i].attributes.type ===
                 'erd.WeakEntity'
             ) {
                 if (
                     jsonObj.attributes.cells.models[i].attributes.attrs.text
-                        .text == workflow[j].uuid
+                        .text === workflow[j].uuid
                 ) {
                     result.push(workflow[j]);
                 }

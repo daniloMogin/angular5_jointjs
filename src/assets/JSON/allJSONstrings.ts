@@ -9452,3 +9452,1746 @@ export const jsonString7: any = {
     Workflow: [],
     States: []
 };
+
+export const jsonString8: any = {
+    cells: [
+        {
+            type: 'fsa.EndState',
+            size: { width: 60, height: 60 },
+            position: { x: 85, y: 670 },
+            angle: 0,
+            preserveAspectRatio: true,
+            id: 'a76af28d-7a9a-4309-a433-fae3891b72b0',
+            z: 1,
+            attrs: {
+                '.outer': {
+                    fill: 'transparent',
+                    stroke: '#ffd600',
+                    'stroke-width': 2,
+                    'stroke-dasharray': '0'
+                },
+                '.inner': { fill: '#ffff52', stroke: 'transparent' },
+                '.': {
+                    'data-tooltip-position': 'left',
+                    'data-tooltip-position-selector': '.joint-stencil'
+                },
+                text: {
+                    text: 'endState',
+                    fill: '#222138',
+                    'font-family': 'Roboto Condensed',
+                    'font-weight': 'Normal',
+                    'font-size': 20,
+                    'stroke-width': 0
+                }
+            }
+        },
+        {
+            type: 'erd.ISA',
+            size: { width: 90, height: 60 },
+            position: { x: 70, y: 440 },
+            angle: 0,
+            allowOrthogonalResize: false,
+            id: 'e5ab0365-2b82-4778-b20a-b2209c9ddade',
+            z: 21,
+            attrs: {
+                polygon: {
+                    points: '0 0, 100 0, 100 100, 0 100, 13 50',
+                    fill: 'transparent',
+                    stroke: '#ffd600',
+                    'stroke-dasharray': '0'
+                },
+                text: {
+                    text: 'Stop',
+                    'font-size': 20,
+                    'ref-y': 28,
+                    fill: '#222138',
+                    'letter-spacing': 0,
+                    'font-family': 'Roboto Condensed',
+                    'font-weight': 'Normal'
+                },
+                '.': {
+                    'data-tooltip-position': 'left',
+                    'data-tooltip-position-selector': '.joint-stencil'
+                }
+            }
+        },
+        {
+            type: 'erd.ISA',
+            size: { width: 90, height: 60 },
+            position: { x: 235, y: 560 },
+            angle: 0,
+            allowOrthogonalResize: false,
+            id: '6c834ac3-8bd0-4c3c-899c-fc88a7d2e5fb',
+            z: 26,
+            attrs: {
+                polygon: {
+                    points: '0 0, 100 0, 100 100, 0 100, 13 50',
+                    fill: 'transparent',
+                    stroke: '#ffd600',
+                    'stroke-dasharray': '0'
+                },
+                text: {
+                    text: 'Alarm',
+                    'font-size': 17,
+                    'ref-y': 28,
+                    fill: '#222138',
+                    'letter-spacing': 0,
+                    'font-family': 'Roboto Condensed',
+                    'font-weight': 'Normal'
+                },
+                '.': {
+                    'data-tooltip-position': 'left',
+                    'data-tooltip-position-selector': '.joint-stencil'
+                }
+            }
+        },
+        {
+            type: 'erd.IdentifyingRelationship',
+            size: { width: 60, height: 60 },
+            position: { x: 250, y: 670 },
+            angle: 0,
+            ports: {
+                groups: {
+                    in: { position: { name: 'left' } },
+                    out: { position: { name: 'right' } }
+                },
+                items: [
+                    {
+                        id: 'temp',
+                        markup: '<circle class="port-body" r="10"/>',
+                        group: 'out',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                text: 'out',
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: {
+                            text: 'fgh',
+                            position: { name: 'right', args: { y: 0 } }
+                        },
+                        position: { name: 'bottom' }
+                    },
+                    {
+                        id: 'temp1',
+                        markup: '<circle class="port-body" r="10"/>',
+                        group: 'in',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                text: 'in',
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'left', args: { y: 0 } } },
+                        position: { name: 'left' }
+                    }
+                ]
+            },
+            id: '95ee6e07-ab04-4824-bf05-45cb2ab56235',
+            z: 27,
+            attrs: {
+                '.inner': {
+                    fill: 'transparent',
+                    stroke: 'transparent',
+                    'stroke-dasharray': '0'
+                },
+                text: {
+                    text: '1',
+                    'font-family': 'Roboto Condensed',
+                    'font-size': 17,
+                    'font-weight': 'Normal',
+                    fill: '#222138',
+                    'stroke-width': 0
+                },
+                '.outer': {
+                    fill: 'transparent',
+                    stroke: '#ffd600',
+                    'stroke-dasharray': '0'
+                },
+                '.': {
+                    'data-tooltip-position': 'left',
+                    'data-tooltip-position-selector': '.joint-stencil'
+                }
+            }
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: { id: '6c834ac3-8bd0-4c3c-899c-fc88a7d2e5fb' },
+            target: {
+                id: '95ee6e07-ab04-4824-bf05-45cb2ab56235',
+                port: 'temp1',
+                selector:
+                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)'
+            },
+            id: 'a8a7b5e1-829e-4a56-870c-619c06eb8e5d',
+            z: 30,
+            attrs: {}
+        },
+        {
+            type: 'app.RectangularModel',
+            ports: {
+                groups: {
+                    in: {
+                        markup: '<circle class="port-body" r="10"/>',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'left', args: { y: 0 } } },
+                        position: { name: 'top' }
+                    },
+                    out: {
+                        markup: '<circle class="port-body" r="10"/>',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'right', args: { y: 0 } } },
+                        position: { name: 'bottom' }
+                    }
+                },
+                items: [
+                    {
+                        id: 'in1',
+                        group: 'in',
+                        attrs: { '.port-label': { text: 'in1' } }
+                    },
+                    {
+                        id: 'out1',
+                        group: 'out',
+                        attrs: { '.port-label': { text: 'out1' } }
+                    }
+                ]
+            },
+            inPorts: ['in1'],
+            outPorts: ['out1'],
+            size: { width: 90, height: 60 },
+            position: { x: 235, y: 329 },
+            angle: 0,
+            allowOrthogonalResize: false,
+            id: '25779556-8164-40ff-bd3c-50bc9f2284bd',
+            z: 33,
+            attrs: {
+                '.': {
+                    'data-tooltip-position': 'left',
+                    'data-tooltip-position-selector': '.joint-stencil'
+                },
+                '.label': {
+                    text: '5',
+                    'ref-y': 0.5,
+                    'font-size': 17,
+                    fill: '#222138',
+                    'font-family': 'Roboto Condensed',
+                    'font-weight': 'Normal',
+                    'stroke-width': 1,
+                    'y-alignment': 'middle'
+                },
+                '.body': {
+                    stroke: '#ffd600',
+                    fill: 'transparent',
+                    'stroke-width': 2,
+                    'stroke-dasharray': '0'
+                }
+            }
+        },
+        {
+            type: 'app.RectangularModel',
+            ports: {
+                groups: {
+                    in: {
+                        markup: '<circle class="port-body" r="10"/>',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'left', args: { y: 0 } } },
+                        position: { name: 'top' }
+                    },
+                    out: {
+                        markup: '<circle class="port-body" r="10"/>',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'right', args: { y: 0 } } },
+                        position: { name: 'bottom' }
+                    }
+                },
+                items: [
+                    {
+                        id: 'in1',
+                        group: 'in',
+                        attrs: { '.port-label': { text: 'in1' } }
+                    },
+                    {
+                        id: 'out1',
+                        group: 'out',
+                        attrs: { '.port-label': { text: 'out1' } }
+                    }
+                ]
+            },
+            inPorts: ['in1'],
+            outPorts: ['out1'],
+            size: { width: 90, height: 60 },
+            position: { x: 406, y: 560 },
+            angle: 0,
+            allowOrthogonalResize: false,
+            id: '6139decd-5344-44b3-a327-af66cdeec840',
+            z: 34,
+            attrs: {
+                '.': {
+                    'data-tooltip-position': 'left',
+                    'data-tooltip-position-selector': '.joint-stencil'
+                },
+                '.label': {
+                    text: '7',
+                    'ref-y': 0.5,
+                    'font-size': 17,
+                    fill: '#222138',
+                    'font-family': 'Roboto Condensed',
+                    'font-weight': 'Normal',
+                    'stroke-width': 1,
+                    'y-alignment': 'middle'
+                },
+                '.body': {
+                    stroke: '#ffd600',
+                    fill: 'transparent',
+                    'stroke-width': 2,
+                    'stroke-dasharray': '0'
+                }
+            }
+        },
+        {
+            type: 'app.RectangularModel',
+            ports: {
+                groups: {
+                    in: {
+                        markup: '<circle class="port-body" r="10"/>',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'left', args: { y: 0 } } },
+                        position: { name: 'top' }
+                    },
+                    out: {
+                        markup: '<circle class="port-body" r="10"/>',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'right', args: { y: 0 } } },
+                        position: { name: 'bottom' }
+                    }
+                },
+                items: [
+                    {
+                        id: 'in1',
+                        group: 'in',
+                        attrs: { '.port-label': { text: 'in1' } }
+                    },
+                    {
+                        id: 'out1',
+                        group: 'out',
+                        attrs: { '.port-label': { text: 'out1' } }
+                    }
+                ]
+            },
+            inPorts: ['in1'],
+            outPorts: ['out1'],
+            size: { width: 90, height: 60 },
+            position: { x: 70, y: 560 },
+            angle: 0,
+            allowOrthogonalResize: false,
+            id: 'f92d5f49-d7a5-4832-83d7-63c64f072dca',
+            z: 35,
+            attrs: {
+                '.': {
+                    'data-tooltip-position': 'left',
+                    'data-tooltip-position-selector': '.joint-stencil'
+                },
+                '.label': {
+                    text: '6',
+                    'ref-y': 0.5,
+                    'font-size': 17,
+                    fill: '#222138',
+                    'font-family': 'Roboto Condensed',
+                    'font-weight': 'Normal',
+                    'stroke-width': 1,
+                    'y-alignment': 'middle'
+                },
+                '.body': {
+                    stroke: '#ffd600',
+                    fill: 'transparent',
+                    'stroke-width': 2,
+                    'stroke-dasharray': '0'
+                }
+            }
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: {
+                id: '95ee6e07-ab04-4824-bf05-45cb2ab56235',
+                selector:
+                    'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)',
+                port: 'temp'
+            },
+            target: {
+                id: '6139decd-5344-44b3-a327-af66cdeec840',
+                port: 'out1',
+                selector:
+                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)'
+            },
+            id: '941a97c8-c92e-4aea-8a08-73e76d5ae864',
+            z: 36,
+            vertices: [{ x: 450, y: 700 }],
+            labels: [{ attrs: { text: { text: 'NO' } }, position: 30 }],
+            attrs: {}
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: { id: 'e5ab0365-2b82-4778-b20a-b2209c9ddade' },
+            target: {
+                id: 'f92d5f49-d7a5-4832-83d7-63c64f072dca',
+                port: 'in1',
+                selector:
+                    'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+            },
+            id: '072efc61-1ef5-4fae-a536-7542ef3d27f8',
+            z: 40,
+            attrs: {}
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: {
+                id: 'f92d5f49-d7a5-4832-83d7-63c64f072dca',
+                selector:
+                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                port: 'out1'
+            },
+            target: { id: 'a76af28d-7a9a-4309-a433-fae3891b72b0' },
+            id: '70517d3e-6d25-4382-8ba3-b6b226054d82',
+            z: 41,
+            attrs: {}
+        },
+        {
+            type: 'basic.Rect',
+            position: { x: 235, y: 440 },
+            size: { width: 90, height: 60 },
+            angle: 0,
+            allowOrthogonalResize: false,
+            id: '8f72eaff-fd82-4404-aab5-e24675185f37',
+            z: 42,
+            attrs: {
+                rect: {
+                    fill: 'transparent',
+                    stroke: '#ffd600',
+                    rx: 15,
+                    ry: 15,
+                    'stroke-width': 2,
+                    'stroke-dasharray': '0'
+                },
+                text: {
+                    fill: '#222138',
+                    text: 'WaitOnAlarm',
+                    'font-size': 17,
+                    'font-family': 'Roboto Condensed',
+                    'font-weight': 'Normal',
+                    'stroke-width': 1
+                },
+                '.': {
+                    'data-tooltip-position': 'left',
+                    'data-tooltip-position-selector': '.joint-stencil'
+                }
+            }
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: {
+                id: '6139decd-5344-44b3-a327-af66cdeec840',
+                selector:
+                    'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)',
+                port: 'in1'
+            },
+            target: { id: '8f72eaff-fd82-4404-aab5-e24675185f37' },
+            id: '7b812cdc-d215-408d-9a54-e5d66fb63e76',
+            z: 43,
+            vertices: [{ x: 450, y: 470 }],
+            attrs: {}
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: {
+                id: '25779556-8164-40ff-bd3c-50bc9f2284bd',
+                selector:
+                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                port: 'out1'
+            },
+            target: { id: '8f72eaff-fd82-4404-aab5-e24675185f37' },
+            id: '6bd7c920-00f3-4aee-bef2-cd02c6912855',
+            z: 44,
+            attrs: {}
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: { id: '8f72eaff-fd82-4404-aab5-e24675185f37' },
+            target: { id: '6c834ac3-8bd0-4c3c-899c-fc88a7d2e5fb' },
+            id: '130247d5-d941-4b97-b65b-a7af78e1eedc',
+            z: 45,
+            attrs: {}
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: { id: '8f72eaff-fd82-4404-aab5-e24675185f37' },
+            target: { id: 'e5ab0365-2b82-4778-b20a-b2209c9ddade' },
+            id: '155e5991-89a8-478d-88ef-81f85f974935',
+            z: 46,
+            attrs: {}
+        },
+        {
+            type: 'fsa.StartState',
+            size: { width: 60, height: 60 },
+            position: { x: 250, y: 106 },
+            angle: 0,
+            preserveAspectRatio: true,
+            id: '8055b4a4-5816-49e5-9ea7-6a8d72cba5dd',
+            z: 47,
+            attrs: {
+                circle: {
+                    fill: '#ffd600',
+                    width: 50,
+                    height: 30,
+                    'stroke-width': 0
+                },
+                '.': {
+                    'data-tooltip-position': 'left',
+                    'data-tooltip-position-selector': '.joint-stencil'
+                },
+                text: {
+                    text: 'Init',
+                    fill: '#222138',
+                    'font-family': 'Roboto Condensed',
+                    'font-weight': 'Normal',
+                    'font-size': 17,
+                    'stroke-width': 0
+                }
+            }
+        },
+        {
+            type: 'erd.ISA',
+            size: { width: 90, height: 60 },
+            position: { x: 235, y: 213 },
+            angle: 0,
+            allowOrthogonalResize: false,
+            id: 'ac70c3b2-5064-4c20-af2d-ef65b6c7343d',
+            z: 48,
+            attrs: {
+                polygon: {
+                    points: '0 0, 100 0, 100 100, 0 100, 13 50',
+                    fill: 'transparent',
+                    stroke: '#ffd600',
+                    'stroke-dasharray': '0'
+                },
+                text: {
+                    text: 'Start',
+                    'font-size': 17,
+                    'ref-y': 28,
+                    fill: '#222138',
+                    'letter-spacing': 0,
+                    'font-family': 'Roboto Condensed',
+                    'font-weight': 'Normal'
+                },
+                '.': {
+                    'data-tooltip-position': 'left',
+                    'data-tooltip-position-selector': '.joint-stencil'
+                }
+            }
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: { id: '8055b4a4-5816-49e5-9ea7-6a8d72cba5dd' },
+            target: { id: 'ac70c3b2-5064-4c20-af2d-ef65b6c7343d' },
+            id: '22b4a166-5bae-4afc-b9de-65e0c8236b64',
+            z: 49,
+            attrs: {}
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: { id: 'ac70c3b2-5064-4c20-af2d-ef65b6c7343d' },
+            target: {
+                id: '25779556-8164-40ff-bd3c-50bc9f2284bd',
+                port: 'in1',
+                selector:
+                    'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+            },
+            id: '775f3ce8-a01b-4139-a4e6-2d68ebb0ff25',
+            z: 50,
+            attrs: {}
+        },
+        {
+            type: 'app.RectangularModel',
+            ports: {
+                groups: {
+                    in: {
+                        markup: '<circle class="port-body" r="10"/>',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'left', args: { y: 0 } } },
+                        position: { name: 'top' }
+                    },
+                    out: {
+                        markup: '<circle class="port-body" r="10"/>',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'right', args: { y: 0 } } },
+                        position: { name: 'bottom' }
+                    }
+                },
+                items: [
+                    {
+                        id: 'in1',
+                        group: 'in',
+                        attrs: { '.port-label': { text: 'in1' } }
+                    },
+                    {
+                        id: 'out1',
+                        group: 'out',
+                        attrs: { '.port-label': { text: 'out1' } }
+                    }
+                ]
+            },
+            inPorts: ['in1'],
+            outPorts: ['out1'],
+            size: { width: 90, height: 60 },
+            position: { x: 235, y: 776 },
+            angle: 0,
+            allowOrthogonalResize: false,
+            id: '733a7a1c-0f2d-44da-a838-0cacd6a43ebe',
+            z: 51,
+            attrs: {
+                '.': {
+                    'data-tooltip-position': 'left',
+                    'data-tooltip-position-selector': '.joint-stencil'
+                },
+                '.label': {
+                    text: '10',
+                    'ref-y': 0.5,
+                    'font-size': 17,
+                    fill: '#222138',
+                    'font-family': 'Roboto Condensed',
+                    'font-weight': 'Normal',
+                    'stroke-width': 1,
+                    'y-alignment': 'middle'
+                },
+                '.body': {
+                    stroke: '#ffd600',
+                    fill: 'transparent',
+                    'stroke-width': 2,
+                    'stroke-dasharray': '0'
+                }
+            }
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: {
+                id: '95ee6e07-ab04-4824-bf05-45cb2ab56235',
+                selector:
+                    'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)',
+                port: 'temp'
+            },
+            target: {
+                id: '733a7a1c-0f2d-44da-a838-0cacd6a43ebe',
+                port: 'in1',
+                selector:
+                    'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+            },
+            id: 'ed2cdfa2-4283-44d8-ae84-d8447fef8bae',
+            z: 52,
+            labels: [{ attrs: { text: { text: 'YES' } }, position: 30 }],
+            attrs: {}
+        },
+        {
+            type: 'erd.IdentifyingRelationship',
+            size: { width: 60, height: 60 },
+            position: { x: 250, y: 881 },
+            angle: 0,
+            ports: {
+                groups: {
+                    in: { position: { name: 'left' } },
+                    out: { position: { name: 'right' } }
+                },
+                items: [
+                    {
+                        id: 'temp',
+                        markup: '<circle class="port-body" r="10"/>',
+                        group: 'out',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                text: 'out',
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: {
+                            text: 'fgh',
+                            position: { name: 'right', args: { y: 0 } }
+                        },
+                        position: { name: 'bottom' }
+                    },
+                    {
+                        id: 'temp1',
+                        markup: '<circle class="port-body" r="10"/>',
+                        group: 'in',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                text: 'in',
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'left', args: { y: 0 } } },
+                        position: { name: 'left' }
+                    }
+                ]
+            },
+            id: '3e0d9810-4513-4406-97ac-b2775b2172ee',
+            z: 53,
+            attrs: {
+                '.inner': {
+                    fill: 'transparent',
+                    stroke: 'transparent',
+                    'stroke-dasharray': '0'
+                },
+                text: {
+                    text: '2',
+                    'font-family': 'Roboto Condensed',
+                    'font-size': 17,
+                    'font-weight': 'Normal',
+                    fill: '#222138',
+                    'stroke-width': 0
+                },
+                '.outer': {
+                    fill: 'transparent',
+                    stroke: '#ffd600',
+                    'stroke-dasharray': '0'
+                },
+                '.': {
+                    'data-tooltip-position': 'left',
+                    'data-tooltip-position-selector': '.joint-stencil'
+                }
+            }
+        },
+        {
+            type: 'erd.IdentifyingRelationship',
+            size: { width: 60, height: 60 },
+            position: { x: 250, y: 985 },
+            angle: 0,
+            ports: {
+                groups: {
+                    in: { position: { name: 'left' } },
+                    out: { position: { name: 'right' } }
+                },
+                items: [
+                    {
+                        id: 'temp',
+                        markup: '<circle class="port-body" r="10"/>',
+                        group: 'out',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                text: 'out',
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: {
+                            text: 'fgh',
+                            position: { name: 'right', args: { y: 0 } }
+                        },
+                        position: { name: 'bottom' }
+                    },
+                    {
+                        id: 'temp1',
+                        markup: '<circle class="port-body" r="10"/>',
+                        group: 'in',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                text: 'in',
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'left', args: { y: 0 } } },
+                        position: { name: 'left' }
+                    }
+                ]
+            },
+            id: '0418ccfa-4f0b-4551-a484-5c47c1333da8',
+            z: 54,
+            attrs: {
+                '.inner': {
+                    fill: 'transparent',
+                    stroke: 'transparent',
+                    'stroke-dasharray': '0'
+                },
+                text: {
+                    text: '3',
+                    'font-family': 'Roboto Condensed',
+                    'font-size': 17,
+                    'font-weight': 'Normal',
+                    fill: '#222138',
+                    'stroke-width': 0
+                },
+                '.outer': {
+                    fill: 'transparent',
+                    stroke: '#ffd600',
+                    'stroke-dasharray': '0'
+                },
+                '.': {
+                    'data-tooltip-position': 'left',
+                    'data-tooltip-position-selector': '.joint-stencil'
+                }
+            }
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: {
+                id: '733a7a1c-0f2d-44da-a838-0cacd6a43ebe',
+                selector:
+                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                port: 'out1'
+            },
+            target: {
+                id: '3e0d9810-4513-4406-97ac-b2775b2172ee',
+                port: 'temp1',
+                selector:
+                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)'
+            },
+            id: 'dfcd355a-2691-48a1-a082-79b40829af9e',
+            z: 55,
+            attrs: {}
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: {
+                id: '3e0d9810-4513-4406-97ac-b2775b2172ee',
+                selector:
+                    'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)',
+                port: 'temp'
+            },
+            target: {
+                id: '0418ccfa-4f0b-4551-a484-5c47c1333da8',
+                port: 'temp1',
+                selector:
+                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)'
+            },
+            id: '2aa2b061-b869-44aa-8f20-2f8775c29397',
+            z: 56,
+            labels: [{ attrs: { text: { text: 'NO' } }, position: 30 }],
+            attrs: {}
+        },
+        {
+            type: 'app.RectangularModel',
+            ports: {
+                groups: {
+                    in: {
+                        markup: '<circle class="port-body" r="10"/>',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'left', args: { y: 0 } } },
+                        position: { name: 'top' }
+                    },
+                    out: {
+                        markup: '<circle class="port-body" r="10"/>',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'right', args: { y: 0 } } },
+                        position: { name: 'bottom' }
+                    }
+                },
+                items: [
+                    {
+                        id: 'in1',
+                        group: 'in',
+                        attrs: { '.port-label': { text: 'in1' } }
+                    },
+                    {
+                        id: 'out1',
+                        group: 'out',
+                        attrs: { '.port-label': { text: 'out1' } }
+                    }
+                ]
+            },
+            inPorts: ['in1'],
+            outPorts: ['out1'],
+            size: { width: 90, height: 60 },
+            position: { x: 235, y: 1111 },
+            angle: 0,
+            allowOrthogonalResize: false,
+            id: '3c9b58f3-4c43-4f5f-9b17-b53c7cf3622c',
+            z: 57,
+            attrs: {
+                '.': {
+                    'data-tooltip-position': 'left',
+                    'data-tooltip-position-selector': '.joint-stencil'
+                },
+                '.label': {
+                    text: '11',
+                    'ref-y': 0.5,
+                    'font-size': 17,
+                    fill: '#222138',
+                    'font-family': 'Roboto Condensed',
+                    'font-weight': 'Normal',
+                    'stroke-width': 1,
+                    'y-alignment': 'middle'
+                },
+                '.body': {
+                    stroke: '#ffd600',
+                    fill: 'transparent',
+                    'stroke-width': 2,
+                    'stroke-dasharray': '0'
+                }
+            }
+        },
+        {
+            type: 'erd.IdentifyingRelationship',
+            size: { width: 60, height: 60 },
+            position: { x: 250, y: 1216 },
+            angle: 0,
+            ports: {
+                groups: {
+                    in: { position: { name: 'left' } },
+                    out: { position: { name: 'right' } }
+                },
+                items: [
+                    {
+                        id: 'temp',
+                        markup: '<circle class="port-body" r="10"/>',
+                        group: 'out',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                text: 'out',
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: {
+                            text: 'fgh',
+                            position: { name: 'right', args: { y: 0 } }
+                        },
+                        position: { name: 'bottom' }
+                    },
+                    {
+                        id: 'temp1',
+                        markup: '<circle class="port-body" r="10"/>',
+                        group: 'in',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                text: 'in',
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'left', args: { y: 0 } } },
+                        position: { name: 'left' }
+                    }
+                ]
+            },
+            id: 'b8695890-3685-4fe4-9026-9c0c7201f825',
+            z: 58,
+            attrs: {
+                '.inner': {
+                    fill: 'transparent',
+                    stroke: 'transparent',
+                    'stroke-dasharray': '0'
+                },
+                text: {
+                    text: '4',
+                    'font-family': 'Roboto Condensed',
+                    'font-size': 17,
+                    'font-weight': 'Normal',
+                    fill: '#222138',
+                    'stroke-width': 0
+                },
+                '.outer': {
+                    fill: 'transparent',
+                    stroke: '#ffd600',
+                    'stroke-dasharray': '0'
+                },
+                '.': {
+                    'data-tooltip-position': 'left',
+                    'data-tooltip-position-selector': '.joint-stencil'
+                }
+            }
+        },
+        {
+            type: 'app.RectangularModel',
+            ports: {
+                groups: {
+                    in: {
+                        markup: '<circle class="port-body" r="10"/>',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'left', args: { y: 0 } } },
+                        position: { name: 'top' }
+                    },
+                    out: {
+                        markup: '<circle class="port-body" r="10"/>',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'right', args: { y: 0 } } },
+                        position: { name: 'bottom' }
+                    }
+                },
+                items: [
+                    {
+                        id: 'in1',
+                        group: 'in',
+                        attrs: { '.port-label': { text: 'in1' } }
+                    },
+                    {
+                        id: 'out1',
+                        group: 'out',
+                        attrs: { '.port-label': { text: 'out1' } }
+                    }
+                ]
+            },
+            inPorts: ['in1'],
+            outPorts: ['out1'],
+            size: { width: 90, height: 60 },
+            position: { x: 235, y: 1337 },
+            angle: 0,
+            allowOrthogonalResize: false,
+            id: '1c293d34-b507-439c-88e2-bb5098c1f998',
+            z: 59,
+            attrs: {
+                '.': {
+                    'data-tooltip-position': 'left',
+                    'data-tooltip-position-selector': '.joint-stencil'
+                },
+                '.label': {
+                    text: '12',
+                    'ref-y': 0.5,
+                    'font-size': 17,
+                    fill: '#222138',
+                    'font-family': 'Roboto Condensed',
+                    'font-weight': 'Normal',
+                    'stroke-width': 1,
+                    'y-alignment': 'middle'
+                },
+                '.body': {
+                    stroke: '#ffd600',
+                    fill: 'transparent',
+                    'stroke-width': 2,
+                    'stroke-dasharray': '0'
+                }
+            }
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: {
+                id: '0418ccfa-4f0b-4551-a484-5c47c1333da8',
+                selector:
+                    'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)',
+                port: 'temp'
+            },
+            target: {
+                id: '3c9b58f3-4c43-4f5f-9b17-b53c7cf3622c',
+                port: 'in1',
+                selector:
+                    'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+            },
+            id: '0fc9a5c1-68bd-43dc-b213-df5594d98d00',
+            z: 60,
+            labels: [{ attrs: { text: { text: 'NO' } }, position: 30 }],
+            attrs: {}
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: {
+                id: '3c9b58f3-4c43-4f5f-9b17-b53c7cf3622c',
+                selector:
+                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                port: 'out1'
+            },
+            target: {
+                id: 'b8695890-3685-4fe4-9026-9c0c7201f825',
+                port: 'temp1',
+                selector:
+                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)'
+            },
+            id: '5fff1303-9b8a-4279-87a8-424af618040c',
+            z: 61,
+            attrs: {}
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: {
+                id: 'b8695890-3685-4fe4-9026-9c0c7201f825',
+                selector:
+                    'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)',
+                port: 'temp'
+            },
+            target: {
+                id: '1c293d34-b507-439c-88e2-bb5098c1f998',
+                port: 'in1',
+                selector:
+                    'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+            },
+            id: '48d78e57-1da3-4db5-b45a-6fd2b00b39f5',
+            z: 62,
+            labels: [{ attrs: { text: { text: 'YES' } }, position: 30 }],
+            attrs: {}
+        },
+        {
+            type: 'app.RectangularModel',
+            ports: {
+                groups: {
+                    in: {
+                        markup: '<circle class="port-body" r="10"/>',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'left', args: { y: 0 } } },
+                        position: { name: 'top' }
+                    },
+                    out: {
+                        markup: '<circle class="port-body" r="10"/>',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'right', args: { y: 0 } } },
+                        position: { name: 'bottom' }
+                    }
+                },
+                items: [
+                    {
+                        id: 'in1',
+                        group: 'in',
+                        attrs: { '.port-label': { text: 'in1' } }
+                    },
+                    {
+                        id: 'out1',
+                        group: 'out',
+                        attrs: { '.port-label': { text: 'out1' } }
+                    }
+                ]
+            },
+            inPorts: ['in1'],
+            outPorts: ['out1'],
+            size: { width: 90, height: 60 },
+            position: { x: 70, y: 1085 },
+            angle: 0,
+            allowOrthogonalResize: false,
+            id: 'f7448203-962d-4000-8568-04f8ccab7ce8',
+            z: 64,
+            attrs: {
+                '.': {
+                    'data-tooltip-position': 'left',
+                    'data-tooltip-position-selector': '.joint-stencil'
+                },
+                '.label': {
+                    text: '9',
+                    'ref-y': 0.5,
+                    'font-size': 17,
+                    fill: '#222138',
+                    'font-family': 'Roboto Condensed',
+                    'font-weight': 'Normal',
+                    'stroke-width': 1,
+                    'y-alignment': 'middle'
+                },
+                '.body': {
+                    stroke: '#ffd600',
+                    fill: 'transparent',
+                    'stroke-width': 2,
+                    'stroke-dasharray': '0'
+                }
+            }
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: {
+                id: '0418ccfa-4f0b-4551-a484-5c47c1333da8',
+                selector:
+                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                port: 'temp1'
+            },
+            target: {
+                id: 'f7448203-962d-4000-8568-04f8ccab7ce8',
+                port: 'in1',
+                selector:
+                    'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+            },
+            id: 'f25d8fbe-f2de-4b91-bebb-e70d0a2b358b',
+            z: 65,
+            labels: [{ attrs: { text: { text: 'YES' } }, position: 30 }],
+            attrs: {}
+        },
+        {
+            type: 'app.RectangularModel',
+            ports: {
+                groups: {
+                    in: {
+                        markup: '<circle class="port-body" r="10"/>',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'left', args: { y: 0 } } },
+                        position: { name: 'top' }
+                    },
+                    out: {
+                        markup: '<circle class="port-body" r="10"/>',
+                        attrs: {
+                            '.port-body': {
+                                fill: '#61549C',
+                                strokeWidth: 0,
+                                stroke: '#000',
+                                r: 10,
+                                magnet: true
+                            },
+                            '.port-label': {
+                                fontSize: 11,
+                                fill: '#61549C',
+                                fontWeight: 800
+                            }
+                        },
+                        label: { position: { name: 'right', args: { y: 0 } } },
+                        position: { name: 'bottom' }
+                    }
+                },
+                items: [
+                    {
+                        id: 'in1',
+                        group: 'in',
+                        attrs: { '.port-label': { text: 'in1' } }
+                    },
+                    {
+                        id: 'in2',
+                        group: 'in',
+                        attrs: { '.port-label': { text: 'in2' } }
+                    },
+                    {
+                        id: 'in3',
+                        group: 'in',
+                        attrs: { '.port-label': { text: 'in3' } }
+                    },
+                    {
+                        id: 'in4',
+                        group: 'in',
+                        attrs: { '.port-label': { text: 'in4' } }
+                    },
+                    {
+                        id: 'out1',
+                        group: 'out',
+                        attrs: { '.port-label': { text: 'out1' } }
+                    }
+                ]
+            },
+            inPorts: ['in1', 'in2', 'in3', 'in4'],
+            outPorts: ['out1'],
+            size: { width: 90, height: 60 },
+            position: { x: 70, y: 881 },
+            angle: 0,
+            allowOrthogonalResize: false,
+            id: 'bb2b1e81-6ca1-4be7-9496-074977ff0af6',
+            z: 66,
+            attrs: {
+                '.': {
+                    'data-tooltip-position': 'left',
+                    'data-tooltip-position-selector': '.joint-stencil'
+                },
+                '.label': {
+                    text: '8',
+                    'ref-y': 0.5,
+                    'font-size': 17,
+                    fill: '#222138',
+                    'font-family': 'Roboto Condensed',
+                    'font-weight': 'Normal',
+                    'stroke-width': 1,
+                    'y-alignment': 'middle'
+                },
+                '.body': {
+                    stroke: '#ffd600',
+                    fill: 'transparent',
+                    'stroke-width': 2,
+                    'stroke-dasharray': '0'
+                }
+            }
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: {
+                id: 'bb2b1e81-6ca1-4be7-9496-074977ff0af6',
+                selector:
+                    'g:nth-child(1) > g:nth-child(7) > circle:nth-child(1)',
+                port: 'out1'
+            },
+            target: {
+                id: '95ee6e07-ab04-4824-bf05-45cb2ab56235',
+                port: 'temp1',
+                selector:
+                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)'
+            },
+            id: '1f5dd100-6edc-4706-9b7f-40583ac4afb1',
+            z: 67,
+            vertices: [
+                { x: 110, y: 1010 },
+                { x: 200, y: 1010 },
+                { x: 200, y: 700 }
+            ],
+            attrs: {}
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: {
+                id: 'f7448203-962d-4000-8568-04f8ccab7ce8',
+                selector:
+                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                port: 'out1'
+            },
+            target: {
+                id: 'bb2b1e81-6ca1-4be7-9496-074977ff0af6',
+                port: 'in1',
+                selector:
+                    'g:nth-child(1) > g:nth-child(3) > circle:nth-child(1)'
+            },
+            id: '9dd58934-a297-4a3e-b199-1618ab54b05d',
+            z: 68,
+            vertices: [
+                { x: 110, y: 1200 },
+                { x: 50, y: 1200 },
+                { x: 50, y: 840 },
+                { x: 80, y: 840 }
+            ],
+            attrs: {}
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: {
+                id: '3e0d9810-4513-4406-97ac-b2775b2172ee',
+                selector:
+                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                port: 'temp1'
+            },
+            target: {
+                id: 'bb2b1e81-6ca1-4be7-9496-074977ff0af6',
+                port: 'in2',
+                selector:
+                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)'
+            },
+            id: '1059f0ee-6d6d-4a35-8663-6ab0d4cc948e',
+            z: 69,
+            vertices: [
+                { x: 170, y: 910 },
+                { x: 170, y: 840 },
+                { x: 100, y: 840 }
+            ],
+            labels: [{ attrs: { text: { text: 'YES' } }, position: 30 }],
+            attrs: {}
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: {
+                id: 'b8695890-3685-4fe4-9026-9c0c7201f825',
+                selector:
+                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                port: 'temp1'
+            },
+            target: {
+                id: 'bb2b1e81-6ca1-4be7-9496-074977ff0af6',
+                port: 'in3',
+                selector:
+                    'g:nth-child(1) > g:nth-child(5) > circle:nth-child(1)'
+            },
+            id: 'f620a878-a5da-4c70-92b0-5a8422a9f3b3',
+            z: 70,
+            vertices: [
+                { x: 30, y: 1250 },
+                { x: 30, y: 820 },
+                { x: 130, y: 820 }
+            ],
+            labels: [{ attrs: { text: { text: 'NO' } }, position: 30 }],
+            attrs: {}
+        },
+        {
+            type: 'app.Link',
+            router: { name: 'normal' },
+            connector: { name: 'normal' },
+            source: {
+                id: '1c293d34-b507-439c-88e2-bb5098c1f998',
+                selector:
+                    'g:nth-child(1) > g:nth-child(4) > circle:nth-child(1)',
+                port: 'out1'
+            },
+            target: {
+                id: 'bb2b1e81-6ca1-4be7-9496-074977ff0af6',
+                port: 'in4',
+                selector:
+                    'g:nth-child(1) > g:nth-child(6) > circle:nth-child(1)'
+            },
+            id: '62476306-0981-4385-921b-1b40edfa9dbb',
+            z: 71,
+            vertices: [
+                { x: 10, y: 1400 },
+                { x: 20, y: 800 },
+                { x: 150, y: 800 }
+            ],
+            attrs: {}
+        }
+    ],
+    uuid: '6674e3d7-c830-411c-930e-5cde4348f781',
+    Name: '',
+    Operations: [
+        {
+            OperationId: '5',
+            OperationName: 'Initialize()',
+            Messages: [{ MessageId: 'InitializeMessage', ContentExample: {} }],
+            OperationDependency: 'None',
+            Description: 'Initialize workflow',
+            inPorts: ['in'],
+            outPorts: ['out']
+        },
+        {
+            OperationId: '7',
+            OperationName: 'Assignment()',
+            Messages: [{ MessageId: 'AssignmentMessage', ContentExample: {} }],
+            OperationDependency: 'None',
+            Description: 'Assign',
+            inPorts: ['in'],
+            outPorts: ['out']
+        },
+        {
+            OperationId: '6',
+            OperationName: 'Shutdown()',
+            Messages: [{ MessageId: 'ShutdownMessage', ContentExample: {} }],
+            OperationDependency: 'None',
+            Description:
+                'Purpose of the operation is to release resources, and prepare workflow for shutdown.',
+            inPorts: ['in'],
+            outPorts: ['out']
+        },
+        {
+            OperationId: '10',
+            OperationName: 'CheckIfRowIsFree()',
+            Messages: [
+                { MessageId: 'CheckIfRowIsFreeMessage', ContentExample: {} }
+            ],
+            OperationDependency: 'None',
+            Description: 'CheckIfRowIsFree',
+            inPorts: ['in'],
+            outPorts: ['out']
+        },
+        {
+            OperationId: '11',
+            OperationName: 'MoveFromRowToRow()',
+            Messages: [
+                { MessageId: 'MoveFromRowToRowMessage', ContentExample: {} }
+            ],
+            OperationDependency: 'None',
+            Description: 'MoveFromRowToRow',
+            inPorts: ['in'],
+            outPorts: ['out']
+        },
+        {
+            OperationId: '12',
+            OperationName: 'ShowRow()',
+            Messages: [{ MessageId: 'ShowRowMessage', ContentExample: {} }],
+            OperationDependency: 'None',
+            Description: 'ShowRow',
+            inPorts: ['in'],
+            outPorts: ['out']
+        },
+        {
+            OperationId: '9',
+            OperationName: 'ClearRow()',
+            Messages: [{ MessageId: 'ClearRowMessage', ContentExample: {} }],
+            OperationDependency: 'None',
+            Description: 'ClearRow',
+            inPorts: ['in'],
+            outPorts: ['out']
+        },
+        {
+            OperationId: '8',
+            OperationName: 'Decrement()',
+            Messages: [{ MessageId: 'DecrementMessage', ContentExample: {} }],
+            OperationDependency: 'None',
+            Description: 'Decrement',
+            inPorts: ['in', 'in', 'in', 'in'],
+            outPorts: ['out']
+        }
+    ],
+    Workflow: [],
+    States: []
+};
